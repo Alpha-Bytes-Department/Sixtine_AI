@@ -1,11 +1,11 @@
 import {
   createBrowserRouter,
 } from "react-router";
-import App from "../App";
+import Landing from "../pages/Landing/Landing";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <Landing/>
   },
 ]);

@@ -6,7 +6,6 @@ const App=()=> {
     <>
       <div>
         Hi how are you
-
       </div>
     </>
   )
