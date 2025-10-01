@@ -1,3 +1,5 @@
+import Navbar from "../../shared/Navbar/Navbar";
+
 const Banner = () => {
   return (
     <div className="bg-[conic-gradient(from_180deg_at_50%_80.45%,#0D63AA_0deg,#C4EEC8_360deg)] h-screen w-full relative overflow-x-hidden overflow-y-hidden scrollbar-none">
@@ -6,7 +8,10 @@ const Banner = () => {
         src="/Images/logo/Looper2.png"
         className="absolute h-auto rounded-full w-3/12 -top-5 -left-5 sm:-top-8 sm:-left-8 md:-top-12 md:-left-12 lg:-top-20 lg:-left-20 xl:-top-32 xl:-left-32 2xl:-left-40 2xl:-top-40 animate-[spin_15s_linear_infinite]"
       />
-
+      {/*--------------------- navbar--------------------  */}
+      <div>
+        <Navbar/>
+      </div>
       <div className="flex flex-col gap-4 justify-center items-center h-full w-11/12 sm:w-10/12 xl:w-7/12 text-center mx-auto">
         <div>
           <p className="text-white inter text-4xl">MISSION</p>
@@ -51,4 +56,3 @@ const Banner = () => {
 };
 
 export default Banner;
-
