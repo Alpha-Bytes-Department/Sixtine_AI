@@ -5,7 +5,8 @@ import { createContext, useContext, useMemo, useState, type ReactNode } from "re
 //------------ declaring type --------------
 type StatusType = {
     languageStat: "english" | "french";
-    // setLanguageStat: React.Dispatch<React.SetStateAction<"english" | "french">>;
+    setLanguageStat: React.Dispatch<React.SetStateAction<"english" | "french">>;
+    isEnglish: boolean
 }
 
 // create context 
@@ -16,7 +17,10 @@ const StatusContext = createContext<StatusType | undefined>(undefined);
 export const StatusProvider = ( {children } : {children : ReactNode} )=>{
     const [languageStat, setLanguageStat] = useState<"english" | "french">("english");
 
-    const statusObject = useMemo(()=>({languageStat, setLanguageStat}),[languageStat])
+    const isEnglish = languageStat === "english"
+
+    // memorizing to prevent re-rander
+    const statusObject = useMemo(()=>({languageStat, setLanguageStat,isEnglish}),[languageStat, isEnglish])
 
 
 
