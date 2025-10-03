@@ -4,9 +4,9 @@ const WhatSixtien = () => {
   const { isEnglish } = useStatus();
 
   return (
-    <div className="bg-[#faf6ed] w-full h-screen">
+    <div className="flex flex-col gap-24 bg-[#faf6ed] w-full py-40">
       {/* title  */}
-      <div className="flex flex-col justify-center items-center text-black pt-10">
+      <div className="flex flex-col justify-center items-center text-black ">
         <p className="inter text-lg">
           {isEnglish ? "WHAT SIXTINE DOES" : "CE QUE FAIT SIXTINE"}
         </p>
@@ -27,46 +27,56 @@ const WhatSixtien = () => {
         </p>
       </div>
       {/* card item  */}
-      <div className="flex gap-5 justify-center items-center">
-        <div className="flex flex-col justify-center items-center gap-5 bg-gradient-to-r from-[#0D63AA] to-[#7AEADD] p-5 rounded-xl h-[384px] w-[406px]">
-          <img
-            src="/Images/icons/hearing.png"
-            alt="hearing"
-            className="p-5 bg-white rounded-full w-[100px] h-[100px]"
-          />
-          <div className="flex flex-col justify-center items-center gap-5">
-            <p className="text-4xl text-white">Listen & understand</p>
+
+      <div className="flex gap-7 justify-center items-center flex-wrap">
+        {/* card - 1  */}
+        <div className="flex flex-col justify-center items-center gap-5 bg-gradient-to-r from-[#0D63AA] to-[#7AEADD] p-5 rounded-4xl h-[384px] w-[406px]">
+          <div className=" bg-white rounded-full">
+            <img
+              src="/Images/icons/hearing.png"
+              alt="hearing"
+              className=" w-[100px] h-[100px] object-cover p-6"
+            />
+          </div>
+          <div className="flex flex-col justify-center gap-5">
+            <p className="text-3xl font-semibold text-white ms-3">Listen & understand</p>
             <ul className="list-disc text-white text-xl mx-12">
               <li>Real-time transcription & smart documentation</li>
               <li>OCR & document understanding</li>
             </ul>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center gap-5 bg-gradient-to-r from-[#0D63AA] to-[#7AEADD] p-5 rounded-xl h-[384px] w-[406px]">
-          <img
-            src="/Images/icons/people.png"
-            alt="hearing"
-            className="p-3 bg-white rounded-full w-[100px] h-[100px] object-cover"
-          />
-          <div className="flex flex-col justify-center items-center gap-5">
-            <p className="text-4xl text-white">Listen & understand</p>
+        {/* card - 2  */}
+        <div className="flex flex-col justify-center items-center gap-5 bg-[#434343] p-5 rounded-4xl h-[384px] w-[406px]">
+          <div className=" bg-white rounded-full">
+            <img
+              src="/Images/icons/people.png"
+              alt="hearing"
+              className=" w-[100px] h-[100px] object-cover p-6"
+            />
+          </div>
+          <div className="flex flex-col justify-center gap-5">
+            <p className="text-3xl font-semibold text-white ms-3 ">Act on Your Behalf</p>
             <ul className="list-disc text-white text-xl mx-12">
-              <li>Real-time transcription & smart documentation</li>
-              <li>OCR & document understanding</li>
+              <li>Voice or text interaction</li>
+              <li>Form-filling, letter drafting, summaries</li>
             </ul>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center gap-5 bg-gradient-to-r from-[#0D63AA] to-[#7AEADD] p-5 rounded-xl h-[384px] w-[406px]">
-          <img
-            src="/Images/icons/hearing.png"
-            alt="hearing"
-            className="p-5 bg-white rounded-full w-[100px] h-[100px]"
-          />
-          <div className="flex flex-col justify-center items-center gap-5">
-            <p className="text-4xl text-white">Listen & understand</p>
+        {/* card - 3  */}
+        <div className="flex flex-col justify-center  items-center gap-5 bg-gradient-to-r from-[#0D63AA] to-[#7AEADD] p-5 rounded-4xl h-[384px] w-[406px]">
+          <div className=" bg-white rounded-full">
+            <img
+              src="/Images/icons/puzzle.png"
+              alt="hearing"
+              className=" w-[100px] h-[100px] object-cover p-6"
+            />
+          </div>
+          <div className="flex flex-col justify-center gap-5">
+            <p className="text-3xl font-semibold text-white ms-3">Fits Into Your Workflow</p>
             <ul className="list-disc text-white text-xl mx-12">
-              <li>Real-time transcription & smart documentation</li>
-              <li>OCR & document understanding</li>
+              <li>Works with your billing and email</li>
+              <li>No app switching, no workflow disruption</li>
             </ul>
           </div>
         </div>
