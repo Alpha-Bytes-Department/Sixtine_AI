@@ -30,40 +30,34 @@ const Vision = () => {
       </div>
       <div>
         <h1 className="text-2xl font-semibold text-[#4E7BA0CC]">
-          We believe AI in medicine must serve people first — not replace them.
+          {isEnglish ? "We believe AI in medicine must serve people first — not replace them." : "Nous pensons que l’IA en médecine doit d’abord servir les gens, et non les remplacer."}
         </h1>
         <p className="text-[#4E7BA080] mt-3 text-lg">
-          SixtineAI is built with a simple, unwavering principle: technology
-          should amplify human care, never compromise it. We aim to reduce the
-          cognitive and administrative burden on healthcare professionals, so
-          they can focus on what truly matters — their patients.
+          {isEnglish ? "SixtineAI is built with a simple, unwavering principle: technology should amplify human care, never compromise it. We aim to reduce the cognitive and administrative burden on healthcare professionals, so they can focus on what truly matters — their patients." : "SixtineAI repose sur un principe simple et inébranlable : la technologie doit amplifier les soins, sans jamais les compromettre. Notre objectif est de réduire la charge cognitive et administrative des professionnels de santé, afin qu'ils puissent se concentrer sur l'essentiel : leurs patients."}
+          
         </p>
       </div>
       <div className="flex flex-col lg:flex-row  justify-center items-center  gap-5">
         <div className="flex flex-col justify-center items-center gap-5 min-w-sm">
           <img src="/Images/icons/blueHand.png" alt="blue hand" />
-          <h1 className="font-bold text-[#4E7BA0CC] text-3xl">Built on Trust</h1>
+          <h1 className="font-bold text-[#4E7BA0CC] text-3xl">{isEnglish ? "Built on Trust" : "Construit sur la confiance"}</h1>
           <p className="text-[#4E7BA080] text-xl">
-            We handle medical data with the utmost responsibility. SixtineAI is
-            designed for privacy by default, with security and compliance at its
-            core.
+            {isEnglish ? "We handle medical data with the utmost responsibility. SixtineAI is designed for privacy by default, with security and compliance at its core." : "Nous traitons les données médicales avec la plus grande responsabilité. SixtineAI est conçu pour la confidentialité par défaut, avec la sécurité et la conformité comme priorités."}
+            
           </p>
         </div>
         <div className="flex flex-col justify-center items-center gap-5 min-w-sm">
           <img src="/Images/icons/multipeople.png" alt="human" />
-          <h1 className="font-bold text-[#4E7BA0CC] text-3xl">Human-First</h1>
+          <h1 className="font-bold text-[#4E7BA0CC] text-3xl">{isEnglish ? "Human-First" : "L’humain d’abord"}</h1>
           <p className="text-[#4E7BA080] text-xl">
-            SixtineAI is trained to work with clinicians, adapting to their
-            language, preferences, and workflows. Human judgment remains central
-            — our AI is a tool, not a decider.
+            {isEnglish ? "SixtineAI is trained to work with clinicians, adapting to their language, preferences, and workflows. Human judgment remains central — our AI is a tool, not a decider." : "SixtineAI est conçue pour travailler avec les cliniciens et s'adapter à leur langage, leurs préférences et leurs flux de travail. Le jugement humain reste primordial : notre IA est un outil, pas un décideur."}
           </p>
         </div>
         <div className="flex flex-col justify-center items-center gap-5 min-w-sm">
           <img src="/Images/icons/ethics.png" alt="ethics" />
-          <h1 className="font-bold text-[#4E7BA0CC] text-3xl">Ethical AI</h1>
+          <h1 className="font-bold text-[#4E7BA0CC] text-3xl">{isEnglish ? "Ethical AI" : "IA éthique"}</h1>
           <p className="text-[#4E7BA080] text-xl">
-            We train our models with intent, verify with care, and stay
-            accountable.
+            {isEnglish ? "We train our models with intent, verify with care, and stay accountable." : "Nous formons nos modèles avec intention, vérifions avec soin et restons responsables."}
           </p>
         </div>
       </div>

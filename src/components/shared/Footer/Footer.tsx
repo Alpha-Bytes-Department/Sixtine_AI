@@ -8,8 +8,10 @@ import {
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 import { motion } from "motion/react";
+import { useStatus } from "../../../providers/StatusProvider";
 
 export default function Footer() {
+  const { isEnglish } = useStatus();
   return (
     <footer className="bg-[#05121C] text-[#198AE6] py-5">
       <div className="border-b border-[#198AE6]">
@@ -20,19 +22,19 @@ export default function Footer() {
               initial={{ opacity: 0, x: -100, scale: 0.9 }} // start smaller and shifted left
               whileInView={{ opacity: 1, x: 0, scale: 1 }} // move to normal position
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="space-y-4 flex-1"
+              className="space-y-4 "
             >
               <div className="flex items-center gap-2">
                 <img
-                  src="/Images/logo/BrainLogo.png"
+                  src="/Images/logo/image3.png"
                   alt="logo"
                   className="w-44 h-auto"
                 />
               </div>
               <p className="text-sm leading-relaxed max-w-sm text-[#408BC8CC]">
-                SixtineAI empowered doctors to spend less time on paperwork and
-                more time with patients—while unlocking a scalable, AI-native
-                platform for healthcare.
+                {isEnglish
+                  ? "SixtineAI empowered doctors to spend less time on paperwork and more time with patients—while unlocking a scalable, AI-native platform for healthcare."
+                  : "SixtineAI a permis aux médecins de consacrer moins de temps à la paperasse et plus de temps aux patients, tout en débloquant une plateforme évolutive et native de l'IA pour les soins de santé."}
               </p>
               <div className="flex gap-3">
                 <a
@@ -61,7 +63,6 @@ export default function Footer() {
                 </a>
               </div>
             </motion.div>
-
             {/* Middle Section - Quick Links */}
             <motion.div
               initial={{ opacity: 0, x: 100, scale: 0.9 }} // start smaller and shifted left
@@ -69,14 +70,16 @@ export default function Footer() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="flex-shrink-0"
             >
-              <h3 className="font-semibold mb-4 text-sm">Quick Links</h3>
+              <h3 className="font-semibold mb-4 text-sm">
+                {isEnglish ? "Quick Links" : "Liens rapides"}
+              </h3>
               <ul className="space-y-2">
                 <li>
                   <a
                     href="#"
                     className=" hover:text-cyan-400 text-sm transition block"
                   >
-                    Mission
+                    {isEnglish ? "Mission" : "Mission"}
                   </a>
                 </li>
                 <li>
@@ -84,7 +87,7 @@ export default function Footer() {
                     href="#"
                     className=" hover:text-cyan-400 text-sm transition block"
                   >
-                    What we do
+                    {isEnglish ? "What we do" : "Ce que nous faisons"}
                   </a>
                 </li>
                 <li>
@@ -92,7 +95,7 @@ export default function Footer() {
                     href="#"
                     className=" hover:text-cyan-400 text-sm transition block"
                   >
-                    Use cases
+                    {isEnglish ? "Use cases" : "Cas d'utilisation"}
                   </a>
                 </li>
                 <li>
@@ -100,7 +103,7 @@ export default function Footer() {
                     href="#"
                     className=" hover:text-cyan-400 text-sm transition block"
                   >
-                    Our vision
+                    {isEnglish ? "Our vision" : "Notre vision"}
                   </a>
                 </li>
                 <li>
@@ -108,12 +111,11 @@ export default function Footer() {
                     href="#"
                     className=" hover:text-cyan-300 text-sm font-medium transition block"
                   >
-                    Get in touch
+                    {isEnglish ? "Get in touch" : "Entrer en contact"}
                   </a>
                 </li>
               </ul>
             </motion.div>
-
             {/* Right Section - Contact Us */}
             <motion.div
               initial={{ opacity: 0, x: 100, scale: 0.9 }} // start smaller and shifted left
@@ -121,7 +123,9 @@ export default function Footer() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="flex-shrink-0 text-[#198AE6]"
             >
-              <h3 className="font-semibold mb-4 text-sm">Contact Us</h3>
+              <h3 className="font-semibold mb-4 text-sm">
+                {isEnglish ? "Contact Us" : "Contactez-nous"}
+              </h3>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2 text-sm">
                   <FaPhoneAlt />
@@ -145,8 +149,8 @@ export default function Footer() {
       <div className="border-t border-cyan-500 border-opacity-20">
         <div className="max-w-7xl mx-auto px-8 py-4 text-center">
           <p className="text-xs text-[#408BC8CC]">
-            © 2025 <span className="text-[#198AE6]">SixtineAI</span>. All Rights
-            reserved.
+            © 2025 <span className="text-[#198AE6]">SixtineAI</span>.
+            {isEnglish ? "All Rights reserved." : "Tous droits réservés."}
           </p>
         </div>
       </div>

@@ -53,9 +53,12 @@ const GetInTouch = () => {
         src="/Images/logo/Looper1.png"
         className="absolute h-auto rounded-full w-1/5 -top-5 -left-5 sm:-top-8 sm:-left-8 md:-top-12 md:-left-12 lg:-top-20 lg:-left-20 xl:-top-32 xl:-left-32 2xl:-left-40 2xl:-top-40 animate-[spin_15s_linear_infinite]"
       />
-      <motion.div initial={{opacity:0, scale:0.5}}
-       whileInView={{opacity:1, scale:1}}
-       transition={{duration: 0.8, ease: "easeOut"}}  className="flex flex-col gap-12 w-11/12 sm:w-10/12 xl:w-7/12 text-center mx-auto">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="flex flex-col gap-12 w-11/12 sm:w-10/12 xl:w-7/12 text-center mx-auto"
+      >
         {/* title  */}
         <div className="flex flex-col justify-center items-center ">
           <p className="inter text-2xl text-[#0D63AA]">
@@ -78,7 +81,9 @@ const GetInTouch = () => {
           </p>
         </div>
         <p className="text-[#0D63AA] font-semibold text-2xl">
-          Join our early access list
+          {isEnglish
+            ? "Join our early access list"
+            : "Rejoignez notre liste d'accès anticipé"}
         </p>
         <Form>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5 text-left">
@@ -87,14 +92,14 @@ const GetInTouch = () => {
                 htmlFor="name"
                 className="text-white font-medium mb-2 text-2xl"
               >
-                Name
+                {isEnglish ? "Name" : "Nom"}
               </label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 onChange={handleChange}
-                placeholder="Your name"
+                placeholder={isEnglish ? "Your name" : "Votre nom"}
                 className="px-4 py-3 rounded-lg text-sm bg-white text-gray-800 placeholder-gray-400 border-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
               />
             </div>
@@ -104,14 +109,16 @@ const GetInTouch = () => {
                 htmlFor="email"
                 className="text-white font-medium mb-2 text-2xl"
               >
-                Email
+                {isEnglish ? "Email" : "Email"}
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 onChange={handleChange}
-                placeholder="you@clinic.example"
+                placeholder={
+                  isEnglish ? "you@clinic.example" : "vous@clinique.exemple"
+                }
                 className="px-4 py-3 rounded-lg text-sm bg-white text-gray-800 placeholder-gray-400 border-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
               />
             </div>
@@ -123,14 +130,14 @@ const GetInTouch = () => {
                 htmlFor="phone"
                 className="text-white font-medium mb-2 text-2xl"
               >
-                Phone
+                {isEnglish ? "Phone" : "Téléphone"}
               </label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
                 onChange={handleChange}
-                placeholder="Optional"
+                placeholder={isEnglish ? "Phone" : "Téléphone"}
                 className="px-4 py-3 rounded-lg text-sm bg-white text-gray-800 placeholder-gray-400 border-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
               />
             </div>
@@ -140,7 +147,7 @@ const GetInTouch = () => {
                 htmlFor="role"
                 className="text-white font-medium mb-2 text-2xl"
               >
-                Role
+                {isEnglish ? "Role" : "Rôle"}
               </label>
               <select
                 id="role"
@@ -148,11 +155,15 @@ const GetInTouch = () => {
                 onChange={handleChange}
                 className="px-4 py-3 rounded-lg text-sm bg-white text-gray-800 cursor-pointer border-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
               >
-                <option value="patients">Patients</option>
-                <option value="doctor">Doctor</option>
-                <option value="nurse">Nurse</option>
-                <option value="admin">Administrator</option>
-                <option value="other">Other</option>
+                <option value="patients">
+                  {isEnglish ? "Patients" : "Patients"}
+                </option>
+                <option value="doctor">
+                  {isEnglish ? "Doctor" : "Médecin"}
+                </option>
+                <option value="admin">
+                  {isEnglish ? "Administrator" : "Administrateur"}
+                </option>
               </select>
             </div>
           </div>
@@ -170,7 +181,9 @@ const GetInTouch = () => {
                 htmlFor="subscribe"
                 className="text-white text-sm cursor-pointer"
               >
-                Subscribe to updates
+                {isEnglish
+                  ? "Subscribe to updates"
+                  : "Abonnez-vous aux mises à jour"}
               </label>
             </div>
 
@@ -186,7 +199,9 @@ const GetInTouch = () => {
                 htmlFor="earlyAccess"
                 className="text-white text-sm cursor-pointer"
               >
-                I want early access (fill the extra fields below)
+                {isEnglish
+                  ? "I want early access (fill the extra fields below)"
+                  : "Je souhaite un accès anticipé (remplissez les champs supplémentaires ci-dessous)"}
               </label>
             </div>
           </div>
@@ -195,7 +210,7 @@ const GetInTouch = () => {
               onClick={handleSubmit}
               className="bg-[#0d63aa] text-white font-semibold px-8 py-3 rounded-lg  cursor-pointer"
             >
-              Request access
+              {isEnglish ? "Request access" : "Demander l'accès"}
             </button>
           </div>
         </Form>

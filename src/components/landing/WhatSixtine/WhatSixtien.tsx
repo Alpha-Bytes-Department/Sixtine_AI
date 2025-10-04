@@ -55,11 +55,11 @@ const WhatSixtien = () => {
           </div>
           <div className="flex flex-col justify-center gap-5">
             <p className="text-3xl font-semibold text-white ms-3">
-              Listen & understand
+              {isEnglish ? "Listen & understand" : "Écouter et comprendre"}
             </p>
             <ul className="list-disc text-white text-xl mx-12">
-              <li>Real-time transcription & smart documentation</li>
-              <li>OCR & document understanding</li>
+              <li>{isEnglish ? "Real-time transcription & smart documentation" : "Transcription en temps réel et documentation intelligente"}</li>
+              <li>{isEnglish ? "OCR & document understanding" : "OCR et compréhension des documents"}</li>
             </ul>
           </div>
         </motion.div>
@@ -83,11 +83,11 @@ const WhatSixtien = () => {
           </div>
           <div className="flex flex-col justify-center gap-5">
             <p className="text-3xl font-semibold text-white ms-3 ">
-              Act on Your Behalf
+              {isEnglish ? "Act on Your Behalf" : "Agissez en votre nom"}
             </p>
             <ul className="list-disc text-white text-xl mx-12">
-              <li>Voice or text interaction</li>
-              <li>Form-filling, letter drafting, summaries</li>
+              <li>{isEnglish ? "Voice or text interaction" : "Interaction vocale ou textuelle"}</li>
+              <li>{isEnglish ? "Form-filling, letter drafting, summaries" : "Remplissage de formulaires, rédaction de lettres, résumés"}</li>
             </ul>
           </div>
         </motion.div>
@@ -111,11 +111,11 @@ const WhatSixtien = () => {
           </div>
           <div className="flex flex-col justify-center gap-5">
             <p className="text-3xl font-semibold text-white ms-3">
-              Fits Into Your Workflow
+              {isEnglish ? "Fits Into Your Workflow" : "S'intègre à votre flux de travail"}
             </p>
             <ul className="list-disc text-white text-xl mx-12">
-              <li>Works with your billing and email</li>
-              <li>No app switching, no workflow disruption</li>
+              <li>{isEnglish ? "Works with your billing and email" : "Fonctionne avec votre facturation et votre e-mail"}</li>
+              <li>{isEnglish ? "No app switching, no workflow disruption" : "Pas de changement d'application, pas de perturbation du flux de travail"}</li>
             </ul>
           </div>
         </motion.div>

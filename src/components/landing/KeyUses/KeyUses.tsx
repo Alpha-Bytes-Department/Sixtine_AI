@@ -57,12 +57,12 @@ const KeyUses = () => {
           </div>
           <div className="flex flex-col justify-center items-center gap-5">
             <p className="text-3xl font-semibold text-[#5C5C5C]">
-              Patient File Management
+              {isEnglish ? "Patient File Management" : "Gestion des dossiers patients"}
             </p>
             <ul className="list-disc text-[#5C5C5C] text-xl mx-12">
-              <li>Auto-generate notes in your style</li>
-              <li>Summarize documents, extract key info</li>
-              <li>Ask any question about a patient, instantly</li>
+              <li>{isEnglish ? "Auto-generate notes in your style" : "Générez automatiquement des notes dans votre style"}</li>
+              <li>{isEnglish ? "Summarize documents, extract key info" : "Résumer les documents, extraire les informations clés"}</li>
+              <li>{isEnglish ? "Ask any question about a patient, instantly" : "Posez instantanément n'importe quelle question sur un patient"}</li>
             </ul>
           </div>
         </motion.div>
@@ -82,12 +82,12 @@ const KeyUses = () => {
           </div>
           <div className="flex flex-col justify-center items-center gap-5">
             <p className="text-3xl font-semibold text-white">
-              Effortless Referrals & Forms
+              {isEnglish ? "Effortless Referrals & Forms" : "Références et formulaires sans effort"}
             </p>
             <ul className="list-disc text-white text-xl mx-12">
-              <li>Auto-fill any form, letters or referrals</li>
-              <li>Generate summaries for patients/families</li>
-              <li>Integrated with your OCR</li>
+              <li>{isEnglish ? "Auto-fill any form, letters or referrals" : "Remplissage automatique de tout formulaire, lettre ou référence"}</li>
+              <li>{isEnglish ? "Generate summaries for patients/families" : "Générer des résumés pour les patients/familles"}</li>
+              <li>{isEnglish ? "Integrated with your OCR" : "Intégré à votre OCR"}</li>
             </ul>
           </div>
         </motion.div>
@@ -108,12 +108,12 @@ const KeyUses = () => {
           </div>
           <div className="flex flex-col justify-center items-center gap-5">
             <p className="text-3xl font-semibold text-[#5C5C5C]">
-              Optimized Billing & Coding
+              {isEnglish ? "Optimized Billing & Coding" : "Facturation et codage optimisés"}
             </p>
             <ul className="list-disc text-[#5C5C5C] text-xl mx-12">
-              <li>Auto-code consultations (TARDOC, CIM-10)</li>
-              <li>Surface billing opportunities</li>
-              <li>Keep documentation insurance-ready</li>
+              <li>{isEnglish ? "Auto-code consultations (TARDOC, CIM-10)" : "Consultations d'auto-code (TARDOC, CIM-10)"}</li>
+              <li>{isEnglish ? "Surface billing opportunities" : "Opportunités de facturation de surface"}</li>
+              <li>{isEnglish ? "Keep documentation insurance-ready" : "Gardez la documentation prête pour l'assurance"}</li>
             </ul>
           </div>
         </motion.div>
