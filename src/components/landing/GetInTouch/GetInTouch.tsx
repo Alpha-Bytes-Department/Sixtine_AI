@@ -1,0 +1,199 @@
+import { Form } from "react-router";
+import { useStatus } from "../../../providers/StatusProvider";
+import { useRef } from "react";
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  role: string;
+  subscribe: boolean;
+  earlyAccess: boolean;
+}
+
+interface HandleSubmitEvent extends React.MouseEvent<HTMLButtonElement> {
+  preventDefault: () => void;
+}
+
+const GetInTouch = () => {
+  const { isEnglish } = useStatus();
+
+  const formDataRef = useRef<FormData>({
+    name: "",
+    email: "",
+    phone: "",
+    role: "patients",
+    subscribe: false,
+    earlyAccess: false,
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target;
+    const checked =
+      type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
+    formDataRef.current = {
+      ...formDataRef.current,
+      [name]: type === "checkbox" ? checked : value,
+    };
+  };
+
+  const handleSubmit = (e: HandleSubmitEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formDataRef.current);
+    alert("Access request submitted successfully!");
+  };
+
+  return (
+    <div className="bg-[#9dbed5] py-20 ">
+      <div className="flex flex-col gap-12 w-11/12 sm:w-10/12 xl:w-7/12 text-center mx-auto">
+        {/* title  */}
+        <div className="flex flex-col justify-center items-center ">
+          <p className="inter text-2xl text-[#0D63AA]">
+            {isEnglish ? "GET IN TOUCH" : "ENTRER EN CONTACT"}
+          </p>
+          <p>
+            <svg
+              className="w-[190px] h-[14px] " // Tailwind sizing
+              viewBox="0 0 190 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.5 11C85 -1 115 -1 198.5 11"
+                stroke="#0D63AA"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+            </svg>
+          </p>
+        </div>
+        <p className="text-[#0D63AA] font-semibold text-2xl">
+          Join our early access list
+        </p>
+        <Form>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5 text-left">
+            <div className="flex flex-col">
+              <label
+                htmlFor="name"
+                className="text-white font-medium mb-2 text-2xl"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                onChange={handleChange}
+                placeholder="Your name"
+                className="px-4 py-3 rounded-lg text-sm bg-white text-gray-800 placeholder-gray-400 border-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              />
+            </div>
+
+            <div className="flex flex-col">
+              <label
+                htmlFor="email"
+                className="text-white font-medium mb-2 text-2xl"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                onChange={handleChange}
+                placeholder="you@clinic.example"
+                className="px-4 py-3 rounded-lg text-sm bg-white text-gray-800 placeholder-gray-400 border-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5 text-left">
+            <div className="flex flex-col">
+              <label
+                htmlFor="phone"
+                className="text-white font-medium mb-2 text-2xl"
+              >
+                Phone
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                onChange={handleChange}
+                placeholder="Optional"
+                className="px-4 py-3 rounded-lg text-sm bg-white text-gray-800 placeholder-gray-400 border-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              />
+            </div>
+
+            <div className="flex flex-col">
+              <label
+                htmlFor="role"
+                className="text-white font-medium mb-2 text-2xl"
+              >
+                Role
+              </label>
+              <select
+                id="role"
+                name="role"
+                onChange={handleChange}
+                className="px-4 py-3 rounded-lg text-sm bg-white text-gray-800 cursor-pointer border-0 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              >
+                <option value="patients">Patients</option>
+                <option value="doctor">Doctor</option>
+                <option value="nurse">Nurse</option>
+                <option value="admin">Administrator</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="my-6">
+            <div className="flex items-center mb-3">
+              <input
+                type="checkbox"
+                id="subscribe"
+                name="subscribe"
+                onChange={handleChange}
+                className="w-5 h-5 mr-3 cursor-pointer"
+              />
+              <label
+                htmlFor="subscribe"
+                className="text-white text-sm cursor-pointer"
+              >
+                Subscribe to updates
+              </label>
+            </div>
+
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="earlyAccess"
+                name="earlyAccess"
+                onChange={handleChange}
+                className="w-5 h-5 mr-3 cursor-pointer"
+              />
+              <label
+                htmlFor="earlyAccess"
+                className="text-white text-sm cursor-pointer"
+              >
+                I want early access (fill the extra fields below)
+              </label>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <button
+              onClick={handleSubmit}
+              className="bg-[#0d63aa] text-white font-semibold px-8 py-3 rounded-lg  cursor-pointer"
+            >
+              Request access
+            </button>
+          </div>
+        </Form>
+      </div>
+    </div>
+  );
+};
+
+export default GetInTouch;

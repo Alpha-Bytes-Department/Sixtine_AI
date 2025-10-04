@@ -7,12 +7,12 @@ const WhatSixtien = () => {
     <div className="flex flex-col gap-24 bg-[#faf6ed] w-full py-40">
       {/* title  */}
       <div className="flex flex-col justify-center items-center text-black ">
-        <p className="inter text-lg">
+        <p className="inter text-2xl">
           {isEnglish ? "WHAT SIXTINE DOES" : "CE QUE FAIT SIXTINE"}
         </p>
         <p>
           <svg
-            className="w-[200px] h-[14px]" // Tailwind sizing
+            className="w-[250px] h-[17.5px]" // Tailwind sizing
             viewBox="0 0 200 14"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,9 @@ const WhatSixtien = () => {
             />
           </div>
           <div className="flex flex-col justify-center gap-5">
-            <p className="text-3xl font-semibold text-white ms-3">Listen & understand</p>
+            <p className="text-3xl font-semibold text-white ms-3">
+              Listen & understand
+            </p>
             <ul className="list-disc text-white text-xl mx-12">
               <li>Real-time transcription & smart documentation</li>
               <li>OCR & document understanding</li>
@@ -56,7 +58,9 @@ const WhatSixtien = () => {
             />
           </div>
           <div className="flex flex-col justify-center gap-5">
-            <p className="text-3xl font-semibold text-white ms-3 ">Act on Your Behalf</p>
+            <p className="text-3xl font-semibold text-white ms-3 ">
+              Act on Your Behalf
+            </p>
             <ul className="list-disc text-white text-xl mx-12">
               <li>Voice or text interaction</li>
               <li>Form-filling, letter drafting, summaries</li>
@@ -73,7 +77,9 @@ const WhatSixtien = () => {
             />
           </div>
           <div className="flex flex-col justify-center gap-5">
-            <p className="text-3xl font-semibold text-white ms-3">Fits Into Your Workflow</p>
+            <p className="text-3xl font-semibold text-white ms-3">
+              Fits Into Your Workflow
+            </p>
             <ul className="list-disc text-white text-xl mx-12">
               <li>Works with your billing and email</li>
               <li>No app switching, no workflow disruption</li>

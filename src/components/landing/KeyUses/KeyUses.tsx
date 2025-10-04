@@ -9,7 +9,7 @@ const KeyUses = () => {
     <div className="flex flex-col gap-24 bg-[#1169B266] w-full py-40">
       {/* title  */}
       <div className="flex flex-col justify-center items-center text-black ">
-        <p className="inter text-lg text-[#0D63AA]">
+        <p className="inter text-2xl text-[#0D63AA]">
           {isEnglish ? "KEY USE CASES" : "CAS D'UTILISATION CLÉS"}
         </p>
         <p>
