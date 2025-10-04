@@ -59,7 +59,7 @@ const Banner = () => {
           {french ? "Rejoignez l'accès anticipé" : "Join early access"}
         </button>
       </motion.div>
-
+      {/* looper bottom */}
       <img
         src="/Images/logo/Looper1.png"
         className="absolute h-auto rounded-full w-3/12 bottom-0 -right-5 sm:-right-8 md:-right-14 lg:-right-16 xl:-right-26 2xl:-right-32 animate-[spin_15s_linear_infinite]"

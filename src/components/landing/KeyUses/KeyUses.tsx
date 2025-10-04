@@ -6,7 +6,12 @@ const KeyUses = () => {
   const { isEnglish } = useStatus();
 
   return (
-    <div className="flex flex-col gap-24 bg-[#1169B266] w-full py-40">
+    <div className="flex flex-col gap-24 bg-[#1169B266] w-full py-40 relative overflow-hidden">
+      {/* looper top  */}
+      <img
+        src="/Images/logo/Looper1.png"
+        className="absolute h-auto rounded-full w-1/5 -top-5 -left-5 sm:-top-8 sm:-left-8 md:-top-12 md:-left-12 lg:-top-20 lg:-left-20 xl:-top-32 xl:-left-32 2xl:-left-40 2xl:-top-40 animate-[spin_15s_linear_infinite]"
+      />
       {/* title  */}
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
@@ -40,7 +45,7 @@ const KeyUses = () => {
         <motion.div
           initial={{ opacity: 0, scaleX: 0.5 }}
           whileInView={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut"  }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="flex flex-col justify-center items-center gap-5 bg-white to-[#7AEADD] p-5 rounded-4xl h-[506px] w-[384px]"
         >
           <div className="  rounded-full">
@@ -113,6 +118,11 @@ const KeyUses = () => {
           </div>
         </motion.div>
       </div>
+      {/* looper bottom  */}
+      <img
+        src="/Images/logo/Looper1.png"
+        className="absolute h-auto rounded-full w-1/5 -bottom-5 -right-5 sm:-bottom-8 sm:-right-8 md:-bottom-12 md:-right-12 lg:-bottom-20 lg:-right-20 xl:-bottom-32 xl:-right-32 2xl:-right-40 2xl:-bottom-40 animate-[spin_15s_linear_infinite]"
+      />
     </div>
   );
 };

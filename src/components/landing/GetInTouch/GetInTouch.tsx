@@ -47,7 +47,12 @@ const GetInTouch = () => {
   };
 
   return (
-    <div className="bg-[#9dbed5] py-20 ">
+    <div className="bg-[#9dbed5] py-20 relative overflow-hidden">
+      {/* looper top  */}
+      <img
+        src="/Images/logo/Looper1.png"
+        className="absolute h-auto rounded-full w-1/5 -top-5 -left-5 sm:-top-8 sm:-left-8 md:-top-12 md:-left-12 lg:-top-20 lg:-left-20 xl:-top-32 xl:-left-32 2xl:-left-40 2xl:-top-40 animate-[spin_15s_linear_infinite]"
+      />
       <motion.div initial={{opacity:0, scale:0.5}}
        whileInView={{opacity:1, scale:1}}
        transition={{duration: 0.8, ease: "easeOut"}}  className="flex flex-col gap-12 w-11/12 sm:w-10/12 xl:w-7/12 text-center mx-auto">
@@ -195,6 +200,11 @@ const GetInTouch = () => {
           </div>
         </Form>
       </motion.div>
+      {/* looper bottom  */}
+      <img
+        src="/Images/logo/Looper1.png"
+        className="absolute h-auto rounded-full w-1/5 -bottom-5 -right-5 sm:-bottom-8 sm:-right-8 md:-bottom-12 md:-right-12 lg:-bottom-20 lg:-right-20 xl:-bottom-32 xl:-right-32 2xl:-right-40 2xl:-bottom-40 animate-[spin_15s_linear_infinite]"
+      />
     </div>
   );
 };

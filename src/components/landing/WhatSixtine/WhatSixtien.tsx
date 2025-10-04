@@ -10,7 +10,7 @@ const WhatSixtien = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut"  }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="flex flex-col justify-center items-center text-black "
       >
         <p className="inter text-2xl">
@@ -42,11 +42,15 @@ const WhatSixtien = () => {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="flex flex-col justify-center items-center gap-5 bg-gradient-to-r from-[#0D63AA] to-[#7AEADD] p-5 rounded-4xl h-[384px] w-[406px]"
         >
-          <div className=" bg-white rounded-full">
+          <img
+            src="/Images/logo/Looper2.png"
+            className="absolute w-[500px] z-10 h-auto rounded-full opacity-10"
+          />
+          <div className=" bg-white rounded-full z-20">
             <img
               src="/Images/icons/hearing.png"
               alt="hearing"
-              className=" w-[100px] h-[100px] object-cover p-6"
+              className=" w-[100px] h-[100px] object-cover p-6 "
             />
           </div>
           <div className="flex flex-col justify-center gap-5">
@@ -63,10 +67,14 @@ const WhatSixtien = () => {
         <motion.div
           initial={{ opacity: 0, scaleX: 0.5 }}
           whileInView={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut"  }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           className="flex flex-col justify-center items-center gap-5 bg-[#434343] p-5 rounded-4xl h-[384px] w-[406px]"
         >
-          <div className=" bg-white rounded-full">
+          <img
+            src="/Images/logo/Looper2.png"
+            className="absolute w-[500px] z-10 h-auto rounded-full opacity-10"
+          />
+          <div className=" bg-white rounded-full z-20">
             <img
               src="/Images/icons/people.png"
               alt="hearing"
@@ -90,7 +98,11 @@ const WhatSixtien = () => {
           transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
           className="flex flex-col justify-center  items-center gap-5 bg-gradient-to-r from-[#0D63AA] to-[#7AEADD] p-5 rounded-4xl h-[384px] w-[406px]"
         >
-          <div className=" bg-white rounded-full">
+          <img
+            src="/Images/logo/Looper2.png"
+            className="absolute w-[500px] z-10 h-auto rounded-full opacity-10"
+          />
+          <div className=" bg-white rounded-full z-20">
             <img
               src="/Images/icons/puzzle.png"
               alt="hearing"
