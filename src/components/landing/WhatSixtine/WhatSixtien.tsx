@@ -1,4 +1,5 @@
 import { useStatus } from "../../../providers/StatusProvider";
+import { motion } from "motion/react";
 
 const WhatSixtien = () => {
   const { isEnglish } = useStatus();
@@ -6,7 +7,12 @@ const WhatSixtien = () => {
   return (
     <div className="flex flex-col gap-24 bg-[#faf6ed] w-full py-40">
       {/* title  */}
-      <div className="flex flex-col justify-center items-center text-black ">
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut"  }}
+        className="flex flex-col justify-center items-center text-black "
+      >
         <p className="inter text-2xl">
           {isEnglish ? "WHAT SIXTINE DOES" : "CE QUE FAIT SIXTINE"}
         </p>
@@ -25,12 +31,17 @@ const WhatSixtien = () => {
             />
           </svg>
         </p>
-      </div>
+      </motion.div>
       {/* card item  */}
 
       <div className="flex gap-7 justify-center items-center flex-wrap">
         {/* card - 1  */}
-        <div className="flex flex-col justify-center items-center gap-5 bg-gradient-to-r from-[#0D63AA] to-[#7AEADD] p-5 rounded-4xl h-[384px] w-[406px]">
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0.5 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="flex flex-col justify-center items-center gap-5 bg-gradient-to-r from-[#0D63AA] to-[#7AEADD] p-5 rounded-4xl h-[384px] w-[406px]"
+        >
           <div className=" bg-white rounded-full">
             <img
               src="/Images/icons/hearing.png"
@@ -47,9 +58,14 @@ const WhatSixtien = () => {
               <li>OCR & document understanding</li>
             </ul>
           </div>
-        </div>
+        </motion.div>
         {/* card - 2  */}
-        <div className="flex flex-col justify-center items-center gap-5 bg-[#434343] p-5 rounded-4xl h-[384px] w-[406px]">
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0.5 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut"  }}
+          className="flex flex-col justify-center items-center gap-5 bg-[#434343] p-5 rounded-4xl h-[384px] w-[406px]"
+        >
           <div className=" bg-white rounded-full">
             <img
               src="/Images/icons/people.png"
@@ -66,9 +82,14 @@ const WhatSixtien = () => {
               <li>Form-filling, letter drafting, summaries</li>
             </ul>
           </div>
-        </div>
+        </motion.div>
         {/* card - 3  */}
-        <div className="flex flex-col justify-center  items-center gap-5 bg-gradient-to-r from-[#0D63AA] to-[#7AEADD] p-5 rounded-4xl h-[384px] w-[406px]">
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0.5 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+          className="flex flex-col justify-center  items-center gap-5 bg-gradient-to-r from-[#0D63AA] to-[#7AEADD] p-5 rounded-4xl h-[384px] w-[406px]"
+        >
           <div className=" bg-white rounded-full">
             <img
               src="/Images/icons/puzzle.png"
@@ -85,7 +106,7 @@ const WhatSixtien = () => {
               <li>No app switching, no workflow disruption</li>
             </ul>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,9 +1,12 @@
 import { useStatus } from "../../../providers/StatusProvider";
+import { motion } from "motion/react";
 
 const Vision = () => {
   const { isEnglish } = useStatus();
   return (
-    <div className="bg-[#faf6ed] py-20 flex flex-col gap-12 w-11/12 sm:w-10/12 xl:w-7/12 text-center mx-auto">
+    <motion.div initial={{opacity:0, scale:0.5}}
+       whileInView={{opacity:1, scale:1}}
+       transition={{duration: 0.8, ease: "easeOut" }} className="bg-[#faf6ed] py-20 flex flex-col gap-12 w-11/12 sm:w-10/12 xl:w-7/12 text-center mx-auto">
       {/* title  */}
       <div className="flex flex-col justify-center items-center ">
         <p className="inter text-2xl text-[#0D63AA]">
@@ -64,7 +67,7 @@ const Vision = () => {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

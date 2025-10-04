@@ -1,6 +1,7 @@
 import { Form } from "react-router";
 import { useStatus } from "../../../providers/StatusProvider";
 import { useRef } from "react";
+import { motion } from "motion/react";
 
 interface FormData {
   name: string;
@@ -47,7 +48,9 @@ const GetInTouch = () => {
 
   return (
     <div className="bg-[#9dbed5] py-20 ">
-      <div className="flex flex-col gap-12 w-11/12 sm:w-10/12 xl:w-7/12 text-center mx-auto">
+      <motion.div initial={{opacity:0, scale:0.5}}
+       whileInView={{opacity:1, scale:1}}
+       transition={{duration: 0.8, ease: "easeOut"}}  className="flex flex-col gap-12 w-11/12 sm:w-10/12 xl:w-7/12 text-center mx-auto">
         {/* title  */}
         <div className="flex flex-col justify-center items-center ">
           <p className="inter text-2xl text-[#0D63AA]">
@@ -191,7 +194,7 @@ const GetInTouch = () => {
             </button>
           </div>
         </Form>
-      </div>
+      </motion.div>
     </div>
   );
 };

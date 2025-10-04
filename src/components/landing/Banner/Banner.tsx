@@ -1,8 +1,9 @@
 import { useStatus } from "../../../providers/StatusProvider";
 import Navbar from "../../shared/Navbar/Navbar";
+import { motion } from "motion/react";
 
 const Banner = () => {
-  const {languageStat} = useStatus();
+  const { languageStat } = useStatus();
 
   const french = languageStat === "french";
 
@@ -15,11 +16,18 @@ const Banner = () => {
       />
       {/*--------------------- navbar--------------------  */}
       <div>
-        <Navbar/>
+        <Navbar />
       </div>
-      <div className="flex flex-col gap-4 justify-center items-center h-10/12 w-11/12 sm:w-10/12 xl:w-7/12 text-center mx-auto">
+      <motion.div
+       initial={{opacity:0, scale:0}}
+       whileInView={{opacity:1, scale:1}}
+       transition={{duration: 0.5}}
+        className="flex flex-col gap-4 justify-center items-center h-10/12 w-11/12 sm:w-10/12 xl:w-7/12 text-center mx-auto"
+      >
         <div>
-          <p className="text-white inter text-4xl">{french? "MISSION" : "MISSION"} </p>
+          <p className="text-white inter text-4xl">
+            {french ? "MISSION" : "MISSION"}{" "}
+          </p>
           <div>
             <svg
               width="146"
@@ -38,15 +46,19 @@ const Banner = () => {
           </div>
         </div>
         <p className="font-bold text-2xl text-white">
-         {french?"SixtineAI permet aux médecins de consacrer moins de temps à la paperasse et plus de temps aux patients, tout en ouvrant la voie à un avenir évolutif et axé sur l'IA pour les soins de santé.":"SixtineAI empowers doctors to spend less time on paperwork and more time with patients—while unlocking a scalable, AI-driven future for healthcare."}
+          {french
+            ? "SixtineAI permet aux médecins de consacrer moins de temps à la paperasse et plus de temps aux patients, tout en ouvrant la voie à un avenir évolutif et axé sur l'IA pour les soins de santé."
+            : "SixtineAI empowers doctors to spend less time on paperwork and more time with patients—while unlocking a scalable, AI-driven future for healthcare."}
         </p>
         <p className="text-2xl text-[#E6E6E6]">
-          {french?"S'appuyant sur une IA de pointe, SixtineAI rationalise la documentation clinique, la facturation, les références et les flux de travail administratifs, avec une intégration OCR transparente.":"Backed by cutting-edge AI, SixtineAI streamlines clinical documentation, billing, referrals, and admin workflows—with seamless OCR integration."}
+          {french
+            ? "S'appuyant sur une IA de pointe, SixtineAI rationalise la documentation clinique, la facturation, les références et les flux de travail administratifs, avec une intégration OCR transparente."
+            : "Backed by cutting-edge AI, SixtineAI streamlines clinical documentation, billing, referrals, and admin workflows—with seamless OCR integration."}
         </p>
         <button className="text-white bg-[#0d63aa] rounded-full py-3 px-5 cursor-pointer">
-          {french?"Rejoignez l'accès anticipé":"Join early access"}
+          {french ? "Rejoignez l'accès anticipé" : "Join early access"}
         </button>
-      </div>
+      </motion.div>
 
       <img
         src="/Images/logo/Looper1.png"

@@ -1,14 +1,19 @@
 import { useStatus } from "../../../providers/StatusProvider";
 import { FaFileAlt } from "react-icons/fa";
+import { motion } from "motion/react";
 
 const KeyUses = () => {
   const { isEnglish } = useStatus();
-  
 
   return (
     <div className="flex flex-col gap-24 bg-[#1169B266] w-full py-40">
       {/* title  */}
-      <div className="flex flex-col justify-center items-center text-black ">
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="flex flex-col justify-center items-center text-black "
+      >
         <p className="inter text-2xl text-[#0D63AA]">
           {isEnglish ? "KEY USE CASES" : "CAS D'UTILISATION CLÉS"}
         </p>
@@ -27,12 +32,17 @@ const KeyUses = () => {
             />
           </svg>
         </p>
-      </div>
+      </motion.div>
       {/* card item  */}
 
       <div className="flex gap-7 justify-center items-center flex-wrap">
         {/* card - 1  */}
-        <div className="flex flex-col justify-center items-center gap-5 bg-white to-[#7AEADD] p-5 rounded-4xl h-[506px] w-[384px]">
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0.5 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut"  }}
+          className="flex flex-col justify-center items-center gap-5 bg-white to-[#7AEADD] p-5 rounded-4xl h-[506px] w-[384px]"
+        >
           <div className="  rounded-full">
             <img
               src="/Images/icons/Simplification.png"
@@ -41,16 +51,23 @@ const KeyUses = () => {
             />
           </div>
           <div className="flex flex-col justify-center items-center gap-5">
-            <p className="text-3xl font-semibold text-[#5C5C5C]">Patient File Management</p>
+            <p className="text-3xl font-semibold text-[#5C5C5C]">
+              Patient File Management
+            </p>
             <ul className="list-disc text-[#5C5C5C] text-xl mx-12">
               <li>Auto-generate notes in your style</li>
               <li>Summarize documents, extract key info</li>
               <li>Ask any question about a patient, instantly</li>
             </ul>
           </div>
-        </div>
+        </motion.div>
         {/* card - 2  */}
-        <div className="flex flex-col justify-center items-center gap-5 bg-[#4E7BA080] p-5 rounded-4xl h-[506px] w-[384px]">
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0.5 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-col justify-center items-center gap-5 bg-[#4E7BA080] p-5 rounded-4xl h-[506px] w-[384px]"
+        >
           <div className=" rounded-full">
             <img
               src="/Images/icons/hand.png"
@@ -59,23 +76,30 @@ const KeyUses = () => {
             />
           </div>
           <div className="flex flex-col justify-center items-center gap-5">
-            <p className="text-3xl font-semibold text-white">Effortless Referrals & Forms</p>
+            <p className="text-3xl font-semibold text-white">
+              Effortless Referrals & Forms
+            </p>
             <ul className="list-disc text-white text-xl mx-12">
               <li>Auto-fill any form, letters or referrals</li>
               <li>Generate summaries for patients/families</li>
               <li>Integrated with your OCR</li>
             </ul>
           </div>
-        </div>
+        </motion.div>
         {/* card - 3  */}
-        <div className="flex flex-col justify-center items-center gap-5 bg-white p-5 rounded-4xl h-[506px] w-[384px]">
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0.5 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-col justify-center items-center gap-5 bg-white p-5 rounded-4xl h-[506px] w-[384px]"
+        >
           <div className="rounded-full">
             {/* <img
               src="/Images/icons/file.png"
               alt="hearing"
               className=" w-[150px] h-[150px]  object-cover p-6 rounded-sm"
             /> */}
-            <FaFileAlt className="text-8xl text-[#5C5C5C] "/>
+            <FaFileAlt className="text-8xl text-[#5C5C5C] " />
           </div>
           <div className="flex flex-col justify-center items-center gap-5">
             <p className="text-3xl font-semibold text-[#5C5C5C]">
@@ -87,7 +111,7 @@ const KeyUses = () => {
               <li>Keep documentation insurance-ready</li>
             </ul>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
