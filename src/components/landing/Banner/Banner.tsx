@@ -8,7 +8,7 @@ const Banner = () => {
   const french = languageStat === "french";
 
   return (
-    <div className="bg-[conic-gradient(from_180deg_at_50%_80.45%,#0D63AA_0deg,#C4EEC8_360deg)] h-screen w-full relative overflow-x-hidden overflow-y-hidden scrollbar-none">
+    <div id="mission" className="bg-[conic-gradient(from_180deg_at_50%_80.45%,#0D63AA_0deg,#C4EEC8_360deg)] h-screen w-full relative overflow-x-hidden overflow-y-hidden scrollbar-none">
       {/*------- loopers ----- */}
       <img
         src="/Images/logo/Looper2.png"

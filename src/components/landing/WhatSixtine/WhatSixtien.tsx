@@ -5,7 +5,7 @@ const WhatSixtien = () => {
   const { isEnglish } = useStatus();
 
   return (
-    <div className="flex flex-col gap-24 bg-[#faf6ed] w-full py-40">
+    <div id="whatSixtine" className="flex flex-col gap-24 bg-[#faf6ed] w-full py-40">
       {/* title  */}
       <motion.div
         initial={{ opacity: 0, scale: 0 }}

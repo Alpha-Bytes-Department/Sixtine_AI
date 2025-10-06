@@ -6,7 +6,7 @@ const KeyUses = () => {
   const { isEnglish } = useStatus();
 
   return (
-    <div className="flex flex-col gap-24 bg-[#1169B266] w-full py-40 relative overflow-hidden">
+    <div id="key-use" className="flex flex-col gap-24 bg-[#1169B266] w-full py-40 relative overflow-hidden">
       {/* looper top  */}
       <img
         src="/Images/logo/Looper1.png"

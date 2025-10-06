@@ -47,7 +47,7 @@ const GetInTouch = () => {
   };
 
   return (
-    <div className="bg-[#9dbed5] py-20 relative overflow-hidden">
+    <div id="getInTouch" className="bg-[#9dbed5] py-20 relative overflow-hidden">
       {/* looper top  */}
       <img
         src="/Images/logo/Looper1.png"
