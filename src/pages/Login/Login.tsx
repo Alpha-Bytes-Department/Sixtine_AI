@@ -11,7 +11,7 @@ const Login = () => {
 
 
   return (
-    <div className="flex flex-col lg:flex-row w-full h-full bg-white overflow-hidden">
+    <div className="flex flex-col md:flex-row w-full h-full bg-white overflow-hidden">
       <div className="w-full lg:w-1/2 h-full flex justify-center items-center relative">
         <img
           src="/Images/logo/Looper1.png"
