@@ -1,15 +1,119 @@
+import { IoLogOutOutline } from "react-icons/io5";
+import { NavLink } from "react-router";
+import { HiOutlineDocumentPlus } from "react-icons/hi2";
+import { HiOutlineMicrophone } from "react-icons/hi2";
+import { LuMessageCircleMore } from "react-icons/lu";
+import { FaCaretRight } from "react-icons/fa";
+
 const SideNav = () => {
   return (
-    <div className="bg-[#f1f1f1] w-64 p-3">
+    <div className="bg-[#f1f1f1] w-64 p-3 h-full flex flex-col  items-center gap-5  left-0">
       <div>
-        <img src="/public/Images/logo/image3.png" alt="" />
+        <img
+          src="/public/Images/logo/img2.png"
+          alt="logo"
+          className="w-28 h-auto"
+        />
       </div>
-      <div>
-        <p>MARTINE NDENGERA</p>
-        <p></p>
+      <div className="flex flex-col gap-5">
+        <div>
+          <div className="flex justify-between items-center gap-1">
+            <p className="text-[#4E7BA0] text-sm truncate w-44">
+              MARTINE NDENGERA
+            </p>
+            <button className="cursor-pointer text-[#4E7BA0] text-sm">
+              <IoLogOutOutline />
+            </button>
+          </div>
+          <div className="text-[#85AECF] mt-2.5 mb-3 flex justify-between items-center cursor-pointer">
+            <span>History</span> <FaCaretRight />
+          </div>
+          <button
+            className="bg-[#4E7BA0] text-white rounded-sm w-full py-1 cursor-pointer transition-transform duration-200 ease-in-out
+    hover:scale-105 active:scale-95"
+          >
+            New Chat
+          </button>
+        </div>
+        <div>
+          <div className="flex flex-col gap-3">
+            <h1 className="text-2xl text-[#4E7BA0]">Assistant</h1>
+            <div className="flex flex-col gap-2">
+              <NavLink
+                to={"/dashboard/add-document"}
+                className={({ isActive }) =>
+                  `flex gap-2 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
+                    isActive ? "bg-[#C0E0FA]" : ""
+                  }`
+                }
+              >
+                <HiOutlineDocumentPlus className="text-2xl" />
+                <p>Add Document</p>
+              </NavLink>
+              <NavLink
+                to={"/dashboard/add-consultation"}
+                className={({ isActive }) =>
+                  `flex gap-2 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
+                    isActive ? "bg-[#C0E0FA]" : ""
+                  }`
+                }
+              >
+                <HiOutlineMicrophone className="text-2xl" />
+                <p>Add Consultation</p>
+              </NavLink>
+              <NavLink
+                to={"/dashboard/chat"}
+                className={({ isActive }) =>
+                  `flex gap-2 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
+                    isActive ? "bg-[#C0E0FA]" : ""
+                  }`
+                }
+              >
+                <LuMessageCircleMore className="text-2xl" />
+                <p>Chats</p>
+              </NavLink>
+            </div>
+          </div>
+          <p className="border-b-2 border-[#D9D9D9] my-3"></p>
+          <div className="flex flex-col gap-3">
+            <h1 className="text-2xl text-[#4E7BA0]">Admin</h1>
+            <div className="flex flex-col gap-2">
+              <NavLink
+                to={"/dashboard/user"}
+                className={({ isActive }) =>
+                  `flex gap-3 items-center rounded-sm text-[#4E7BA0]`
+                }
+              >
+                <p>User</p>
+              </NavLink>
+              <NavLink
+                to={"/dashboard/patients"}
+                className={({ isActive }) =>
+                  `flex gap-3 items-center rounded-sm text-[#4E7BA0]`
+                }
+              >
+                <p>Patients</p>
+              </NavLink>
+              <NavLink
+                to={"/dashboard/forms"}
+                className={({ isActive }) =>
+                  `flex gap-3 items-center rounded-sm text-[#4E7BA0]`
+                }
+              >
+                <p>Forms</p>
+              </NavLink>
+            </div>
+          </div>
+          <p className="border-b-2 border-[#D9D9D9] mt-3"></p>
+        </div>
+        <div>
+          <button
+            className="bg-[#4E7BA0] text-white rounded-sm w-full p-1 text-left cursor-pointer"
+          >
+            Chats History
+          </button>
+        </div>
       </div>
-      <div>Role base navigation</div>
-      <div>Chat history</div>
     </div>
   );
 };
