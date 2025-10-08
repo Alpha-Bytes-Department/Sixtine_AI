@@ -7,21 +7,21 @@ import { FaCaretRight } from "react-icons/fa";
 
 const SideNav = () => {
   return (
-    <div className="bg-[#f1f1f1] w-64 p-3 h-full flex flex-col  items-center gap-5  left-0">
+    <div className="bg-[#f1f1f1] w-72 p-3 h-full flex flex-col  items-center gap-5  left-0">
       <div>
         <img
           src="/public/Images/logo/img2.png"
           alt="logo"
-          className="w-28 h-auto"
+          className="w-40 h-auto"
         />
       </div>
       <div className="flex flex-col gap-5">
         <div>
           <div className="flex justify-between items-center gap-1">
-            <Link to={"/dashboard/profile"} className="text-[#4E7BA0] text-sm truncate w-44">
+            <Link to={"/dashboard/profile"} className="text-[#4E7BA0] text-xl truncate w-60">
               MARTINE NDENGERA
             </Link>
-            <button className="cursor-pointer text-[#4E7BA0] text-sm">
+            <button className="cursor-pointer text-[#4E7BA0] text-xl">
               <IoLogOutOutline />
             </button>
           </div>

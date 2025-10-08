@@ -6,6 +6,8 @@ import AddDocument from "../pages/AddDocument/AddDocument";
 import AddConsultion from "../pages/AddConsultion/AddConsultion";
 import Chat from "../pages/Chat/Chat";
 import Profile from "../pages/Profile/Profile";
+import EditProfile from "../pages/EditProfile/EditProfile";
+import Setting from "../pages/Setting/Setting";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />,
+      },
+      {
+        path: "edit-profile",
+        element: <EditProfile />,
+      },
+      {
+        path: "settings",
+        element: <Setting />,
       },
       {
         path: "add-document",
