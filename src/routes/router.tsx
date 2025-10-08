@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import AddDocument from "../pages/AddDocument/AddDocument";
 import AddConsultion from "../pages/AddConsultion/AddConsultion";
 import Chat from "../pages/Chat/Chat";
+import Profile from "../pages/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -12,12 +13,16 @@ export const router = createBrowserRouter([
     element: <Landing />,
   },
   {
-    path: "/dashboard",
+    path: "dashboard",
     element: <Dashboard />,
     children: [
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
       },
       {
         path: "add-document",

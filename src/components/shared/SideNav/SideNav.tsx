@@ -1,5 +1,5 @@
 import { IoLogOutOutline } from "react-icons/io5";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { HiOutlineDocumentPlus } from "react-icons/hi2";
 import { HiOutlineMicrophone } from "react-icons/hi2";
 import { LuMessageCircleMore } from "react-icons/lu";
@@ -18,9 +18,9 @@ const SideNav = () => {
       <div className="flex flex-col gap-5">
         <div>
           <div className="flex justify-between items-center gap-1">
-            <p className="text-[#4E7BA0] text-sm truncate w-44">
+            <Link to={"/dashboard/profile"} className="text-[#4E7BA0] text-sm truncate w-44">
               MARTINE NDENGERA
-            </p>
+            </Link>
             <button className="cursor-pointer text-[#4E7BA0] text-sm">
               <IoLogOutOutline />
             </button>

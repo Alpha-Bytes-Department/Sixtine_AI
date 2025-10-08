@@ -1,4 +1,3 @@
-import { div } from "motion/react-client";
 import React, { useRef, useState } from "react";
 
 interface FileUploaderProps {
