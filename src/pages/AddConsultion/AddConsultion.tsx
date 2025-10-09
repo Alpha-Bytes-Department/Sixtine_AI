@@ -1,6 +1,9 @@
 import React, { useRef, useState } from "react";
 import { motion } from "motion/react";
 import AudioRecorder from "../../components/Consultion/AudioRecord/AudioRecord";
+// const AudioRecorderTyped = AudioRecorder as React.ComponentType<{
+//   setRecording: React.Dispatch<React.SetStateAction<boolean>>;
+// }>;
 
 interface FileUploaderProps {
   multiple?: boolean;
@@ -62,12 +65,11 @@ export default function AddConsultion({
   const removeFileAt = (index: number) => {
     const next = files.filter((_, i) => i !== index);
     setFiles(next);
-    if (onFiles) onFiles(next);
-  };
+  }
 
   //start recording
   if(isRecording){
-    return <AudioRecorder/>
+    return <AudioRecorder setRecording={setRecording}/>
   }
 
   const formatBytes = (bytes: number) => {
