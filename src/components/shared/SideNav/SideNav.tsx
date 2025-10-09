@@ -51,7 +51,7 @@ const SideNav = () => {
                 <p>Add Document</p>
               </NavLink>
               <NavLink
-                to={"/dashboard/add-consultation"}
+                to={"/dashboard/add-consultion"}
                 className={({ isActive }) =>
                   `flex gap-2 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
                     isActive ? "bg-[#C0E0FA]" : ""

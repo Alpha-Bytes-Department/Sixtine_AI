@@ -79,7 +79,7 @@ export default function AddDocument({
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
-          className={`relative flex flex-col items-center justify-center p-20 rounded-lg border-2 border-dashed transition-all duration-200
+          className={`relative flex flex-col items-center justify-center p-40 rounded-lg border-2 border-dashed transition-all duration-200
           ${
             isDragging
               ? "border-blue-500 bg-blue-50"
