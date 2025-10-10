@@ -48,7 +48,7 @@ const Chatbot = () => {
 
 
 if(setting){
-    return <ChatSettings/>
+    return <ChatSettings setSetting={setSetting}/>
 }
 
 

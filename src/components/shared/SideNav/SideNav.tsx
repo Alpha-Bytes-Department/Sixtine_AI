@@ -79,7 +79,7 @@ const SideNav = () => {
             <h1 className="text-2xl text-[#4E7BA0]">Admin</h1>
             <div className="flex flex-col gap-2">
               <NavLink
-                to={"/dashboard/user"}
+                to={"/dashboard/users"}
                 className={({ isActive }) =>
                   `flex gap-3 items-center rounded-sm text-[#4E7BA0]`
                 }

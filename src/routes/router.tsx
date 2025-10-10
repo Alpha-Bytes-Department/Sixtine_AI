@@ -10,6 +10,10 @@ import EditProfile from "../pages/EditProfile/EditProfile";
 import Setting from "../pages/Setting/Setting";
 import AudioExtraction from "../pages/AudioExtraction/AudioExtraction";
 import ChatSettings from "../pages/ChatSettings/ChatSettings";
+import ChatHistory from "../pages/ChatHistory/ChatHistory";
+import Forms from "../pages/Forms/Forms";
+import Users from "../pages/Users/Users";
+import Patients from "../pages/Patients/Patients";
 
 export const router = createBrowserRouter([
   {
@@ -53,9 +57,21 @@ export const router = createBrowserRouter([
         element: <Chat />,
       },
       {
-        path: "chat/settings",
-        element: <ChatSettings />,
+        path: "chat-history",
+        element: <ChatHistory/>
       },
+      {
+        path: "users",
+        element: <Users />,
+      },
+      {
+        path: "patients",
+        element: <Patients />,
+      },
+      {
+        path: "forms",
+        element: <Forms />,
+      }
     ],
   },
 ]);

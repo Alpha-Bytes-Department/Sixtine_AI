@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { RxCross1 } from "react-icons/rx";
 
 // Define the possible tool keys as a type
 type Tools = {
@@ -14,7 +15,7 @@ type Tools = {
   sendNotification: boolean;
 };
 
-const ChatSettings = () => {
+const ChatSettings = ({setSetting}:{setSetting:React.Dispatch<React.SetStateAction<boolean>>}) => {
   // Explicitly define the type for the 'tools' state
   const [model, setModel] = useState("Openai-gpt-5");
   const [audioSource, setAudioSource] = useState("Unknown device");
@@ -44,7 +45,12 @@ const ChatSettings = () => {
   return (
     <div className="h-full w-full bg-[#00000099] text-[#4A4A4A] ">
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-5xl mx-auto flex flex-col justify-center  gap-5 mt-10">
-        <h2 className="text-3xl font-bold ">Settings</h2>
+        <div className="flex justify-between items-center">
+          <h2 className="text-3xl font-bold ">Settings</h2>
+          <button className="cursor-pointer" onClick={()=>setSetting(false)}>
+            <RxCross1 />
+          </button>
+        </div>
         {/* break line  */}
         <p className="border border-[#D9D9D9] "></p>
         {/* Model Dropdown */}
@@ -102,7 +108,7 @@ const ChatSettings = () => {
                   type="checkbox"
                   checked={tools[key as keyof Tools]} // Explicitly cast to the keyof Tools
                   onChange={() => handleCheckboxChange(key as keyof Tools)} // Handle checkbox change
-                  className="mr-2 accent-[#4e7ba0]"
+                  className="mr-2 w-4 h-4 accent-[#4e7ba0]"
                 />
                 <label className=" text-[#4e7ba0]">{label}</label>
               </div>
