@@ -26,6 +26,16 @@ body{
   }
 }
 
+/* Hide the scrollbar while keeping scrolling functionality */
+.custom-scrollbar::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in Webkit browsers (Chrome, Safari) */
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none; /* Hides scrollbar in Internet Explorer and Edge */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+
 .waveform .bars {
   display: flex;
   justify-content: space-between;

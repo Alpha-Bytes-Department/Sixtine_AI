@@ -9,6 +9,7 @@ import Profile from "../pages/Profile/Profile";
 import EditProfile from "../pages/EditProfile/EditProfile";
 import Setting from "../pages/Setting/Setting";
 import AudioExtraction from "../pages/AudioExtraction/AudioExtraction";
+import ChatSettings from "../pages/ChatSettings/ChatSettings";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: "chat",
         element: <Chat />,
+      },
+      {
+        path: "chat/settings",
+        element: <ChatSettings />,
       },
     ],
   },
