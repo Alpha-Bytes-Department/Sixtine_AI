@@ -18,7 +18,10 @@ const SideNav = () => {
       <div className="flex flex-col gap-5">
         <div>
           <div className="flex justify-between items-center gap-1">
-            <Link to={"/dashboard/profile"} className="text-[#4E7BA0] text-xl truncate w-60">
+            <Link
+              to={"/dashboard/profile"}
+              className="text-[#4E7BA0] text-xl truncate w-60"
+            >
               MARTINE NDENGERA
             </Link>
             <button className="cursor-pointer text-[#4E7BA0] text-xl">
@@ -106,13 +109,12 @@ const SideNav = () => {
           </div>
           <p className="border-b-2 border-[#D9D9D9] mt-3"></p>
         </div>
-        <div>
-          <button
-            className="bg-[#4E7BA0] text-white rounded-sm w-full p-1 text-left cursor-pointer"
-          >
-            Chats History
-          </button>
-        </div>
+        <Link
+          to={"/dashboard/chats-history"}
+          className="bg-[#4E7BA0] text-white rounded-sm w-full px-2 py-1 text-left cursor-pointer"
+        >
+          Chats History
+        </Link>
       </div>
     </div>
   );
