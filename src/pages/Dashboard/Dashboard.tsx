@@ -2,6 +2,7 @@ import { Outlet, useMatch } from "react-router";
 import SideNav from "../../components/shared/SideNav/SideNav";
 
 const Dashboard = () => {
+
   const isLogIn = useMatch("/dashboard/login");
   return (
     <div className="flex w-full h-screen bg-white">
@@ -9,6 +10,7 @@ const Dashboard = () => {
       <Outlet />
     </div>
   );
+
 };
 
 export default Dashboard;

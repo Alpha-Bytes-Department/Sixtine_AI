@@ -9,11 +9,11 @@ import Profile from "../pages/Profile/Profile";
 import EditProfile from "../pages/EditProfile/EditProfile";
 import Setting from "../pages/Setting/Setting";
 import AudioExtraction from "../pages/AudioExtraction/AudioExtraction";
-import ChatSettings from "../pages/ChatSettings/ChatSettings";
 import ChatHistory from "../pages/ChatHistory/ChatHistory";
 import Forms from "../pages/Forms/Forms";
 import Users from "../pages/Users/Users";
 import Patients from "../pages/Patients/Patients";
+import PatientDetails from "../pages/PatientDetails/PatientDetails";
 
 export const router = createBrowserRouter([
   {
@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
         element: <Chat />,
       },
       {
-        path: "chat-history",
+        path: "chats-history",
         element: <ChatHistory/>
       },
       {
@@ -67,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "patients",
         element: <Patients />,
+      },
+      {
+        path: "patients/:id",
+        element: <PatientDetails />,
       },
       {
         path: "forms",
