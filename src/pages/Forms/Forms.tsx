@@ -1,298 +1,92 @@
+import { useForm } from "react-hook-form";
+
 const Forms = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    reset,
+  } = useForm();
+
+  const dataSubmit = (data: any) => {
+    console.log(data);
+  };
+
   return (
-    <div className="flex-1 w-full overflow-y-auto">
-      <div className="max-w-4xl mx-auto p-6 pt-8 bg-white min-h-full">
+    <div className="flex-1 w-full overflow-y-auto  text-[#4a4a4a]">
+      <div className=" mx-auto p-10 pt-8 bg-white min-h-full">
         <div className="text-center mb-8">
-          <h1 className="text-xl font-bold mb-2">SWISS CONFEDERATION</h1>
+          <h1 className="text-xl font-normal mb-1">SWISS CONFEDERATION</h1>
           <p className="text-sm mb-4">
             Federal Law of December 19, 1958 on Road Traffic
           </p>
           <h2 className="text-2xl font-bold mb-2">MEDICAL CERTIFICATE</h2>
-          <p className="text-lg">Concerning the aptitude of</p>
+          <p className="text-lg font-semibold">Concerning the aptitude of</p>
         </div>
-
-        <form className="space-y-6">
-          {/* Personal Information */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Holder's No
-              </label>
-              <input
-                type="text"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-            </div>
-            <div></div>
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                First Name
-              </label>
-              <input
-                type="text"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Last Name
-              </label>
-              <input
-                type="text"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Date of birth
-              </label>
-              <input
-                type="date"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">C/O</label>
-              <input
-                type="text"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-            </div>
-            <div className="md:col-span-2">
-              <label className="block text-sm font-medium mb-1">Address</label>
-              <input
-                type="text"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Locality (City/Town)
-              </label>
-              <input
-                type="text"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Postal code
-              </label>
-              <input
-                type="text"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-            </div>
+        <form className=" py-10 px-16 grid grid-cols-2 gap-x-10" onSubmit={handleSubmit(dataSubmit)}>
+          {/* =============================== holder's no =============================== */}
+          <div className="col-span-2 flex gap-6 mb-6">
+            <h2 className="w-36 flex-shrink-0">Holder's No</h2>
+            <input
+              className="focus:outline-none border-gray-300 border px-3 py-1 rounded-2xl w-full"
+              {...register("holdersNo")}
+            />
           </div>
-
-          {/* Section 1 */}
-          <div className="border-t pt-4">
-            <h3 className="font-bold mb-3">1</h3>
-            <div className="space-y-2">
-              <label className="flex items-start space-x-2">
-                <input type="checkbox" className="mt-1" />
-                <span className="text-sm">
-                  The candidate does not suffer from any illness or condition
-                  that significantly affects the ability to drive.
-                </span>
-              </label>
-              <label className="flex items-start space-x-2">
-                <input type="checkbox" className="mt-1" />
-                <span className="text-sm">
-                  The candidate suffers from illnesses or conditions relevant to
-                  traffic medicine (specify):
-                </span>
-              </label>
-            </div>
+          {/* =============================== Name information =============================== */}
+          <div className="flex gap-6 mb-6">
+            <h2 className="w-36 flex-shrink-0">First Name</h2>
+            <input
+              className="focus:outline-none border-gray-300 border px-3 py-1 rounded-2xl flex-1"
+              {...register("firstName")}
+            />
           </div>
-
-          {/* Section 2.1 */}
-          <div className="border-t pt-4">
-            <h3 className="font-bold mb-3">
-              2.1 Minimum medical requirements (Annex 1 OAC).
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-medium mb-3">
-                  For Group 1 (A, A1, B, B1, F, G, M, D&lt;35kg, 10B):
-                </h4>
-                <div className="space-y-2">
-                  <label className="flex items-center space-x-2">
-                    <input type="checkbox" />
-                    <span className="text-sm">Are satisfied</span>
-                  </label>
-                  <label className="flex items-center space-x-2">
-                    <input type="checkbox" />
-                    <span className="text-sm">
-                      Are satisfied with the following conditions (ch.3.2)
-                    </span>
-                  </label>
-                  <label className="flex items-center space-x-2">
-                    <input type="checkbox" />
-                    <span className="text-sm">Are not satisfied</span>
-                  </label>
-                  <div className="mt-2">
-                    <label className="block text-sm font-medium mb-1">
-                      Brief justification:
-                    </label>
-                    <textarea className="w-full border border-gray-300 rounded px-3 py-2 h-20"></textarea>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h4 className="font-medium mb-3">
-                  For Group 2 (D, D1, C, C1, authorization to transport persons
-                  professionally, traffic experts, passenger or motorized goods
-                  vessels):
-                </h4>
-                <div className="space-y-2">
-                  <label className="flex items-center space-x-2">
-                    <input type="checkbox" />
-                    <span className="text-sm">Are satisfied</span>
-                  </label>
-                  <label className="flex items-center space-x-2">
-                    <input type="checkbox" />
-                    <span className="text-sm">
-                      Are satisfied with the following conditions (ch.3.2)
-                    </span>
-                  </label>
-                  <label className="flex items-center space-x-2">
-                    <input type="checkbox" />
-                    <span className="text-sm">Are not satisfied</span>
-                  </label>
-                  <div className="mt-2">
-                    <label className="block text-sm font-medium mb-1">
-                      Brief justification:
-                    </label>
-                    <textarea className="w-full border border-gray-300 rounded px-3 py-2 h-20"></textarea>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="flex gap-6 mb-6">
+            <h2 className="w-36 flex-shrink-0">Last Name</h2>
+            <input
+              className="focus:outline-none border-gray-300 border px-3 py-1 rounded-2xl flex-1"
+              {...register("lastName")}
+            />
           </div>
-
-          {/* Section 2.2 */}
-          <div className="border-t pt-4">
-            <h3 className="font-bold mb-3">2.2</h3>
-            <div className="space-y-2">
-              <label className="flex items-start space-x-2">
-                <input type="checkbox" className="mt-1" />
-                <span className="text-sm">
-                  Equivocal result: Final evaluation must be carried out by a
-                  physician recognized at level 3 or 4.
-                </span>
-              </label>
-              <label className="flex items-start space-x-2">
-                <input type="checkbox" className="mt-1" />
-                <span className="text-sm">
-                  Given that the candidate's fitness to drive raises serious
-                  doubts, they should not drive any vehicle before further
-                  clarification.
-                </span>
-              </label>
-            </div>
+          {/* =============================== Date of Birth and C/O =============================== */}
+          <div className="flex gap-6 mb-6">
+            <h2 className="w-36 flex-shrink-0">Date of Birth</h2>
+            <input
+              className="focus:outline-none border-gray-300 border px-3 py-1 rounded-2xl flex-1"
+              {...register("dateOfBirth")}
+            />
           </div>
-
-          {/* Section 3.1 Vision Test */}
-          <div className="border-t pt-4">
-            <h3 className="font-bold mb-3">
-              3.1 Vision test (complete for each group)
-            </h3>
-            <p className="text-sm mb-3">Wears corrective lenses for:</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-medium mb-2">Group 1</h4>
-                <div className="flex space-x-4">
-                  <label className="flex items-center space-x-1">
-                    <input type="checkbox" />
-                    <span className="text-sm">YES</span>
-                  </label>
-                  <label className="flex items-center space-x-1">
-                    <input type="checkbox" />
-                    <span className="text-sm">NO</span>
-                  </label>
-                </div>
-              </div>
-              <div>
-                <h4 className="font-medium mb-2">Group 2</h4>
-                <div className="flex space-x-4">
-                  <label className="flex items-center space-x-1">
-                    <input type="checkbox" />
-                    <span className="text-sm">YES</span>
-                  </label>
-                  <label className="flex items-center space-x-1">
-                    <input type="checkbox" />
-                    <span className="text-sm">NO</span>
-                  </label>
-                </div>
-              </div>
-            </div>
+          <div className="flex gap-6 mb-6">
+            <h2 className="w-36 flex-shrink-0">C/O</h2>
+            <input
+              className="focus:outline-none border-gray-300 border px-3 py-1 rounded-2xl flex-1"
+              {...register("careOf")}
+            />
           </div>
-
-          {/* Section 3.2 */}
-          <div className="border-t pt-4">
-            <h3 className="font-bold mb-3">
-              3.2 The candidate is fit if they comply with the following medical
-              conditions:
-            </h3>
-            <textarea className="w-full border border-gray-300 rounded px-3 py-2 h-32"></textarea>
+          {/* =============================== Address =============================== */}
+          <div className="col-span-2 flex gap-6 mb-6">
+            <h2 className="w-36 flex-shrink-0">Address</h2>
+            <input
+              className="focus:outline-none border-gray-300 border px-3 py-1 rounded-2xl flex-1"
+              {...register("address")}
+            />
           </div>
-
-          {/* Section 4 */}
-          <div className="border-t pt-4">
-            <h3 className="font-bold mb-3">4 Next check-up:</h3>
-            <div className="space-y-2">
-              <label className="flex items-center space-x-2">
-                <input type="checkbox" />
-                <span className="text-sm">
-                  within the normal period, in accordance with OAC.
-                </span>
-              </label>
-              <div className="flex items-center space-x-2">
-                <input type="checkbox" />
-                <span className="text-sm">in</span>
-                <input
-                  type="text"
-                  className="border border-gray-300 rounded px-2 py-1 w-16"
-                />
-                <span className="text-sm">
-                  months by a physician recognized at level
-                </span>
-                <input
-                  type="text"
-                  className="border border-gray-300 rounded px-2 py-1 w-16"
-                />
-              </div>
-            </div>
+          {/* =============================== Postcode and City =============================== */}
+          <div className="flex gap-6 mb-6">
+            <h2 className="w-36 flex-shrink-0 whitespace-nowrap">Locality (City/Town)</h2>
+            <input
+              className="focus:outline-none border-gray-300 border px-3 py-1 rounded-2xl flex-1"
+              {...register("city")}
+            />
           </div>
-
-          {/* Footer */}
-          <div className="border-t pt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Place and date of examination:
-              </label>
-              <input
-                type="text"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Global Location Number (GLN):
-              </label>
-              <input
-                type="text"
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">
-                Stamp and signature of physician:
-              </label>
-              <div className="w-full border border-gray-300 rounded px-3 py-2 h-16"></div>
-            </div>
+          <div className="flex gap-6 mb-6">
+            <h2 className="w-36 flex-shrink-0">Postcode</h2>
+            <input
+              className="focus:outline-none border-gray-300 border px-3 py-1 rounded-2xl flex-1"
+              {...register("postcode")}
+            />
           </div>
+          {/* ===============================  */}
         </form>
       </div>
     </div>
