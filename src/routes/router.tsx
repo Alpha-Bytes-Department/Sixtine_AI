@@ -13,6 +13,7 @@ import ChatHistory from "../pages/ChatHistory/ChatHistory";
 import Forms from "../pages/Forms/Forms";
 import Users from "../pages/Users/Users";
 import Patients from "../pages/Patients/Patients";
+import PatientDetails from "../pages/PatientDetails/PatientDetails";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "patients",
         element: <Patients />,
+      },
+      {
+        path: "patients/:id",
+        element: <PatientDetails />,
       },
       {
         path: "forms",

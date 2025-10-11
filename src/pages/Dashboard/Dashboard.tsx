@@ -6,7 +6,7 @@ const Dashboard = () => {
 
     const isLogIn = useMatch("/dashboard/login")
     return (
-        <div className='flex justify-center items-center w-full h-screen bg-white'>
+        <div className='flex justify-center items-start w-full h-screen bg-white'>
             {isLogIn?<></>:<SideNav/>}
             <Outlet/>
         </div>
