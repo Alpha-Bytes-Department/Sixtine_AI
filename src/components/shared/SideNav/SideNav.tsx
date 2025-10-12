@@ -19,7 +19,7 @@ const SideNav = () => {
     <div className="bg-[#f1f1f1] w-72 p-3 h-full flex flex-col  items-center gap-5  left-0">
       <div>
         <img
-          src="/public/Images/logo/img2.png"
+          src="/Images/logo/img2.png"
           alt="logo"
           className="w-40 h-auto"
         />

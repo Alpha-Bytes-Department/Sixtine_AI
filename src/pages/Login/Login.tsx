@@ -18,7 +18,7 @@ const Login = () => {
           className="absolute h-auto rounded-full w-3/12 -top-8 -left-8  animate-[spin_15s_linear_infinite]"
         />
         <img
-          src="/public/Images/logo/img2.png"
+          src="/Images/logo/img2.png"
           className="h-auto w-44"
           alt="logo"
         />
