@@ -8,7 +8,7 @@ const Users = () => {
 
 
 
-  const handleNavigate = (id:number) => {  
+  const handleNavigate = () => {  
     navigate(`/dashboard/profile`);
    }
 
@@ -59,7 +59,7 @@ const Users = () => {
                 <tr
                   key={idx}
                   className="border-b hover:bg-gray-50 transition-colors"
-                  onClick={()=>handleNavigate(idx)}
+                  onClick={()=>handleNavigate()}
                 >
                   <td className=" py-2 cursor-pointer">
                     {patient.firstName}
