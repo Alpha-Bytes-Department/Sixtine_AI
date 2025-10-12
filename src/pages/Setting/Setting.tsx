@@ -1,5 +1,4 @@
-import { RxCross2 } from "react-icons/rx";
-import { Link } from "react-router";
+
 
 
 const Setting = () => {

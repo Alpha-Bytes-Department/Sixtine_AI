@@ -1,13 +1,19 @@
 import { RxCross2 } from "react-icons/rx";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+
 
 
 const Profile = () => {
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
   return (
     <div className="flex-1 flex justify-center items-center">
       <div className="shadow-[0_0_4px_0_#00000040] w-7/12 p-10">
         <div className="flex flex-col gap-5 text-[#4A4A4A] relative">
-          <Link to={"/dashboard/add-document"}><RxCross2 className="absolute top-0 right-0 text-xl"/></Link>
+          <button onClick={handleGoBack}><RxCross2 className="absolute top-0 right-0 text-xl cursor-pointer"/></button>
           <h1 className="text-3xl">Profile</h1>
           <img
             src="/Images/Others/demoProfile.jpg"

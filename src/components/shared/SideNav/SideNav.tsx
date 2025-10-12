@@ -1,11 +1,20 @@
 import { IoLogOutOutline } from "react-icons/io5";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { HiOutlineDocumentPlus } from "react-icons/hi2";
 import { HiOutlineMicrophone } from "react-icons/hi2";
 import { LuMessageCircleMore } from "react-icons/lu";
 import { FaCaretRight } from "react-icons/fa";
+import { useState } from "react";
+import { IoSearch } from "react-icons/io5";
 
 const SideNav = () => {
+  const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState("");
+
+  const handleNavigateChat = () => {
+    navigate("/dashboard/chat");
+  };
+
   return (
     <div className="bg-[#f1f1f1] w-72 p-3 h-full flex flex-col  items-center gap-5  left-0">
       <div>
@@ -32,8 +41,8 @@ const SideNav = () => {
             <span>History</span> <FaCaretRight />
           </div>
           <button
-            className="bg-[#4E7BA0] text-white rounded-sm w-full py-1 cursor-pointer transition-transform duration-200 ease-in-out
-    hover:scale-105 active:scale-95"
+            onClick={handleNavigateChat}
+            className="bg-[#4E7BA0] text-white rounded-sm w-full py-1 cursor-pointer transition-transform duration-200 ease-in-out active:scale-95"
           >
             New Chat
           </button>
@@ -83,7 +92,7 @@ const SideNav = () => {
             <div className="flex flex-col gap-2">
               <NavLink
                 to={"/dashboard/users"}
-                className={({ isActive }) =>
+                className={() =>
                   `flex gap-3 items-center rounded-sm text-[#4E7BA0]`
                 }
               >
@@ -91,7 +100,7 @@ const SideNav = () => {
               </NavLink>
               <NavLink
                 to={"/dashboard/patients"}
-                className={({ isActive }) =>
+                className={() =>
                   `flex gap-3 items-center rounded-sm text-[#4E7BA0]`
                 }
               >
@@ -99,7 +108,7 @@ const SideNav = () => {
               </NavLink>
               <NavLink
                 to={"/dashboard/forms"}
-                className={({ isActive }) =>
+                className={() =>
                   `flex gap-3 items-center rounded-sm text-[#4E7BA0]`
                 }
               >
@@ -115,6 +124,19 @@ const SideNav = () => {
         >
           Chats History
         </Link>
+        {/* Search Bar */}
+        <div className="mb-4">
+          <div className="flex items-center bg-[#4E7BA080] text-white w-64 gap-2 p-2 rounded">
+            <IoSearch className="text-lg" />
+            <input
+              type="text"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className=" text-sm border-0 text-white rounded-md focus:outline-none "
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

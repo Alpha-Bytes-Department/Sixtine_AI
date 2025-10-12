@@ -55,7 +55,7 @@ const ChatHistory = () => {
   return (
     <div className="flex-1 h-full w-full">
       <div className="p-6 h-full flex flex-col max-w-5xl mx-auto gap-3 overflow-y-auto">
-        {messages.map((msg, index) => (
+        {messages.map((msg) => (
           <div
             key={msg.id}
             className={`flex justify-between items-center p-4 rounded-lg cursor-pointer transition-all duration-200 bg-[#5d7487] hover:bg-gray-600 text-gray-200`}

@@ -14,6 +14,8 @@ import Forms from "../pages/Forms/Forms";
 import Users from "../pages/Users/Users";
 import Patients from "../pages/Patients/Patients";
 import PatientDetails from "../pages/PatientDetails/PatientDetails";
+import PatientDocDetail from "../pages/PatientDocDetails/PatientDocDetail";
+
 
 export const router = createBrowserRouter([
   {
@@ -69,8 +71,12 @@ export const router = createBrowserRouter([
         element: <Patients />,
       },
       {
-        path: "patients/:id",
+        path: "patients/:patientId",
         element: <PatientDetails />,
+      },
+      {
+        path: "patients/:patientId/document/:docId",
+        element: <PatientDocDetail />,
       },
       {
         path: "forms",

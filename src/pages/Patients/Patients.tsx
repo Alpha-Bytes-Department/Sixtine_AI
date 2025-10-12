@@ -8,7 +8,7 @@ const PatientsTable = () => {
 
 
 
-  const handleNavigate = (id:string) => {  
+  const handleNavigate = (id:number) => {  
     navigate(`/dashboard/patients/${id}`);
    }
 
@@ -26,11 +26,11 @@ const PatientsTable = () => {
   );
 
   return (
-    <div className="flex-1 p-6 bg-white text-[#4A4A4A] h-full flex flex-col">
+    <div className="flex-1 p-6 bg-white text-[#4A4A4A] h-full flex flex-col gap-5">
       <h2 className="text-3xl font-semibold mb-3">Patients</h2>
       {/* Search Bar */}
       <div className="mb-4">
-        <div className="flex items-center bg-[#DBDBDB] w-64 gap-2 p-2">
+        <div className="flex items-center bg-[#DBDBDB] w-64 gap-2 p-2 rounded">
             <IoSearch className="text-lg"/>
           <input
             type="text"
@@ -59,7 +59,7 @@ const PatientsTable = () => {
                 <tr
                   key={idx}
                   className="border-b hover:bg-gray-50 transition-colors"
-                  onClick={()=>handleNavigate(patient.id)}
+                  onClick={()=>handleNavigate(idx)}
                 >
                   <td className=" py-2 cursor-pointer">
                     {patient.firstName}

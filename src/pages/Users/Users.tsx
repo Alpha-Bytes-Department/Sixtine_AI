@@ -1,113 +1,78 @@
+import { useState } from "react";
+import { IoSearch } from "react-icons/io5";
+import { useNavigate } from "react-router";
+
 const Users = () => {
-  const users = [
-    {
-      id: 1,
-      firstName: "John",
-      lastName: "Doe",
-      email: "john.doe@example.com",
-      role: "doctor",
-      status: "active",
-      createdAt: "2023-10-01",
-    },
-    {
-      id: 2,
-      firstName: "Jane",
-      lastName: "Smith",
-      email: "jane.smith@example.com",
-      role: "nurse",
-      status: "inactive",
-      createdAt: "2023-10-02",
-    },
-    {
-      id: 3,
-      firstName: "Michael",
-      lastName: "Johnson",
-      email: "michael.johnson@example.com",
-      role: "doctor",
-      status: "active",
-      createdAt: "2023-10-03",
-    },
-    {
-      id: 4,
-      firstName: "Sarah",
-      lastName: "Williams",
-      email: "sarah.williams@example.com",
-      role: "admin",
-      status: "active",
-      createdAt: "2023-10-04",
-    },
-    {
-      id: 5,
-      firstName: "David",
-      lastName: "Brown",
-      email: "david.brown@example.com",
-      role: "nurse",
-      status: "active",
-      createdAt: "2023-10-05",
-    },
-    {
-      id: 6,
-      firstName: "Emily",
-      lastName: "Davis",
-      email: "emily.davis@example.com",
-      role: "doctor",
-      status: "inactive",
-      createdAt: "2023-10-06",
-    },
-    {
-      id: 7,
-      firstName: "Robert",
-      lastName: "Miller",
-      email: "robert.miller@example.com",
-      role: "nurse",
-      status: "active",
-      createdAt: "2023-10-07",
-    },
-    {
-      id: 8,
-      firstName: "Lisa",
-      lastName: "Wilson",
-      email: "lisa.wilson@example.com",
-      role: "admin",
-      status: "active",
-      createdAt: "2023-10-08",
-    },
-  ];
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+
+
+  const handleNavigate = (id:number) => {  
+    navigate(`/dashboard/profile`);
+   }
+
+  const patients = Array(30).fill({
+    firstName: "Abdessattar",
+    lastName: "GHARSELAOUI",
+    doc: "3 months ago",
+    role: "user",
+  });
+
+  const filteredPatients = patients.filter(
+    (p) =>
+      p.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.lastName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div className="flex-1  xl:px-10 px-4 text-[#4A4A4A]">
-      <div className=" min-h-screen overscroll-y-auto">
-        <h1 className=" xl:py-10 py-6 text-xl xl:text-3xl font-semibold">
-          Users
-        </h1>
-        <input
-          type="text"
-          placeholder="Search users..."
-          className=" bg-gray-300 max-w-sm focus:outline-0  rounded-md px-4 py-2 mb-4 w-full"
-        />
-        <div className=" xl:py-10 py-6">
-          <ul className="grid grid-cols-4 text-lg py-1 font-semibold xl:text-xl   gap-4">
-            <li>First Name</li>
-            <li>Last Name</li>
-            <li>Date Created</li>
-            <li>Role</li>
-          </ul>{" "}
-          <hr className="border-t border-gray-300" />
-          {
-            users.map((user) => (
-              <div>
-                  <ul
-                    key={user.id}
-                    className="grid grid-cols-4 text-base  xl:text-lg py-2.5  gap-4"
-                  >
-                    <li>{user.firstName}</li>
-                    <li>{user.lastName}</li>
-                    <li>{user.createdAt}</li>
-                    <li>{user.role}</li>
-                  </ul>
-                  <hr className="border-t border-gray-300" />
-              </div>
-            ))}
+    <div className="flex-1 p-6 bg-white text-[#4A4A4A] h-full flex flex-col gap-5">
+      <h2 className="text-3xl font-semibold mb-3">Users</h2>
+      {/* Search Bar */}
+      <div className="mb-4">
+        <div className="flex items-center bg-[#DBDBDB] w-64 gap-2 p-2 rounded">
+            <IoSearch className="text-lg"/>
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className=" text-sm border-0 rounded-md focus:outline-none "
+          />
+        </div>
+      </div>
+
+      {/* Table */}
+      <div className="flex-grow overflow-y-auto">
+        <div className="relative">
+          <table className="w-full text-left">
+            <thead className="sticky top-0 bg-white border-b">
+              <tr>
+                <th className=" py-2 font-semibold">First Name</th>
+                <th className=" py-2 font-semibold">Last Name</th>
+                <th className=" py-2 font-semibold">Date Created</th>
+                <th className=" py-2 font-semibold">Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredPatients.map((patient, idx) => (
+                <tr
+                  key={idx}
+                  className="border-b hover:bg-gray-50 transition-colors"
+                  onClick={()=>handleNavigate(idx)}
+                >
+                  <td className=" py-2 cursor-pointer">
+                    {patient.firstName}
+                  </td>
+                  <td className=" py-2 cursor-pointer">
+                    {patient.lastName}
+                  </td>
+                  <td className=" py-2">{patient.doc}</td>
+                  <td className=" py-2">{patient.role}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

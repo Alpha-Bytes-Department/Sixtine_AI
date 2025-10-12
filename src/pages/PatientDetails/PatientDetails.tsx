@@ -1,9 +1,11 @@
 
-import { useState } from "react";
+import {  useState } from "react";
 import { FaFilePdf } from "react-icons/fa";
+import { useNavigate } from "react-router";
 
 const PatientDetails = () => {
   const [activeTab, setActiveTab] = useState("notes");
+  const navigate = useNavigate();
 
   const notes = [
     {
@@ -138,6 +140,10 @@ const PatientDetails = () => {
    
   ];
 
+  const handleViewDoc = (id:number)=>{
+      navigate(`/dashboard/patients/0/document/${id}`);
+  }
+
   return (
     <div className="flex-1 h-full w-full">
       <div className="bg-white p-6 text-[#4A4A4A] h-full flex flex-col">
@@ -146,7 +152,7 @@ const PatientDetails = () => {
           <h2 className="text-3xl font-semibold  mb-2">
             Abdessattar GHARSELAOUI
           </h2>
-          <div className="text-sm  space-y-1">
+          <div className="space-y-2 ">
             <p>
               <strong>Date of birth:</strong> 05.09.1960 (65 years old)
             </p>
@@ -204,7 +210,7 @@ const PatientDetails = () => {
 
               <tbody className="divide-y divide-gray-100">
                 {notes.map((note, index) => (
-                  <tr key={index} className="hover:bg-gray-50">
+                  <tr onClick={()=>handleViewDoc(index)} key={index} className="hover:bg-gray-50">
                     <td className="p-3 text-gray-700">{note.date}</td>
                     <td className="p-3 text-gray-700">{note.type}</td>
                     <td className="p-3 text-gray-700">{note.text}</td>
