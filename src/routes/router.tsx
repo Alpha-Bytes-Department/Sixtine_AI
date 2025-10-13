@@ -15,6 +15,7 @@ import Users from "../pages/Users/Users";
 import Patients from "../pages/Patients/Patients";
 import PatientDetails from "../pages/PatientDetails/PatientDetails";
 import PatientDocDetail from "../pages/PatientDocDetails/PatientDocDetail";
+import ChangePassword from "../pages/ChangePassword/ChangePassword";
 
 
 export const router = createBrowserRouter([
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: "edit-profile",
         element: <EditProfile />,
+      },
+      {
+        path: "change-password",
+        element: <ChangePassword/>
       },
       {
         path: "settings",
