@@ -1,17 +1,8 @@
-import { Form, Link, useNavigate } from "react-router";
-import { FiLock } from "react-icons/fi";
-import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
-import { useState } from "react";
+import {  Link } from "react-router";
+
 
 const PassUSuccessFull = () => {
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const navigate = useNavigate();
-
-  const handleSubmit = () => {
-    navigate("/dashboard/password-update/successful");
-  };
-
+  
   return (
     <div className="flex flex-col md:flex-row w-full h-full bg-white overflow-hidden">
       <div className="w-full lg:w-1/2 h-full flex justify-center items-center relative">
