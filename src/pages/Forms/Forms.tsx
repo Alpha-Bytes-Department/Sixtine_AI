@@ -209,9 +209,9 @@ const Forms = () => {
 
               {/* Section 3 — Vision test */}
               <section>
-                <p className="">3.1 <span className="font-semibold">Vision test</span> (complete for each group)</p>
-                <p>Wears corrective lenses for:</p>
-                <div className="flex flex-wrap gap-20 mt-2">
+                <p className="">3.1 <span className="font-semibold ms-2">Vision test</span> (complete for each group)</p>
+                <p className="ms-7">Wears corrective lenses for:</p>
+                <div className="flex flex-wrap gap-32 mt-2 ms-8">
                   <div className="flex items-center gap-5">
                     <p>Group 1</p>
                     <label className="mr-4">
@@ -231,32 +231,28 @@ const Forms = () => {
                     </label>
                   </div>
                 </div>
-                <p className=" mt-3">3.2</p>
-                <p>
-                  The candidate is fit if they comply with the following medical
-                  conditions:
-                </p>
-                <textarea className="border border-[#D0D5DD] flex-1 rounded"></textarea>
+                <p className="mt-5">3.2 The candidate is fit if they comply with the following medical conditions:</p>
+                <textarea className="border border-[#D0D5DD] rounded w-full mx-7"></textarea>
               </section>
 
               {/* Section 4 — Next check-up */}
               <section>
-                <p className="">4 Next check-up:</p>
+                <p className=""></p>
                 <label className="flex items-start gap-2 mb-2">
-                  <input type="checkbox" className="mt-1" /> Within the normal
+                  4 Next check-up: <input type="checkbox" className="mt-1" /> Within the normal
                   period, in accordance with OAC.
                 </label>
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2 ms-28">
                   <input type="checkbox" />
                   <span>In</span>
                   <input
                     type="number"
-                    className="w-16 border border-[#D0D5DD] rounded-md p-1"
+                    className="w-16 border border-[#D0D5DD] rounded-md"
                   />
                   <span>months by a physician recognized at level</span>
                   <input
                     type="text"
-                    className="w-20 border border-[#D0D5DD] rounded-md p-1"
+                    className="w-20 border border-[#D0D5DD] rounded-md"
                   />
                   <span>.</span>
                 </div>
@@ -286,14 +282,14 @@ const Forms = () => {
               <div className="flex justify-end gap-4 mt-8 print:hidden">
                 <button
                   type="reset"
-                  className="bg-[#FF3620] text-white px-4 py-2 rounded-md"
+                  className="bg-[#FF3620] text-white px-8 py-2 rounded-md"
                 >
                   Reset
                 </button>
                 <button
                   type="button"
                   onClick={handlePrint}
-                  className="bg-[#3CA0F2] text-white px-4 py-2 rounded-md"
+                  className="bg-[#3CA0F2] text-white px-8 py-2 rounded-md"
                 >
                   Print
                 </button>
