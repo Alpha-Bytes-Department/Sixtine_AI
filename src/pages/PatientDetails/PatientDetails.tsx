@@ -210,7 +210,7 @@ const PatientDetails = () => {
 
               <tbody className="divide-y divide-gray-100">
                 {notes.map((note, index) => (
-                  <tr onClick={()=>handleViewDoc(index)} key={index} className="hover:bg-gray-50">
+                  <tr  key={index} className="hover:bg-gray-50">
                     <td className="p-3 text-gray-700">{note.date}</td>
                     <td className="p-3 text-gray-700">{note.type}</td>
                     <td className="p-3 text-gray-700">{note.text}</td>
@@ -234,9 +234,12 @@ const PatientDetails = () => {
 
               <tbody className="divide-y divide-gray-100">
                 {notes.map((note, index) => (
-                  <tr key={index} className="hover:bg-gray-50">
+                  <tr onClick={()=>handleViewDoc(index)} key={index} className="hover:bg-gray-50">
                     <td className="p-3 text-red-700 text-3xl"><FaFilePdf /></td>
-                    <td className="p-3 text-gray-700">{note.type}</td>
+                    <td className="p-3 text-gray-700">
+                      <p>{note.type}</p>
+                      <p>{note.date}</p>
+                    </td>
                   </tr>
                 ))}
               </tbody>

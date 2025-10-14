@@ -16,6 +16,7 @@ import Patients from "../pages/Patients/Patients";
 import PatientDetails from "../pages/PatientDetails/PatientDetails";
 import PatientDocDetail from "../pages/PatientDocDetails/PatientDocDetail";
 import ChangePassword from "../pages/ChangePassword/ChangePassword";
+import UserDetails from "../pages/UserDetails/UserDetails";
 
 
 export const router = createBrowserRouter([
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />,
+      },
+      {
+        path: `users/:id`,
+        element: <UserDetails/>
       },
       {
         path: "patients",

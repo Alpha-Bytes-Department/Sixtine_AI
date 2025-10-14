@@ -38,7 +38,7 @@ const SideNav = () => {
             </button>
           </div>
           <div className="text-[#85AECF] mt-2.5 mb-3 flex justify-between items-center cursor-pointer">
-            <span>History</span> <FaCaretRight />
+            <span>Synthetic Medical Practice</span> <FaCaretRight />
           </div>
           <button
             onClick={handleNavigateChat}
@@ -92,24 +92,24 @@ const SideNav = () => {
             <div className="flex flex-col gap-2">
               <NavLink
                 to={"/dashboard/users"}
-                className={() =>
-                  `flex gap-3 items-center rounded-sm text-[#4E7BA0]`
+                className={({isActive}) =>
+                  `flex gap-3 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${isActive ? "bg-[#C0E0FA]":""}`
                 }
               >
                 <p>User</p>
               </NavLink>
               <NavLink
                 to={"/dashboard/patients"}
-                className={() =>
-                  `flex gap-3 items-center rounded-sm text-[#4E7BA0]`
+                className={({isActive}) =>
+                  `flex gap-3 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${isActive ? "bg-[#C0E0FA]":""}`
                 }
               >
                 <p>Patients</p>
               </NavLink>
               <NavLink
                 to={"/dashboard/forms"}
-                className={() =>
-                  `flex gap-3 items-center rounded-sm text-[#4E7BA0]`
+                className={({isActive}) =>
+                  `flex gap-3 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${isActive ? "bg-[#C0E0FA]":""}`
                 }
               >
                 <p>Forms</p>

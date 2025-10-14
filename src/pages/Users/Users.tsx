@@ -8,8 +8,8 @@ const Users = () => {
 
 
 
-  const handleNavigate = () => {  
-    navigate(`/dashboard/profile`);
+  const handleNavigate = (id: number) => {  
+    navigate(`/dashboard/users/${id}`);
    }
 
   const patients = Array(30).fill({
@@ -59,7 +59,7 @@ const Users = () => {
                 <tr
                   key={idx}
                   className="border-b hover:bg-gray-50 transition-colors"
-                  onClick={()=>handleNavigate()}
+                  onClick={()=>handleNavigate(idx)}
                 >
                   <td className=" py-2 cursor-pointer">
                     {patient.firstName}
