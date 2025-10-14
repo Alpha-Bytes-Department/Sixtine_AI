@@ -1,4 +1,4 @@
-import { details } from "motion/react-client";
+// import { details } from "motion/react-client";
 import { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 

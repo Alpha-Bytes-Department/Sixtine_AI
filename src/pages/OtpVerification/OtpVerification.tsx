@@ -6,6 +6,7 @@ const OtpVerification = () => {
     const [error, setError] = useState(true);
 
   const handleSubmit = (event:  React.MouseEvent<HTMLFormElement>)=>{
+    setError(false)
     event.preventDefault();
     navigate("/dashboard/set-new-password")
   }
