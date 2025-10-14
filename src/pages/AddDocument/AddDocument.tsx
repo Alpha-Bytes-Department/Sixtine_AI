@@ -95,18 +95,17 @@ export default function AddDocument({
 
   return (
     <div className="h-full w-full bg-white flex justify-center items-center">
-      <div className={` mx-auto`}>
+      <div className={`mx-auto ${files.length > 0 ? "flex gap-5 h-full" : ""}`}>
         {/* file upload  */}
         <div
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
-          className={`relative flex flex-col items-center justify-center p-40 rounded-lg border-2 border-dashed transition-all duration-200
-          ${
+          className={`relative flex flex-col items-center justify-center rounded-lg border-2 border-dashed transition-all duration-200 ${
             isDragging
               ? "border-blue-500 bg-blue-50"
               : "border-gray-300 bg-white"
-          }`}
+          } ${files.length > 0 ? "px-5 py-40" : "p-40"}`}
         >
           <input
             ref={inputRef}
@@ -133,7 +132,6 @@ export default function AddDocument({
             {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
           </div>
         </div>
-
         {/* Files list / preview */}
         {files.length > 0 && (
           <div className="mt-4 space-y-2">

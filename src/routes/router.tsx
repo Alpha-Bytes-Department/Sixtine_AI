@@ -8,7 +8,7 @@ import Chat from "../pages/Chat/Chat";
 import Profile from "../pages/Profile/Profile";
 import EditProfile from "../pages/EditProfile/EditProfile";
 import Setting from "../pages/Setting/Setting";
-import AudioExtraction from "../pages/AudioExtraction/AudioExtraction";
+import AudioExtraction from "../components/Consultion/AudioExtraction/AudioExtraction";
 import ChatHistory from "../pages/ChatHistory/ChatHistory";
 import Forms from "../pages/Forms/Forms";
 import Users from "../pages/Users/Users";

@@ -4,7 +4,7 @@ const Forms = () => {
   return (
     <div className="h-full flex flex-col">
       <div className="p-6 print:p-0 flex-grow overflow-y-auto">
-        <div className="mx-auto bg-white p-8 rounded-lg print:shadow-none print:border text-[14px] leading-relaxed">
+        <div className="mx-auto bg-white p-8 rounded-lg print:shadow-none print:border text-[14px] text-[#4A4A4A] leading-relaxed">
           {/* Header */}
           <header className="mb-6 text-xl">
             <p className="font-semibold">To be submitted to:</p>
@@ -22,30 +22,26 @@ const Forms = () => {
               <p className="text-xl">
                 Federal Law of December 19, 1958 on Road Traffic
               </p>
-              <h1 className="font-bold text-3xl mt-3">
-                MEDICAL CERTIFICATE
-              </h1>
+              <h1 className="font-bold text-3xl mt-3">MEDICAL CERTIFICATE</h1>
               <p className="mt-1 text-2xl">Concerning the aptitude of</p>
             </div>
 
             <form className="space-y-6 ">
               {/* Section 1 — Personal info */}
               <section className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="flex item-center gap-5 ">
-                    <label className="block text-sm font-medium mb-1">
-                      Holder’s No
-                    </label>
-                    <input
-                      type="text"
-                      className="border border-[#D0D5DD] flex-1 rounded"
-                    />
-                  </div>
+                <div className="flex item-center gap-5 ">
+                  <label className="block text-sm font-medium mb-1 w-40">
+                    Holder’s No
+                  </label>
+                  <input
+                    type="text"
+                    className="border border-[#D0D5DD] flex-1 rounded"
+                  />
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="flex item-center gap-5">
-                    <label className="block text-sm font-medium mb-1">
+                    <label className="block text-sm font-medium mb-1 w-40">
                       First Name
                     </label>
                     <input
@@ -54,7 +50,7 @@ const Forms = () => {
                     />
                   </div>
                   <div className="flex item-center gap-5">
-                    <label className="block text-sm font-medium mb-1">
+                    <label className="block text-sm font-medium mb-1 w-40">
                       Last Name
                     </label>
                     <input
@@ -66,7 +62,7 @@ const Forms = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="flex item-center gap-5">
-                    <label className="block text-sm font-medium mb-1">
+                    <label className="block text-sm font-medium mb-1 w-40">
                       Date of birth
                     </label>
                     <input
@@ -75,7 +71,7 @@ const Forms = () => {
                     />
                   </div>
                   <div className="flex item-center gap-5">
-                    <label className="block text-sm font-medium mb-1">
+                    <label className="block text-sm font-medium mb-1 w-40">
                       C/O
                     </label>
                     <input
@@ -86,7 +82,7 @@ const Forms = () => {
                 </div>
 
                 <div className="flex item-center gap-5">
-                  <label className="block text-sm font-medium mb-1">
+                  <label className="block text-sm font-medium mb-1 w-40">
                     Address
                   </label>
                   <input
@@ -97,7 +93,7 @@ const Forms = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="flex item-center gap-5">
-                    <label className="block text-sm font-medium mb-1">
+                    <label className="block text-sm font-medium mb-1 w-40">
                       Locality (City/Town)
                     </label>
                     <input
@@ -106,7 +102,7 @@ const Forms = () => {
                     />
                   </div>
                   <div className="flex item-center gap-5">
-                    <label className="block text-sm font-medium mb-1">
+                    <label className="block text-sm font-medium mb-1 w-40">
                       Postal code
                     </label>
                     <input
@@ -144,14 +140,14 @@ const Forms = () => {
 
               {/* Section 3 — Minimum requirements */}
               <section>
-                <p className="font-semibold">
+                <p className="my-10">
                   2.1 Minimum medical requirements (Annex 1 OAC).
                 </p>
-                <div className="grid md:grid-cols-2 gap-6 mt-3">
-                  <div>
-                    <p className="font-semibold mb-1">
-                      For Group 1 (A, A1, B, B1, F, G, M,
-                      D1&lt;sup&gt;35&lt;/sup&gt;, 106):
+                <div className="flex gap-8">
+                  <div className="w-1/2">
+                    <p className="my-5 mb-10">
+                      <span className="font-bold">For Group 1</span> (A, A1, B,
+                      B1, F, G, M, D1&lt;sup&gt;35&lt;/sup&gt;, 106):
                     </p>
                     <label className="block mb-1">
                       <input type="checkbox" /> Are satisfied
@@ -164,16 +160,15 @@ const Forms = () => {
                       <input type="checkbox" /> Are not satisfied
                     </label>
                     <label className="block text-sm mt-2">
-                      Brief justification:
+                      Brief justification):
                     </label>
-                    <textarea className="border border-[#D0D5DD] flex-1 rounded"></textarea>
+                    <textarea className="border border-[#D0D5DD] flex-1 rounded w-full my-3"></textarea>
                   </div>
-
-                  <div>
-                    <p className=" mb-1">
-                      For Group 2 (D, D1, C, C1, authorization to transport
-                      persons professionally, traffic experts, passenger or
-                      motorized goods vessels):
+                  <div className="w-1/2">
+                    <p className="my-5">
+                      <span className="font-bold">For Group 2</span> (D, D1, C,
+                      C1, authorization to transport persons professionally,
+                      traffic experts, passenger or motorized goods vessels):
                     </p>
                     <label className="block mb-1">
                       <input type="checkbox" /> Are satisfied
@@ -188,19 +183,21 @@ const Forms = () => {
                     <label className="block text-sm mt-2">
                       Brief justification:
                     </label>
-                    <textarea className="border border-[#D0D5DD] flex-1 rounded"></textarea>
+                    <textarea className="border border-[#D0D5DD] flex-1 rounded w-full my-3"></textarea>
                   </div>
                 </div>
               </section>
 
               {/* Section 2.2 */}
               <section>
-                <p className="">2.2 Equivocal result:</p>
-                <p className="ml-4">
-                  Final evaluation must be carried out by a physician recognized
-                  at level 3 or 4.
-                </p>
                 <label className="flex items-start gap-2 mt-2">
+                  2.2<input type="checkbox" className="mt-1" />
+                  <span>
+                     Equivocal result Final evaluation must be carried out by
+                    a physician recognized at level 3 or 4.
+                  </span>
+                </label>
+                <label className="flex items-start gap-2 mt-2 ms-7">
                   <input type="checkbox" className="mt-1" />
                   <span>
                     Given that the candidate’s fitness to drive raises serious
@@ -212,12 +209,10 @@ const Forms = () => {
 
               {/* Section 3 — Vision test */}
               <section>
-                <p className="">
-                  3.1 Vision test (complete for each group)
-                </p>
+                <p className="">3.1 <span className="font-semibold">Vision test</span> (complete for each group)</p>
                 <p>Wears corrective lenses for:</p>
-                <div className="flex flex-wrap gap-12 mt-2">
-                  <div>
+                <div className="flex flex-wrap gap-20 mt-2">
+                  <div className="flex items-center gap-5">
                     <p>Group 1</p>
                     <label className="mr-4">
                       <input type="radio" name="g1" /> Yes
@@ -226,7 +221,7 @@ const Forms = () => {
                       <input type="radio" name="g1" /> No
                     </label>
                   </div>
-                  <div>
+                  <div className="flex items-center gap-5">
                     <p>Group 2</p>
                     <label className="mr-4">
                       <input type="radio" name="g2" /> Yes
@@ -254,9 +249,15 @@ const Forms = () => {
                 <div className="flex flex-wrap items-center gap-2">
                   <input type="checkbox" />
                   <span>In</span>
-                  <input type="number" className="w-16 border border-[#D0D5DD] rounded-md p-1" />
+                  <input
+                    type="number"
+                    className="w-16 border border-[#D0D5DD] rounded-md p-1"
+                  />
                   <span>months by a physician recognized at level</span>
-                  <input type="text" className="w-20 border border-[#D0D5DD] rounded-md p-1" />
+                  <input
+                    type="text"
+                    className="w-20 border border-[#D0D5DD] rounded-md p-1"
+                  />
                   <span>.</span>
                 </div>
                 <div className="grid md:grid-cols-3 gap-4 mt-4">
