@@ -3,10 +3,10 @@ const Forms = () => {
 
   return (
     <div className="h-full flex flex-col">
-      <div className="p-6 print:p-0 flex-grow overflow-y-auto">
-        <div className="mx-auto bg-white p-8 rounded-lg print:shadow-none print:border text-[14px] text-[#4A4A4A] leading-relaxed">
+      <div className=" lg:p-6 print:p-0 flex-grow overflow-y-auto">
+        <div className="mx-auto bg-white p-3 lg:p-8 rounded-lg print:shadow-none print:border text-[14px] text-[#4A4A4A] leading-relaxed">
           {/* Header */}
-          <header className="mb-6 text-xl">
+          <header className="mb-6 text-md lg:text-xl">
             <p className="font-semibold">To be submitted to:</p>
             <p>Vehicle Service Center</p>
             <p>Route de Veyrier 86</p>
@@ -16,14 +16,14 @@ const Forms = () => {
           <div className="border border-[#D0D5DD] p-6">
             {/* Title */}
             <div className="text-center mb-6">
-              <h2 className="font-semibold text-xl uppercase">
+              <h2 className="font-semibold text-md lg:text-xl uppercase">
                 SWISS CONFEDERATION
               </h2>
-              <p className="text-xl">
+              <p className="text-md lg:ext-xl">
                 Federal Law of December 19, 1958 on Road Traffic
               </p>
-              <h1 className="font-bold text-3xl mt-3">MEDICAL CERTIFICATE</h1>
-              <p className="mt-1 text-2xl">Concerning the aptitude of</p>
+              <h1 className="font-bold text-xl  lg:text-3xl mt-3">MEDICAL CERTIFICATE</h1>
+              <p className="mt-1 text-md lg:text-2xl">Concerning the aptitude of</p>
             </div>
 
             <form className="space-y-6 ">
@@ -143,9 +143,9 @@ const Forms = () => {
                 <p className="my-10">
                   2.1 Minimum medical requirements (Annex 1 OAC).
                 </p>
-                <div className="flex gap-8">
+                <div className="flex flex-col lg:flex-row gap-5 lg:gap-8">
                   <div className="w-1/2">
-                    <p className="my-5 mb-10">
+                    <p className="my-5 lg:mb-10">
                       <span className="font-bold">For Group 1</span> (A, A1, B,
                       B1, F, G, M, D1&lt;sup&gt;35&lt;/sup&gt;, 106):
                     </p>
