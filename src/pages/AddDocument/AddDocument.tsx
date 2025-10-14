@@ -8,24 +8,45 @@ interface FileUploaderProps {
 
 export default function AddDocument({
   multiple = true,
-  accept,
+  accept = ".jpg, .png, .doc, .docx",
   onFiles,
 }: FileUploaderProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [files, setFiles] = useState<File[]>([]);
   const [isDragging, setIsDragging] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
- 
   const pushFiles = (newFiles: FileList | File[]) => {
+    setError(null); // Clear previous error
+    const allowedExtensions = accept
+      .split(",")
+      .map((ext) => ext.trim().toLowerCase());
     const arr = Array.from(newFiles);
-    const next =  [...files, ...arr] ;
+
+
+    // checking file type supported or not 
+    const invalidFiles = arr.filter((file) => {
+      const fileExtension = `.${file.name.split(".").pop()?.toLowerCase()}`;
+      return !allowedExtensions.includes(fileExtension);
+    });
+
+    if (invalidFiles.length > 0) {
+      setError("File type is not supported");
+      // Optionally, you could filter out invalid files and only add valid ones
+      // const validFiles = arr.filter(file => !invalidFiles.includes(file));
+      // if (validFiles.length === 0) return;
+      return;
+    }
+
+    const next = [...files, ...arr];
     setFiles(next);
     if (onFiles) onFiles(next);
   };
 
-//   button click upload 
+  //   button click upload
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
+    setError(null);
     pushFiles(e.target.files);
     // reset input so same file can be selected again if user wants
     e.currentTarget.value = "";
@@ -48,6 +69,7 @@ export default function AddDocument({
     e.preventDefault();
     e.stopPropagation();
     setIsDragging(false);
+    setError(null);
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       pushFiles(e.dataTransfer.files);
       e.dataTransfer.clearData();
@@ -56,7 +78,7 @@ export default function AddDocument({
 
   const openFileDialog = () => inputRef.current?.click();
 
-//   remove file 
+  //   remove file
   const removeFileAt = (index: number) => {
     const next = files.filter((_, i) => i !== index);
     setFiles(next);
@@ -105,11 +127,10 @@ export default function AddDocument({
             </button>
             <p className="text-sm text-gray-600 mb-3">
               <p className="my-3">Or</p>
-               drop documents here (jpg, png, docs)
+              drop documents here (jpg, png, docs)
             </p>
-            {accept && (
-              <p className="mt-2 text-xs text-gray-500">Accepted: {accept}</p>
-            )}
+            {/* error message for other type files  */}
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
           </div>
         </div>
 

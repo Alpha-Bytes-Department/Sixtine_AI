@@ -1,3 +1,4 @@
+import { details } from "motion/react-client";
 import { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 
@@ -89,20 +90,21 @@ const ChatSettings = ({setSetting}:{setSetting:React.Dispatch<React.SetStateActi
           <h3 className="text-lg font-semibold">Tools</h3>
           <div className="space-y-2">
             {[
-              { label: "Create Attributes", key: "createAttributes" },
-              { label: "Search Patients", key: "searchPatients" },
-              { label: "Get Patient", key: "getPatient" },
-              { label: "Create Patient", key: "createPatient" },
-              { label: "Update Patient", key: "updatePatient" },
-              { label: "Create Document", key: "createDocument" },
-              { label: "Create Summary", key: "createSummary" },
-              { label: "Open in OpenOffice", key: "openInOpenoffice" },
+              { label: "Create Attributes", key: "createAttributes", details: "Create the document attributes" },
+              { label: "Search Patients", key: "searchPatients", details: "Search for patients (any fields, allows small typos, does not return the complete patient)" },
+              { label: "Get Patient", key: "getPatient", details: "Get a patient by ID, returns the complete patient with records, history, and appointments" },
+              { label: "Create Patient", key: "createPatient", details: "Create a new patient"},
+              { label: "Update Patient", key: "updatePatient", details: "Update a patient by ID"},
+              { label: "Create Document", key: "createDocument", details: "Create a new document"},
+              { label: "Create Summary", key: "createSummary", details: "Create a new summary"},
+              { label: "Open in OpenOffice", key: "openInOpenoffice", details: "Open a document in OpenOffice"},
               {
                 label: "Search Doctor Directory",
                 key: "searchDoctorDirectory",
+                details: "Doctors addresses directory"
               },
-              { label: "Send Notification", key: "sendNotification" },
-            ].map(({ label, key }) => (
+              { label: "Send Notification", key: "sendNotification", details: "Send a notification"},
+            ].map(({ label, key, details }) => (
               <div key={key} className="flex items-center">
                 <input
                   type="checkbox"
@@ -110,7 +112,10 @@ const ChatSettings = ({setSetting}:{setSetting:React.Dispatch<React.SetStateActi
                   onChange={() => handleCheckboxChange(key as keyof Tools)} // Handle checkbox change
                   className="mr-2 w-4 h-4 accent-[#4e7ba0]"
                 />
-                <label className=" text-[#4e7ba0]">{label}</label>
+                <div className="flex  gap-5">
+                  <label className="w-52 text-[#4e7ba0]">{label}</label>
+                  <label className=" text-[#4e7ba0]">{details}</label>
+                </div>
               </div>
             ))}
           </div>
