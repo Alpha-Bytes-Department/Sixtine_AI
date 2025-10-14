@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState(true);
 
   const handleSubmit = ()=>{
     console.log("button clicked");
@@ -38,14 +39,14 @@ const Login = () => {
           <Form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <label
               htmlFor=""
-              className="flex justify-center items-center bg-white text-[#6C7275] rounded-lg px-2"
+              className={`flex justify-center items-center bg-white text-[#6C7275] rounded-lg px-2 ${error? "border-1 border-[#FF0000]" : ""}`}
             >
               <MdOutlineMail className="text-lg"/>
               <input
                 type="text"
                 name="email"
                 id="email"
-                className="p-2 focus:outline-0 flex-1"
+                className={`p-2 focus:outline-0 flex-1 `}
                 placeholder="Email Address"
               />
             </label>
@@ -58,13 +59,13 @@ const Login = () => {
                 type={showPassword? "text" : "password"}
                 name="email"
                 id="email"
-                className="p-2 focus:outline-0"
+                className={"p-2 focus:outline-0"}
                 placeholder="Password"
               />
               {showPassword?<HiOutlineEyeOff onClick={()=>setShowPassword(false)} className="cursor-pointer text-lg"/>:<HiOutlineEye onClick={()=>setShowPassword(true)} className="cursor-pointer text-lg"/>}
             </label>
             <button className="bg-[#048eff] py-2 rounded-lg cursor-pointer transform active:translate-0.9">Login</button>
-            <Link to={"/dashboard/forgot-password"} className="text-sm text-[#EEEEEE]">
+            <Link to={"/dashboard/forgot-password"} className={`text-sm  ${error? "text-[#FF9F9F]" : "text-[#EEEEEE]"}`}>
               Forgot Password
             </Link>
           </Form>

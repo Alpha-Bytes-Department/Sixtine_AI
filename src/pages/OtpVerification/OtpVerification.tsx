@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Form, useNavigate } from "react-router";
 
 const OtpVerification = () => {
     const navigate = useNavigate()
+    const [error, setError] = useState(true);
 
   const handleSubmit = (event:  React.MouseEvent<HTMLFormElement>)=>{
     event.preventDefault();
@@ -41,25 +43,25 @@ const OtpVerification = () => {
                 type="text"
                 name="email"
                 id="email"
-                className="p-2 focus:outline-0 w-16 bg-white rounded-md"
+                className={`p-2 focus:outline-0 w-16 bg-white rounded-md text-center ${error? "border-1 border-[#FF0000]" : ""}`}
               />
               <input
                 type="text"
                 name="email"
                 id="email"
-                className="p-2 focus:outline-0 w-16 bg-white rounded-md"
+                className={`p-2 focus:outline-0 w-16 bg-white rounded-md text-center ${error? "border-1 border-[#FF0000]" : ""}`}
               />
               <input
                 type="text"
                 name="email"
                 id="email"
-                className="p-2 focus:outline-0 w-16 bg-white rounded-md"
+                className={`p-2 focus:outline-0 w-16 bg-white rounded-md text-center ${error? "border-1 border-[#FF0000]" : ""}`}
               />
               <input
                 type="text"
                 name="email"
                 id="email"
-                className="p-2 focus:outline-0 w-16 bg-white rounded-md"
+                className={`p-2 focus:outline-0 w-16 bg-white rounded-md text-center ${error? "border-1 border-[#FF0000]" : ""}`}
               />
             </label>
             <p className="text-center text-[#FF9F9F]">00:30</p>

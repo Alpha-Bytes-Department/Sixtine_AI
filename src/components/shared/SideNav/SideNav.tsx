@@ -9,7 +9,7 @@ import { IoSearch } from "react-icons/io5";
 
 const SideNav = () => {
   const navigate = useNavigate();
-    const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleNavigateChat = () => {
     navigate("/dashboard/chat");
@@ -18,11 +18,7 @@ const SideNav = () => {
   return (
     <div className="bg-[#f1f1f1] w-72 p-3 h-full flex flex-col  items-center gap-5  left-0">
       <div>
-        <img
-          src="/Images/logo/img2.png"
-          alt="logo"
-          className="w-40 h-auto"
-        />
+        <img src="/Images/logo/img2.png" alt="logo" className="w-40 h-auto" />
       </div>
       <div className="flex flex-col gap-5">
         <div>
@@ -92,24 +88,30 @@ const SideNav = () => {
             <div className="flex flex-col gap-2">
               <NavLink
                 to={"/dashboard/users"}
-                className={({isActive}) =>
-                  `flex gap-3 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${isActive ? "bg-[#C0E0FA]":""}`
+                className={({ isActive }) =>
+                  `flex gap-3 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
+                    isActive ? "bg-[#C0E0FA]" : ""
+                  }`
                 }
               >
                 <p>User</p>
               </NavLink>
               <NavLink
                 to={"/dashboard/patients"}
-                className={({isActive}) =>
-                  `flex gap-3 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${isActive ? "bg-[#C0E0FA]":""}`
+                className={({ isActive }) =>
+                  `flex gap-3 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
+                    isActive ? "bg-[#C0E0FA]" : ""
+                  }`
                 }
               >
                 <p>Patients</p>
               </NavLink>
               <NavLink
                 to={"/dashboard/forms"}
-                className={({isActive}) =>
-                  `flex gap-3 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${isActive ? "bg-[#C0E0FA]":""}`
+                className={({ isActive }) =>
+                  `flex gap-3 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
+                    isActive ? "bg-[#C0E0FA]" : ""
+                  }`
                 }
               >
                 <p>Forms</p>
@@ -136,6 +138,12 @@ const SideNav = () => {
               className=" text-sm border-0 text-white rounded-md focus:outline-none "
             />
           </div>
+        </div>
+        <div className="text-[#85AECF] mt-2.5 mb-3 flex justify-between items-center cursor-pointer">
+          <span>Today</span> <FaCaretRight />
+        </div>
+        <div className="text-[#85AECF] mt-2.5 mb-3 flex justify-between items-center cursor-pointer">
+          <span>Others</span> <FaCaretRight />
         </div>
       </div>
     </div>
