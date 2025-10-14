@@ -9,8 +9,9 @@ const SetNewPassword = () => {
   const navigate = useNavigate();
 
 
-  const handleSubmit = ()=>{
-    navigate("/dashboard/password-update/successful")
+  const handleSubmit = (event:  React.MouseEvent<HTMLFormElement>)=>{
+    event.preventDefault();
+    navigate("/dashboard/password-update/successful");
   }
 
 

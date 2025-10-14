@@ -20,6 +20,7 @@ import UserDetails from "../pages/UserDetails/UserDetails";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import OtpVerification from "../pages/OtpVerification/OtpVerification";
 import SetNewPassword from "../pages/SetNewPassword/SetNewPassword";
+import PassUSuccessFull from "../pages/PassUSuccessFull/PassUSuccessFull";
 
 
 export const router = createBrowserRouter([
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "set-new-password",
         element: <SetNewPassword />,
+      },
+      {
+        path: "password-update/successful",
+        element: <PassUSuccessFull />,
       },
       {
         path: "profile",
