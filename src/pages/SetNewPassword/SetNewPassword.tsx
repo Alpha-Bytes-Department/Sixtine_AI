@@ -1,14 +1,16 @@
-import { Form, Link } from "react-router";
-import { MdOutlineMail } from "react-icons/md";
+import { Form, useNavigate } from "react-router";
 import { FiLock } from "react-icons/fi";
 import {HiOutlineEye , HiOutlineEyeOff } from "react-icons/hi";
 import { useState } from "react";
 
-const Login = () => {
-  const [showPassword, setShowPassword] = useState(false)
+const SetNewPassword = () => {
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
+
 
   const handleSubmit = ()=>{
-    console.log("button clicked");
+    navigate("/dashboard/password-update/successful")
   }
 
 
@@ -30,24 +32,25 @@ const Login = () => {
         />
       </div>
       <div className="w-full lg:w-1/2 h-full bg-[#4e7ba0] flex justify-center items-center">
-        <div className="text-white space-y-4">
+        <div className="text-white space-y-4 max-w-[300px]">
           <h1 className=" text-3xl">
-            Welcome to <span className="text-[#C2FFC8] italic">Aida</span>
+            New Password
           </h1>
-          <p className="text-sm text-[#EEEEEE]">Please login to continue</p>
-          <Form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <p className="text-sm text-[#EEEEEE]">Set the new password for your account so you can login and access all features.</p>
+          <Form onSubmit={handleSubmit} className="flex flex-col gap-3 ">
             <label
               htmlFor=""
               className="flex justify-center items-center bg-white text-[#6C7275] rounded-lg px-2"
             >
-              <MdOutlineMail className="text-lg"/>
+              <FiLock className="text-lg" />
               <input
-                type="text"
+                type={showNewPassword? "text" : "password"}
                 name="email"
                 id="email"
-                className="p-2 focus:outline-0 flex-1"
-                placeholder="Email Address"
+                className="p-2 focus:outline-0"
+                placeholder="Enter new password"
               />
+              {showNewPassword?<HiOutlineEyeOff onClick={()=>setShowNewPassword(false)} className="cursor-pointer text-lg"/>:<HiOutlineEye onClick={()=>setShowNewPassword(true)} className="cursor-pointer text-lg"/>}
             </label>
             <label
               htmlFor=""
@@ -55,18 +58,15 @@ const Login = () => {
             >
               <FiLock className="text-lg" />
               <input
-                type={showPassword? "text" : "password"}
+                type={showConfirmPassword? "text" : "password"}
                 name="email"
                 id="email"
                 className="p-2 focus:outline-0"
-                placeholder="Password"
+                placeholder="Confirm Password"
               />
-              {showPassword?<HiOutlineEyeOff onClick={()=>setShowPassword(false)} className="cursor-pointer text-lg"/>:<HiOutlineEye onClick={()=>setShowPassword(true)} className="cursor-pointer text-lg"/>}
+              {showConfirmPassword?<HiOutlineEyeOff onClick={()=>setShowConfirmPassword(false)} className="cursor-pointer text-lg"/>:<HiOutlineEye onClick={()=>setShowConfirmPassword(true)} className="cursor-pointer text-lg"/>}
             </label>
-            <button className="bg-[#048eff] py-2 rounded-lg cursor-pointer transform active:translate-0.9">Login</button>
-            <Link to={"/dashboard/forgot-password"} className="text-sm text-[#EEEEEE]">
-              Forgot Password
-            </Link>
+            <button className="bg-[#048eff] py-2 rounded-lg cursor-pointer transform active:translate-0.9">Update password</button>
           </Form>
         </div>
       </div>
@@ -74,4 +74,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SetNewPassword;

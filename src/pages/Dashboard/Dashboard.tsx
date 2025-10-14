@@ -4,9 +4,12 @@ import SideNav from "../../components/shared/SideNav/SideNav";
 const Dashboard = () => {
 
   const isLogIn = useMatch("/dashboard/login");
+  const forgotPassword = useMatch("/dashboard/forgot-password");
+  const OtpVerification = useMatch("/dashboard/otp-verification");
+  const setNewPassword = useMatch("/dashboard/set-new-password");
   return (
     <div className="flex w-full h-screen bg-white">
-      {isLogIn ? <></> : <SideNav />}
+      {isLogIn || forgotPassword || OtpVerification || setNewPassword ? <></> : <SideNav />}
       <Outlet />
     </div>
   );
