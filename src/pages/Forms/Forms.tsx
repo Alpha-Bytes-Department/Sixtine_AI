@@ -2,9 +2,9 @@ const Forms = () => {
   const handlePrint = () => window.print();
 
   return (
-    <div className="h-full flex flex-col">
-      <div className=" lg:p-6 print:p-0 flex-grow overflow-y-auto">
-        <div className="mx-auto bg-white sm:p-2 p-3 lg:p-8 rounded-lg print:shadow-none print:border text-[14px] text-[#4A4A4A] leading-relaxed">
+    <div className="h-full mx-auto flex flex-col">
+      <div className=" lg:p-6 print:p-0 flex-grow overflow-y-auto custom-scrollbar ">
+        <div className=" bg-white sm:p-2 p-3 lg:p-8 rounded-lg print:shadow-none print:border text-[14px] text-[#4A4A4A] leading-relaxed">
           {/* Header */}
           <header className="mb-6 text-md lg:text-xl">
             <p className="font-semibold">To be submitted to:</p>
@@ -12,7 +12,7 @@ const Forms = () => {
             <p>Route de Veyrier 86</p>
             <p>1227 Carouge</p>
           </header>
-          <div className="border border-[#D0D5DD] p-6">
+          <div className="border  border-[#D0D5DD] p-6">
             {/* Title */}
             <div className="text-center mb-6">
               <h2 className="font-semibold text-md lg:text-xl uppercase">
