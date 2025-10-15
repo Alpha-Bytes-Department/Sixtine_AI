@@ -5,7 +5,7 @@ const Settings = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate("/dashboard/profile");
   };
 
   return (
