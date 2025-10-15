@@ -9,7 +9,7 @@ const Profile = () => {
   };
   return (
     <div className="flex-1 flex justify-center items-center">
-      <div className="shadow-[0_0_4px_0_#00000040]  px-36 py-12 relative">
+      <div className="shadow-[0_0_4px_0_#00000040] px-10  lg:px-36 py-12 relative">
         <button onClick={handleGoBack}>
           <RxCross2 className="absolute top-5 right-5 text-xl text-[#4e7ba0] cursor-pointer" />
         </button>
@@ -52,7 +52,7 @@ const Profile = () => {
             <div className="">
               <Link
                 to={"/dashboard/change-password"}
-                className="bg-[#4E7BA0] text-white rounded-sm px-10 py-2 cursor-pointer transition-transform duration-200 ease-in-out  active:scale-95"
+                className="bg-[#4E7BA0] text-white rounded-sm px-2 lg:px-8 py-2 cursor-pointer transition-transform duration-200 ease-in-out "
               >
                 Change Password
               </Link>
