@@ -1,16 +1,22 @@
-import {  IoSearch, IoLogOutOutline } from "react-icons/io5";
+import { IoSearch, IoLogOutOutline } from "react-icons/io5";
+import { RxCross2 } from "react-icons/rx";
 import { HiOutlineDocumentPlus, HiOutlineMicrophone } from "react-icons/hi2";
 import { LuMessageCircleMore } from "react-icons/lu";
 import { FaCaretRight } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
+import { TiArrowSortedDown } from "react-icons/ti";
 
 const SideNav = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [isTodayCollapsed, setTodayCollapsed] = useState(true);
+  const [isOthersCollapsed, setOthersCollapsed] = useState(true);
+  const [isUsersCollapsed, setUsersCollapsed] = useState(true);
 
+  // navigate to chat
   const handleNavigateChat = () => navigate("/dashboard/chat");
 
   return (
@@ -25,7 +31,6 @@ const SideNav = () => {
         </button>
         <img src="/Images/logo/img2.png" alt="logo" className="w-24 h-auto" />
       </div>
-
       {/* ======= Overlay for mobile ======= */}
       {isOpen && (
         <div
@@ -36,18 +41,25 @@ const SideNav = () => {
 
       {/* ======= Sidebar ======= */}
       <div
-        className={`fixed lg:static top-0 left-0 h-full  z-50 bg-[#f1f1f1] p-4 overflow-y-auto custom-scrollbar  flex flex-col items-center gap-5 transition-all duration-300 ease-in-out
+        className={`fixed lg:static top-0 left-0 h-full z-50 bg-[#f1f1f1] p-4 overflow-y-auto custom-scrollbar flex flex-col items-center gap-5 transition-all duration-300 ease-in-out
         ${
           isOpen
-            ? "translate-x-0 w-64"
+            ? "translate-x-0 w-64 pt-10"
             : "-translate-x-full lg:translate-x-0 lg:w-64"
         }`}
       >
+        {/* ========== Close icone ========== */}
+        {<button onClick={()=>setIsOpen(false)} className={`${isOpen ? "block" : "hidden"}`}>
+          <RxCross2 className="absolute top-5 right-5 text-xl text-[#4e7ba0] cursor-pointer" />
+        </button>}
         {/* ========== Logo (Desktop only) ========== */}
         <div className="hidden lg:flex justify-between items-center w-full">
-          <img src="/Images/logo/img2.png" alt="logo" className="w-20 mx-auto xl:w-32 h-auto" />
+          <img
+            src="/Images/logo/img2.png"
+            alt="logo"
+            className="w-20 mx-auto xl:w-32 h-auto"
+          />
         </div>
-
         {/* ========== User Info ========== */}
         <div className="">
           <div className="flex justify-between items-center gap-1">
@@ -64,8 +76,27 @@ const SideNav = () => {
               <IoLogOutOutline className="text-2xl" />
             </button>
           </div>
-          <div className="text-[#85AECF] mt-2.5 mb-3 flex justify-between items-center cursor-pointer">
-            <span>Synthetic Medical Practice</span> <FaCaretRight />
+          <div className="text-[#85AECF] mt-2.5 mb-3 flex flex-col justify-between items-center cursor-pointer">
+            <div
+              onClick={() => setUsersCollapsed(!isUsersCollapsed)}
+              className="text-[#4E7BA0]  flex justify-between items-center cursor-pointer w-full"
+            >
+              <span>Synthetic Medical Practice</span>{" "}
+              {isUsersCollapsed ? <FaCaretRight /> : <TiArrowSortedDown />}
+            </div>
+            <div
+              className={`text-gray-500 ${
+                isUsersCollapsed
+                  ? "hidden"
+                  : "h-20 overflow-y-auto custom-scrollbar"
+              }`}
+            >
+              <p>Synthetic Medical Practice</p>
+              <p>Synthetic Medical Practice</p>
+              <p>Synthetic Medical Practice</p>
+              <p>Synthetic Medical Practice</p>
+              <p>Synthetic Medical Practice</p>
+            </div>
           </div>
           <button
             onClick={handleNavigateChat}
@@ -114,9 +145,7 @@ const SideNav = () => {
             </NavLink>
           </div>
         </div>
-
-        <hr className="border-[#D9D9D9] my-3 w-full" />
-
+        <hr className="border-[#D9D9D9]  w-full" />
         {/* ========== Admin Section ========== */}
         <div className="w-full">
           <h1 className="text-xl text-[#4E7BA0] mb-2">Admin</h1>
@@ -153,9 +182,7 @@ const SideNav = () => {
             </NavLink>
           </div>
         </div>
-
-        <hr className="border-[#D9D9D9] my-3 w-full" />
-
+        <hr className="border-[#D9D9D9]  w-full" />
         {/* ========== Bottom Buttons ========== */}
         <Link
           to={"/dashboard/chats-history"}
@@ -163,9 +190,8 @@ const SideNav = () => {
         >
           Chats History
         </Link>
-
         {/*=================== Search Bar =================== */}
-        <div className="mb-4 w-full">
+        <div className="w-full">
           <div className="flex items-center bg-[#4E7BA080] text-white gap-2 p-2 rounded">
             <IoSearch className="text-lg" />
             <input
@@ -177,12 +203,35 @@ const SideNav = () => {
             />
           </div>
         </div>
-
-        <div className="text-[#85AECF] mt-2.5 mb-3 flex justify-between items-center cursor-pointer w-full">
-          <span>Today</span> <FaCaretRight />
-        </div>
-        <div className="text-[#85AECF] mt-2.5 flex justify-between items-center cursor-pointer w-full">
-          <span>Others</span> <FaCaretRight />
+        <div className="w-full">
+          <div>
+            <div
+              onClick={() => setTodayCollapsed(!isTodayCollapsed)}
+              className="text-[#4E7BA0] flex justify-between items-center cursor-pointer w-full"
+            >
+              <span>Today</span>{" "}
+              {isTodayCollapsed ? <FaCaretRight /> : <TiArrowSortedDown />}
+            </div>
+            <div
+              className={`text-gray-500 ${isTodayCollapsed ? "hidden" : ""}`}
+            >
+              Today's record will show here
+            </div>
+          </div>
+          <div>
+            <div
+              onClick={() => setOthersCollapsed(!isOthersCollapsed)}
+              className="text-[#4E7BA0]  flex justify-between items-center cursor-pointer w-full"
+            >
+              <span>Others</span>{" "}
+              {isOthersCollapsed ? <FaCaretRight /> : <TiArrowSortedDown />}
+            </div>
+            <div
+              className={`text-gray-500 ${isOthersCollapsed ? "hidden" : ""}`}
+            >
+              Others record will show here
+            </div>
+          </div>
         </div>
       </div>
     </div>
