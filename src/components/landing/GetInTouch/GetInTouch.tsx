@@ -1,4 +1,4 @@
-import { Form } from "react-router";
+import { Form, useNavigate } from "react-router";
 import { useStatus } from "../../../providers/StatusProvider";
 import { useRef } from "react";
 import { motion } from "motion/react";
@@ -18,6 +18,7 @@ interface HandleSubmitEvent extends React.MouseEvent<HTMLButtonElement> {
 
 const GetInTouch = () => {
   const { isEnglish } = useStatus();
+  const navigate = useNavigate();
 
   const formDataRef = useRef<FormData>({
     name: "",
@@ -42,8 +43,7 @@ const GetInTouch = () => {
 
   const handleSubmit = (e: HandleSubmitEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formDataRef.current);
-    alert("Access request submitted successfully!");
+    navigate("/dashboard/chat");
   };
 
   return (
