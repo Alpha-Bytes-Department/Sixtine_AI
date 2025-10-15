@@ -124,34 +124,34 @@ export default function AddConsultion({
 
         {/* Audio record button  */}
 
-        <div className=" gap-5 mt-16 cursor-pointer relative">
-          {/* <motion.div
+      {files.length < 0 && <div className=" gap-5 mt-16 cursor-pointer relative">
+        {/* <motion.div
+          initial={{ opacity: 0, scale: 1 }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            transition: { duration: 1.5, repeat: Infinity, ease: "linear", delay: 1 },
+          }}
+          className="w-[100px] h-[100px] rounded-full bg-[#FF4D4E4D] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2  z-10"
+        >
+        </motion.div> */}
+        <div onClick={()=>setRecording(true)}>
+          <motion.div
             initial={{ opacity: 0, scale: 1 }}
             animate={{
               opacity: 1,
               scale: 1,
-              transition: { duration: 1.5, repeat: Infinity, ease: "linear", delay: 1 },
+              transition: { duration: 2, repeat: Infinity, ease: "linear" },
             }}
-            className="w-[100px] h-[100px] rounded-full bg-[#FF4D4E4D] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2  z-10"
-          >
-          </motion.div> */}
-          <div onClick={()=>setRecording(true)}>
-            <motion.div
-              initial={{ opacity: 0, scale: 1 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                transition: { duration: 2, repeat: Infinity, ease: "linear" },
-              }}
-              className="w-[76px] h-[76px] rounded-full bg-[#FF4D4E80] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 "
-            ></motion.div>
-            <motion.div className="w-[50px] h-[50px] rounded-full bg-[#FF4D4E] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30"></motion.div>
-          </div>
-
-          <p className="text-[#7E7E7E] absolute left-1/2 top-20 -translate-x-1/2 -translate-y-1/2">
-            Tap here
-          </p>
+            className="w-[76px] h-[76px] rounded-full bg-[#FF4D4E80] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 "
+          ></motion.div>
+          <motion.div className="w-[50px] h-[50px] rounded-full bg-[#FF4D4E] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30"></motion.div>
         </div>
+
+        <p className="text-[#7E7E7E] absolute left-1/2 top-20 -translate-x-1/2 -translate-y-1/2">
+          Tap here
+        </p>
+      </div>}
 
         {/* Files list / preview */}
         {files.length > 0 && (
