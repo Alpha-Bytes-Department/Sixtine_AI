@@ -45,7 +45,7 @@ const ChatSettings = ({setSetting}:{setSetting:React.Dispatch<React.SetStateActi
 
   return (
     <div className="h-full w-full bg-[#00000099] text-[#4A4A4A]">
-      <div className="bg-white p-5 lg:p-6 rounded-lg shadow-lg max-w-5xl mx-auto flex flex-col justify-center gap-3 lg:gap-5 mt-5 lg:mt-10">
+      <div className="bg-white mx-2 lg:mx-auto p-5 lg:p-6 rounded-lg shadow-lg lg:max-w-5xl  flex flex-col justify-center gap-3 lg:gap-5 mt-5 lg:mt-10">
         <div className="flex justify-between items-center">
           <h2 className="text-xl lg:text-3xl font-bold ">Settings</h2>
           <button className="cursor-pointer" onClick={()=>setSetting(false)}>

@@ -45,7 +45,7 @@ const PatientsTable = () => {
       {/* Table */}
       <div className="flex-grow overflow-y-auto">
         <div className="relative">
-          <table className="w-full text-left">
+          <table className="w-full hidden md:table text-left">
             <thead className="sticky top-0 bg-white border-b">
               <tr>
                 <th className=" py-2 font-semibold">First Name</th>
@@ -73,8 +73,37 @@ const PatientsTable = () => {
               ))}
             </tbody>
           </table>
+          <div className="md:hidden"></div>
+            {filteredPatients.length === 0 ? (
+              <div className="text-center text-gray-500 mt-10">
+                No patients found.
+              </div>
+            ) : (
+              <div>
+                {filteredPatients.map((patient, idx) => (
+                  <div
+                    key={idx} onClick={() => handleNavigate(idx)}
+                    className="border-b hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="py-2 cursor-pointer px-2 sm:px-4 text-start truncate min-w-[100px]">
+                      <span className="font-semibold pr-3">First Name:</span> {patient.firstName}
+                    </div>
+                    <div className="py-2 cursor-pointer px-2 sm:px-4 truncate min-w-[100px]">
+                      <span className="font-semibold pr-3">Last Name:</span> {patient.lastName}
+                    </div>
+                    <div className="py-2 px-2 sm:px-4 min-w-[120px]">
+                      <span className="font-semibold pr-3">Date of Birth:</span> {patient.dob}
+                    </div>
+                    <div className="py-2 px-2 sm:px-4 min-w-[120px]">
+                      <span className="font-semibold pr-3">Date Created:</span> {patient.created}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+     
     </div>
   );
 };
