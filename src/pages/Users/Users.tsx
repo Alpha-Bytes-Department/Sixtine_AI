@@ -9,7 +9,11 @@ import { FaRegEdit } from "react-icons/fa";
 const Users = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [editingUser, setEditingUser] = useState<number | null>(null);
-  const [editedData, setEditedData] = useState({ firstName: "", lastName: "" });
+  const [editedData, setEditedData] = useState({
+    firstName: "",
+    lastName: "",
+    role: "",
+  });
   const [patients, setPatients] = useState(
     Array(30)
       .fill(null)
@@ -35,6 +39,7 @@ const Users = () => {
     setEditedData({
       firstName: user.firstName,
       lastName: user.lastName,
+      role: user.role,
     });
   };
 
@@ -46,17 +51,18 @@ const Users = () => {
               ...patient,
               firstName: editedData.firstName,
               lastName: editedData.lastName,
+              role: editedData.role,
             }
           : patient
       )
     );
     setEditingUser(null);
-    setEditedData({ firstName: "", lastName: "" });
+    setEditedData({ firstName: "", lastName: "", role: "" });
   };
 
   const handleCancel = () => {
     setEditingUser(null);
-    setEditedData({ firstName: "", lastName: "" });
+    setEditedData({ firstName: "", lastName: "", role: "" });
   };
 
   const filteredPatients = patients.filter(
@@ -157,7 +163,26 @@ const Users = () => {
                     </td>
                     <td className="py-2 px-2 sm:px-4 min-w-[80px]">
                       <div className="flex items-center gap-10">
-                        <span>{patient.role}</span>
+                        {editingUser === idx ? (
+                          <select
+                            value={editedData.role}
+                            onChange={(e) =>
+                              setEditedData({
+                                ...editedData,
+                                role: e.target.value,
+                              })
+                            }
+                            className="border border-gray-300 rounded px-2 py-1 text-sm"
+                          >
+                            <option value="doctor">Doctor</option>
+                            <option value="nurse">Nurse</option>
+                            <option value="admin">Admin</option>
+                            <option value="patient">Patient</option>
+                          </select>
+                        ) : (
+                          <span>{patient.role}</span>
+                        )}
+
                         {editingUser === idx ? (
                           <div className="flex gap-2 ml-2">
                             <button
@@ -260,7 +285,25 @@ const Users = () => {
                       <div className="py-2 px-2 sm:px-4 min-w-[80px] flex items-center justify-between">
                         <div>
                           <span className="font-semibold pr-3">Role:</span>
-                          {patient.role}
+                          {editingUser === idx ? (
+                            <select
+                              value={editedData.role}
+                              onChange={(e) =>
+                                setEditedData({
+                                  ...editedData,
+                                  role: e.target.value,
+                                })
+                              }
+                              className="border border-gray-300 rounded px-2 py-1 text-sm ml-2"
+                            >
+                              <option value="doctor">Doctor</option>
+                              <option value="nurse">Nurse</option>
+                              <option value="admin">Admin</option>
+                              <option value="patient">Patient</option>
+                            </select>
+                          ) : (
+                            patient.role
+                          )}
                         </div>
                         {editingUser === idx ? (
                           <div className="flex gap-3">
