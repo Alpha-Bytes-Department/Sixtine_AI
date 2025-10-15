@@ -18,7 +18,7 @@ type Tools = {
 
 const ChatSettings = ({setSetting}:{setSetting:React.Dispatch<React.SetStateAction<boolean>>}) => {
   // Explicitly define the type for the 'tools' state
-  const [model, setModel] = useState("Openai-gpt-5");
+  // const [model, setModel] = useState("Openai-gpt-5");
   const [audioSource, setAudioSource] = useState("Unknown device");
 
   // Explicitly type the tools state

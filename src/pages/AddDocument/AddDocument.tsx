@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import DocumentSummery from "../../components/AddDocument/DocumentSummery/DocumentSummery";
 
 interface FileUploaderProps {
   multiple?: boolean;
@@ -95,7 +96,7 @@ export default function AddDocument({
 
   return (
     <div className="h-full w-full bg-white flex justify-center items-center">
-      <div className={`mx-auto ${files.length > 0 ? "flex gap-5 h-full" : ""}`}>
+      <div className={`mx-auto ${files.length > 0 ? "flex flex-col p-10 2xl:m-auto 2xl:flex-row xl:gap-5 h-full overflow-y-auto" : ""}`}>
         {/* file upload  */}
         <div
           onDragOver={handleDragOver}
@@ -134,10 +135,10 @@ export default function AddDocument({
         </div>
         {/* Files list / preview */}
         {files.length > 0 && (
-          <div className="mt-4 space-y-2">
+          <div className="mt-4 space-y-2 min-w-64">
             <div className="flex items-center justify-between text-sm text-gray-700">
               <span className="font-medium">
-                Selected file{files.length > 1 ? "s" : ""}
+                Preview file{files.length > 1 ? "s" : ""}
               </span>
               <button
                 type="button"
@@ -190,6 +191,9 @@ export default function AddDocument({
             </ul>
           </div>
         )}
+        {
+          files.length > 0 && (<DocumentSummery/>)
+        }
       </div>
     </div>
   );

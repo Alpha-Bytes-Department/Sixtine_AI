@@ -1,4 +1,4 @@
-import {  IoSearch, IoClose, IoLogOutOutline } from "react-icons/io5";
+import {  IoSearch, IoLogOutOutline } from "react-icons/io5";
 import { HiOutlineDocumentPlus, HiOutlineMicrophone } from "react-icons/hi2";
 import { LuMessageCircleMore } from "react-icons/lu";
 import { FaCaretRight } from "react-icons/fa";
