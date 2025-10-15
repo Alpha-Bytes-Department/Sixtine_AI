@@ -41,6 +41,22 @@ const Profile = () => {
             <span>abc@gmail.com</span>
           </div>
           <div className="flex gap-12">
+            <span className="w-40 font-semibold">Role</span>
+            <span>Doctor</span>
+          </div>
+          <div className="flex gap-12">
+            <span className="w-40 font-semibold">Department</span>
+            <span>Psycology</span>
+          </div>
+          <div className="flex gap-12">
+            <span className="w-40 font-semibold">Clinic</span>
+            <span>xyz health care</span>
+          </div>
+          <div className="flex gap-12">
+            <span className="w-40 font-semibold">Clinic location</span>
+            <span>1820, Navada, America</span>
+          </div>
+          <div className="flex gap-12">
             <span className="w-40 font-semibold">Registration Date</span>
             <span>29-10-2002</span>
           </div>

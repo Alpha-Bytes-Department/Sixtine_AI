@@ -5,13 +5,13 @@ import { FaCamera } from "react-icons/fa";
 const EditProfile = () => {
   return (
     <div className="flex-1 flex justify-center items-center">
-      <div className="shadow-[0_0_4px_0_#00000040]  p-32 relative">
+      <div className="shadow-[0_0_4px_0_#00000040] p-4 sm:p-8 md:p-12 lg:p-16 xl:p-20 relative w-full max-w-2xl mx-auto">
         <Link to={"/dashboard/profile"}>
           <RxCross2 className="absolute top-5 right-5 text-xl text-[#4E7BA0]" />
         </Link>
-        <div className="flex flex-col gap-5 text-[#4A4A4A] ">
-          <h1 className="text-3xl font-semibold">Edit Profile</h1>
-          <div className="relative">
+        <div className="flex flex-col gap-5 text-[#4A4A4A]">
+          <h1 className="text-2xl sm:text-3xl font-semibold">Edit Profile</h1>
+          <div className="relative self-center">
             <img
               src="/Images/Others/demoProfile.jpg"
               alt="profile"
@@ -21,40 +21,83 @@ const EditProfile = () => {
               <FaCamera className="text-[#4E7BA0]" />
             </p>
           </div>
-          <div className="flex gap-12">
-            <span className="w-40 font-semibold">First name</span>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-12">
+            <span className="w-full sm:w-40 font-semibold">First name</span>
             <input
               type="text"
-              className="bg-[#EAEAEA] px-2 rounded-sm py-2"
+              className="bg-[#EAEAEA] px-2 rounded-sm py-2 w-full"
               placeholder="First name"
               name="firstName"
               id="firstName"
             />
           </div>
-          <div className="flex gap-12">
-            <span className="w-40 font-semibold">Last Name</span>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-12">
+            <span className="w-full sm:w-40 font-semibold">Last Name</span>
             <input
               type="text"
-              className="bg-[#EAEAEA] px-2 rounded-sm py-2"
+              className="bg-[#EAEAEA] px-2 rounded-sm py-2 w-full"
               placeholder="Last name"
               name="lastName"
               id="lastName"
             />
           </div>
-          <div className="flex items-center gap-12">
-            <div className="">
-              <button className="bg-[#4E7BA0] text-white rounded-sm px-14 py-2 cursor-pointer transition-transform duration-200 ease-in-out  active:scale-95">
-                Save
-              </button>
-            </div>
-            <div className="">
-              <Link
-                to={"/dashboard/profile"}
-                className="border border-[#4E7BA0] text-[#4E7BA0] rounded-sm mx-3 px-7 py-2 cursor-pointer"
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-12">
+            <span className="w-full sm:w-40 font-semibold">Department</span>
+            <input
+              type="text"
+              className="bg-[#EAEAEA] px-2 rounded-sm py-2 w-full"
+              placeholder="department"
+              name="department"
+              id="department"
+            />
+          </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-12">
+            <span className="w-full sm:w-40 font-semibold">Location</span>
+            <input
+              type="text"
+              className="bg-[#EAEAEA] px-2 rounded-sm py-2 w-full"
+              placeholder="location"
+              name="location"
+              id="location"
+            />
+          </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-12">
+            <span className="w-full sm:w-40 font-semibold">Organization</span>
+            <input
+              type="text"
+              className="bg-[#EAEAEA] px-2 rounded-sm py-2 w-full"
+              placeholder="clinic"
+              name="organization"
+              id="organization"
+            />
+          </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-12">
+            <span className="w-full sm:w-40 font-semibold">Role</span>
+            <div className="relative w-full">
+              <select
+                name="role"
+                id="role"
+                className="w-full bg-[#EAEAEA] text-gray-700 px-3 py-2 rounded-md outline-none cursor-pointer appearance-none"
               >
-                Cancel
-              </Link>
+                <option value="" className="text-[#a1a1a11a] " disabled selected hidden>
+                  Select Role
+                </option>
+                <option value="doctor">Doctor</option>
+                <option value="nurse">Nurse</option>
+                <option value="medical assistant">Medical Assistant</option>
+              </select>
             </div>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-12  mt-4">
+            <button className="bg-[#4E7BA0] text-white rounded-sm px-14 py-2 cursor-pointer transition-transform duration-200 ease-in-out active:scale-95 w-full sm:w-auto">
+              Save
+            </button>
+            <Link
+              to={"/dashboard/profile"}
+              className="border border-[#4E7BA0] text-[#4E7BA0] rounded-sm px-7 py-2 cursor-pointer w-full sm:w-auto text-center"
+            >
+              Cancel
+            </Link>
           </div>
         </div>
       </div>

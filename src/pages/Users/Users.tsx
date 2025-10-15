@@ -17,7 +17,7 @@ const Users = () => {
     firstName: "Abdessattar",
     lastName: "GHARSELAOUI",
     doc: "3 months ago",
-    role: "user",
+    role: "doctor",
   });
 
   const filteredPatients = patients.filter(

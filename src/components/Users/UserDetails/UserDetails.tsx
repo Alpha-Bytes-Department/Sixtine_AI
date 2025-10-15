@@ -1,11 +1,11 @@
 import { RxCross2 } from "react-icons/rx";
-import {  useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 const UserDetails = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate("/dashboard/users");
   };
 
   return (
@@ -32,6 +32,22 @@ const UserDetails = () => {
           <div className="flex gap-2 lg:gap-12">
             <span className="w-40 font-semibold">Email</span>
             <span>abcgangubd@gmail.com</span>
+          </div>
+          <div className="flex gap-12">
+            <span className="w-40 font-semibold">Role</span>
+            <span>Doctor</span>
+          </div>
+          <div className="flex gap-12">
+            <span className="w-40 font-semibold">Department</span>
+            <span>Psycology</span>
+          </div>
+          <div className="flex gap-12">
+            <span className="w-40 font-semibold">Clinic</span>
+            <span>xyz health care</span>
+          </div>
+          <div className="flex gap-12">
+            <span className="w-40 font-semibold">Clinic location</span>
+            <span>1820, Navada, America</span>
           </div>
           <div className="flex gap-2 lg:gap-12">
             <span className="w-40 font-semibold">Registration Date</span>
