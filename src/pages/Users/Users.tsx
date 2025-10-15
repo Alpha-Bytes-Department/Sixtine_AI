@@ -1,3 +1,4 @@
+import { div } from "motion/react-client";
 import { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { useNavigate } from "react-router";
@@ -31,7 +32,7 @@ const Users = () => {
       {/* Search Bar */}
       <div className="mb-4">
         <div className="flex items-center bg-[#DBDBDB] w-64 gap-2 p-2 rounded">
-            <IoSearch className="text-lg"/>
+          <IoSearch className="text-lg" />
           <input
             type="text"
             placeholder="Search"
@@ -47,20 +48,24 @@ const Users = () => {
         <div className="relative">
           <div className="overflow-x-auto">
             <table className="w-full text-left min-w-full">
-              <thead className="sticky top-0 bg-white border-b">
+              <thead className="sticky top-0 bg-white hidden md:table-header-group border-b">
                 <tr>
-                  <th className="py-2 font-semibold px-2 sm:px-4">First Name</th>
+                  <th className="py-2 font-semibold px-2 sm:px-4">
+                    First Name
+                  </th>
                   <th className="py-2 font-semibold px-2 sm:px-4">Last Name</th>
-                  <th className="py-2 font-semibold px-2 sm:px-4">Date Created</th>
+                  <th className="py-2 font-semibold px-2 sm:px-4">
+                    Date Created
+                  </th>
                   <th className="py-2 font-semibold px-2 sm:px-4">Role</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className=" hidden md:table-row-group">
                 {filteredPatients.map((patient, idx) => (
                   <tr
                     key={idx}
                     className="border-b hover:bg-gray-50 transition-colors"
-                    onClick={()=>handleNavigate(idx)}
+                    onClick={() => handleNavigate(idx)}
                   >
                     <td className="py-2 cursor-pointer px-2 sm:px-4 truncate min-w-[100px]">
                       {patient.firstName}
@@ -68,12 +73,46 @@ const Users = () => {
                     <td className="py-2 cursor-pointer px-2 sm:px-4 truncate min-w-[100px]">
                       {patient.lastName}
                     </td>
-                    <td className="py-2 px-2 sm:px-4 min-w-[120px]">{patient.doc}</td>
-                    <td className="py-2 px-2 sm:px-4 min-w-[80px]">{patient.role}</td>
+                    <td className="py-2 px-2 sm:px-4 min-w-[120px]">
+                      {patient.doc}
+                    </td>
+                    <td className="py-2 px-2 sm:px-4 min-w-[80px]">
+                      {patient.role}
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            <div className="md:hidden">
+              {filteredPatients.length === 0 ? (
+                <div className="text-center text-gray-500 mt-10">
+                  No users found.
+                </div>
+              ) : (
+                <div>
+                  {filteredPatients.map((patient, idx) => (
+                    <div
+                     onClick={() => handleNavigate(idx)}
+                      key={idx}
+                      className="border-b hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="py-2 cursor-pointer px-2 sm:px-4 text-start truncate min-w-[100px]">
+                        <span className="font-semibold pr-3">First Name:</span> {patient.firstName}
+                      </div>
+                      <div className="py-2 cursor-pointer px-2 sm:px-4 truncate min-w-[100px]">
+                        <span className="font-semibold pr-3">Last Name:</span> {patient.lastName}
+                      </div>
+                      <div className="py-2 px-2 sm:px-4 min-w-[120px]">
+                        <span className="font-semibold pr-3">Date Created:</span> {patient.doc}
+                      </div>
+                      <div className="py-2 px-2 sm:px-4 min-w-[80px]">
+                        <span className="font-semibold pr-3">Role:</span> {patient.role}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
