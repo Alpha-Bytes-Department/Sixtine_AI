@@ -5,7 +5,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate("/dashboard/chat");
   };
   return (
     <div className="flex-1 flex justify-center items-center">

@@ -6,7 +6,7 @@ const EditProfile = () => {
   return (
     <div className="flex-1 flex justify-center items-center">
       <div className="shadow-[0_0_4px_0_#00000040]  p-32 relative">
-        <Link to={"/dashboard/add-document"}>
+        <Link to={"/dashboard/profile"}>
           <RxCross2 className="absolute top-5 right-5 text-xl text-[#4E7BA0]" />
         </Link>
         <div className="flex flex-col gap-5 text-[#4A4A4A] ">
