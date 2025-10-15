@@ -36,7 +36,7 @@ const SideNav = () => {
 
       {/* ======= Sidebar ======= */}
       <div
-        className={`fixed lg:static top-0 left-0 h-full  z-50 bg-[#f1f1f1] p-4 flex flex-col items-center gap-5 transition-all duration-300 ease-in-out
+        className={`fixed lg:static top-0 left-0 h-full  z-50 bg-[#f1f1f1] px-4 xl:py-4 flex flex-col items-center lg:gap-3 xl:gap-5 transition-all duration-300 ease-in-out
         ${
           isOpen
             ? "translate-x-0 w-64"
@@ -45,7 +45,7 @@ const SideNav = () => {
       >
         {/* ========== Logo (Desktop only) ========== */}
         <div className="hidden lg:flex justify-between items-center w-full">
-          <img src="/Images/logo/img2.png" alt="logo" className="w-32 h-auto" />
+          <img src="/Images/logo/img2.png" alt="logo" className="w-20 mx-auto xl:w-32 h-auto" />
         </div>
 
         {/* ========== User Info ========== */}
@@ -53,7 +53,7 @@ const SideNav = () => {
           <div className="flex justify-between items-center gap-1">
             <Link
               to={"/dashboard/profile"}
-              className="text-[#4E7BA0] text-lg truncate"
+              className="text-[#4E7BA0] xl:text-lg truncate"
             >
               MARTINE NDENGERA
             </Link>
@@ -61,7 +61,7 @@ const SideNav = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="cursor-pointer text-[#4E7BA0] text-xl"
             >
-              <IoClose />
+              <IoLogOutOutline className="text-2xl" />
             </button>
           </div>
           <div className="text-[#85AECF] mt-2.5 mb-3 flex justify-between items-center cursor-pointer">
@@ -78,7 +78,7 @@ const SideNav = () => {
         {/* ========== Assistant Section ========== */}
         <div className="w-full">
           <h1 className="text-xl text-[#4E7BA0] mb-2">Assistant</h1>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col xl:gap-2">
             <NavLink
               to={"/dashboard/add-document"}
               className={({ isActive }) =>
@@ -115,12 +115,12 @@ const SideNav = () => {
           </div>
         </div>
 
-        <hr className="border-[#D9D9D9] my-3 w-full" />
+        <hr className="border-[#D9D9D9] xl:my-3 w-full" />
 
         {/* ========== Admin Section ========== */}
         <div className="w-full">
-          <h1 className="text-xl text-[#4E7BA0] mb-2">Admin</h1>
-          <div className="flex flex-col gap-2">
+          <h1 className="text-lg xl:text-xl text-[#4E7BA0] xl:mb-2">Admin</h1>
+          <div className="flex flex-col xl:gap-2">
             <NavLink
               to={"/dashboard/users"}
               className={({ isActive }) =>
@@ -154,7 +154,7 @@ const SideNav = () => {
           </div>
         </div>
 
-        <hr className="border-[#D9D9D9] my-3 w-full" />
+        <hr className="border-[#D9D9D9] xl:my-3 w-full" />
 
         {/* ========== Bottom Buttons ========== */}
         <Link
@@ -178,17 +178,12 @@ const SideNav = () => {
           </div>
         </div>
 
-        <div className="text-[#85AECF] mt-2.5 mb-3 flex justify-between items-center cursor-pointer w-full">
+        <div className="text-[#85AECF] mt-2.5 mb-3 hidden xl:flex justify-between items-center cursor-pointer w-full">
           <span>Today</span> <FaCaretRight />
         </div>
-        <div className="text-[#85AECF] mt-2.5  flex justify-between items-center cursor-pointer w-full">
+        <div className="text-[#85AECF] mt-2.5 hidden xl:flex justify-between items-center cursor-pointer w-full">
           <span>Others</span> <FaCaretRight />
         </div>
-
-        <button className="flex gap-3 items-center w-full rounded-sm hover:bg-[#C0E0FA] duration-500 cursor-pointer text-[#4E7BA0] px-2 py-1 ">
-          <IoLogOutOutline className="text-2xl" />
-          <span>Logout</span>
-        </button>
       </div>
     </div>
   );
