@@ -45,34 +45,36 @@ const Users = () => {
       {/* Table */}
       <div className="flex-grow overflow-y-auto">
         <div className="relative">
-          <table className="w-full text-left">
-            <thead className="sticky top-0 bg-white border-b">
-              <tr>
-                <th className=" py-2 font-semibold">First Name</th>
-                <th className=" py-2 font-semibold">Last Name</th>
-                <th className=" py-2 font-semibold">Date Created</th>
-                <th className=" py-2 font-semibold">Role</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredPatients.map((patient, idx) => (
-                <tr
-                  key={idx}
-                  className="border-b hover:bg-gray-50 transition-colors"
-                  onClick={()=>handleNavigate(idx)}
-                >
-                  <td className=" py-2 cursor-pointer">
-                    {patient.firstName}
-                  </td>
-                  <td className=" py-2 cursor-pointer">
-                    {patient.lastName}
-                  </td>
-                  <td className=" py-2">{patient.doc}</td>
-                  <td className=" py-2">{patient.role}</td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left min-w-full">
+              <thead className="sticky top-0 bg-white border-b">
+                <tr>
+                  <th className="py-2 font-semibold px-2 sm:px-4">First Name</th>
+                  <th className="py-2 font-semibold px-2 sm:px-4">Last Name</th>
+                  <th className="py-2 font-semibold px-2 sm:px-4">Date Created</th>
+                  <th className="py-2 font-semibold px-2 sm:px-4">Role</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {filteredPatients.map((patient, idx) => (
+                  <tr
+                    key={idx}
+                    className="border-b hover:bg-gray-50 transition-colors"
+                    onClick={()=>handleNavigate(idx)}
+                  >
+                    <td className="py-2 cursor-pointer px-2 sm:px-4 truncate min-w-[100px]">
+                      {patient.firstName}
+                    </td>
+                    <td className="py-2 cursor-pointer px-2 sm:px-4 truncate min-w-[100px]">
+                      {patient.lastName}
+                    </td>
+                    <td className="py-2 px-2 sm:px-4 min-w-[120px]">{patient.doc}</td>
+                    <td className="py-2 px-2 sm:px-4 min-w-[80px]">{patient.role}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
