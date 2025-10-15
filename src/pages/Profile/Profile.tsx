@@ -49,11 +49,11 @@ const Profile = () => {
             <span>Psycology</span>
           </div>
           <div className="flex gap-12">
-            <span className="w-40 font-semibold">Clinic</span>
+            <span className="w-40 font-semibold">Organization</span>
             <span>xyz health care</span>
           </div>
           <div className="flex gap-12">
-            <span className="w-40 font-semibold">Clinic location</span>
+            <span className="w-40 font-semibold">Location</span>
             <span>1820, Navada, America</span>
           </div>
           <div className="flex gap-12">

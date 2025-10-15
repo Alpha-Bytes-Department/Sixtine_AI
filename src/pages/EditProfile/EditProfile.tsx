@@ -66,7 +66,7 @@ const EditProfile = () => {
             <input
               type="text"
               className="bg-[#EAEAEA] px-2 rounded-sm py-2 w-full"
-              placeholder="clinic"
+              placeholder="Organization"
               name="organization"
               id="organization"
             />
@@ -75,16 +75,16 @@ const EditProfile = () => {
             <span className="w-full sm:w-40 font-semibold">Role</span>
             <div className="relative w-full">
               <select
-                name="role"
-                id="role"
-                className="w-full bg-[#EAEAEA] text-gray-700 px-3 py-2 rounded-md outline-none cursor-pointer appearance-none"
+              name="role"
+              id="role"
+              className="w-full bg-[#EAEAEA] text-gray-700 px-3 py-2 rounded-sm outline-none cursor-pointer appearance-none border-none [&>option]:bg-[#EAEAEA] [&>option]:border-none [&>option]:rounded-sm [&>option]:text-gray-700 [&>option]:p-2"
               >
-                <option value="" className="text-[#a1a1a11a] " disabled selected hidden>
-                  Select Role
-                </option>
-                <option value="doctor">Doctor</option>
-                <option value="nurse">Nurse</option>
-                <option value="medical assistant">Medical Assistant</option>
+              <option value="" disabled selected hidden>
+                Select Role
+              </option>
+              <option value="doctor">Doctor</option>
+              <option value="nurse">Nurse</option>
+              <option value="medical assistant">Medical Assistant</option>
               </select>
             </div>
           </div>
