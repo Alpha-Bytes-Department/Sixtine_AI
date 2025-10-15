@@ -105,7 +105,7 @@ export default function AddDocument({
             isDragging
               ? "border-blue-500 bg-blue-50"
               : "border-gray-300 bg-white"
-          } ${files.length > 0 ? "px-5 py-40" : "p-40"}`}
+          } ${files.length > 0 ? "px-5 py-40" : "p-12 lg:p-40"}`}
         >
           <input
             ref={inputRef}

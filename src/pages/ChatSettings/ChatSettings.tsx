@@ -44,18 +44,18 @@ const ChatSettings = ({setSetting}:{setSetting:React.Dispatch<React.SetStateActi
   };
 
   return (
-    <div className="h-full w-full bg-[#00000099] text-[#4A4A4A] ">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-5xl mx-auto flex flex-col justify-center  gap-5 mt-10">
+    <div className="h-full w-full bg-[#00000099] text-[#4A4A4A]">
+      <div className="bg-white p-5 lg:p-6 rounded-lg shadow-lg max-w-5xl mx-auto flex flex-col justify-center gap-3 lg:gap-5 mt-5 lg:mt-10">
         <div className="flex justify-between items-center">
-          <h2 className="text-3xl font-bold ">Settings</h2>
+          <h2 className="text-xl lg:text-3xl font-bold ">Settings</h2>
           <button className="cursor-pointer" onClick={()=>setSetting(false)}>
             <RxCross1 />
           </button>
         </div>
         {/* break line  */}
-        <p className="border border-[#D9D9D9] "></p>
+        {/* <p className="border border-[#D9D9D9] "></p> */}
         {/* Model Dropdown */}
-        <div className=" flex  items-center  gap-2">
+        {/* <div className=" flex  items-center  gap-2">
           <label className="block text-2xl font-semibold w-64">Model</label>
           <select
             className="mt-1 block  px-5 py-2 rounded-md bg-[#4e7ba0] border-0 focus:outline-0 text-white "
@@ -66,16 +66,16 @@ const ChatSettings = ({setSetting}:{setSetting:React.Dispatch<React.SetStateActi
             <option value="Openai-gpt-4">Openai-gpt-4</option>
             <option value="Custom-model">Custom-model</option>
           </select>
-        </div>
+        </div> */}
         {/* break line  */}
         <p className="border border-[#D9D9D9] "></p>
         {/* Audio Source Dropdown */}
         <div className=" flex  items-center gap-2">
-          <label className="block text-2xl font-semibold w-64">
+          <label className="block text-md lg:text-2xl font-semibold w-64">
             Audio Source
           </label>
           <select
-            className="mt-1 block px-5 py-2 rounded-md bg-[#4e7ba0] border-0 focus:outline-0 text-white"
+            className="mt-1 block px-2 lg:px-5 py-1 lg:py-2 rounded-md bg-[#4e7ba0] border-0 focus:outline-0 text-white"
             value={audioSource}
             onChange={(e) => setAudioSource(e.target.value)}
           >
@@ -112,9 +112,9 @@ const ChatSettings = ({setSetting}:{setSetting:React.Dispatch<React.SetStateActi
                   onChange={() => handleCheckboxChange(key as keyof Tools)} // Handle checkbox change
                   className="mr-2 w-4 h-4 accent-[#4e7ba0]"
                 />
-                <div className="flex  gap-5">
-                  <label className="w-52 text-[#4e7ba0]">{label}</label>
-                  <label className=" text-[#4e7ba0]">{details}</label>
+                <div className="flex gap-3  lg:gap-5">
+                  <label className="lg:w-52 text-[#4e7ba0]">{label}</label>
+                  <label className=" text-[#4e7ba0] hidden lg:block">{details}</label>
                 </div>
               </div>
             ))}
@@ -124,7 +124,7 @@ const ChatSettings = ({setSetting}:{setSetting:React.Dispatch<React.SetStateActi
         {/* Save Button */}
         <div>
           <button
-            className="mt-4 px-4 py-2 bg-[#4e7ba0] text-white rounded-lg"
+            className="mt-4 px-2 lg:px-4 py-1 lg:py-2 bg-[#4e7ba0] text-white rounded-lg"
             onClick={() => alert("Settings saved")}
           >
             Save Settings

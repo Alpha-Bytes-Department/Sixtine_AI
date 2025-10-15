@@ -59,7 +59,7 @@ if(setting){
 
   return (
     <div className="w-full h-full flex-1">
-      <div className="w-full max-w-4xl flex flex-col  p-4 bg-white  fixed bottom-12 left-4/12 max-h-[95%] ">
+      <div className="w-full max-w-4xl flex flex-col  p-4 bg-white  fixed bottom-5 left-0 lg:bottom-12  xl:left-4/12 max-h-[95%] ">
         {/* message section  */}
         <div className="flex flex-col space-y-4 overflow-y-auto overflow-hidden custom-scrollbar">
           {messages.map((msg) => (
@@ -82,7 +82,7 @@ if(setting){
             </div>
           ))}
         </div>
-        {/* bottom button section  */}
+        {/* bottom input section  */}
         <div className="flex items-center mt-5 border border-[#4e7ba0] rounded-xl p-3 ">
           <button
             onClick={()=>setSetting(true)}
@@ -95,7 +95,7 @@ if(setting){
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="w-full p-3 rounded-lg focus:outline-0"
+            className="w-full p-3 rounded-lg focus:outline-0 "
             placeholder="Start typing here..."
           />
 
