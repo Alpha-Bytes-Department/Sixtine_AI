@@ -16,7 +16,7 @@ import Patients from "../pages/Patients/Patients";
 import PatientDetails from "../pages/PatientDetails/PatientDetails";
 import PatientDocDetail from "../pages/PatientDocDetails/PatientDocDetail";
 import ChangePassword from "../pages/ChangePassword/ChangePassword";
-import UserDetails from "../pages/UserDetails/UserDetails";
+import UserDetails from "../components/Users/UserDetails/UserDetails";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import OtpVerification from "../pages/OtpVerification/OtpVerification";
 import SetNewPassword from "../pages/SetNewPassword/SetNewPassword";
