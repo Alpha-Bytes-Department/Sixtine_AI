@@ -7,6 +7,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { TiArrowSortedDown } from "react-icons/ti";
+import Swal from "sweetalert2";
 
 const SideNav = () => {
   const navigate = useNavigate();
@@ -18,6 +19,22 @@ const SideNav = () => {
 
   // navigate to chat
   const handleNavigateChat = () => navigate("/dashboard/chat");
+  const handleLogout = () => {
+   Swal.fire({
+     title: "Are you sure?",
+     text: "You will be logged out of your account.",
+     icon: "warning",
+     showCancelButton: true,
+     confirmButtonText: "Yes, log out",
+     cancelButtonText: "No, cancel"
+   }).then((result) => {
+     if (result.isConfirmed) {
+      Swal.fire("Logged Out!", "You have been logged out.", "success");      
+      navigate("/dashboard/login");
+
+     }
+   });
+  }
 
   return (
     <div className="">
@@ -29,7 +46,8 @@ const SideNav = () => {
         >
           {<GiHamburgerMenu />}
         </button>
-        <img src="/Images/logo/img2.png" alt="logo" className="w-24 h-auto" />
+        <Link to={"/"}>
+        <img src="/Images/logo/img2.png" alt="logo" className="w-24 h-auto" /></Link>
       </div>
       {/* ======= Overlay for mobile ======= */}
       {isOpen && (
@@ -49,16 +67,23 @@ const SideNav = () => {
         }`}
       >
         {/* ========== Close icone ========== */}
-        {<button onClick={()=>setIsOpen(false)} className={`${isOpen ? "block" : "hidden"}`}>
-          <RxCross2 className="absolute top-5 right-5 text-xl text-[#4e7ba0] cursor-pointer" />
-        </button>}
+        {
+          <button
+            onClick={() => setIsOpen(false)}
+            className={`${isOpen ? "block" : "hidden"}`}
+          >
+            <RxCross2 className="absolute top-5 right-5 text-xl text-[#4e7ba0] cursor-pointer" />
+          </button>
+        }
         {/* ========== Logo (Desktop only) ========== */}
         <div className="hidden lg:flex justify-between items-center w-full">
-          <img
-            src="/Images/logo/img2.png"
-            alt="logo"
-            className="w-20 mx-auto xl:w-32 h-auto"
-          />
+          <Link to={"/"}>
+            <img
+              src="/Images/logo/img2.png"
+              alt="logo"
+              className="w-20 mx-auto xl:w-32 h-auto"
+            />
+          </Link>
         </div>
         {/* ========== User Info ========== */}
         <div className="">
@@ -70,7 +95,7 @@ const SideNav = () => {
               MARTINE NDENGERA
             </Link>
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => handleLogout()}
               className="cursor-pointer text-[#4E7BA0] text-xl"
             >
               <IoLogOutOutline className="text-2xl" />

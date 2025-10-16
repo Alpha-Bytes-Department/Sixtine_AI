@@ -18,10 +18,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-8 py-10">
           <div className="flex flex-col md:flex-row justify-between items-start gap-8">
             {/* Left Section - Brand */}
-            <div
-              
-              className="space-y-4 "
-            >
+            <div className="space-y-4 ">
               <div className="flex items-center gap-2">
                 <img
                   src="/Images/logo/image3.png"
@@ -62,10 +59,7 @@ export default function Footer() {
               </div>
             </div>
             {/* Middle Section - Quick Links */}
-            <div
-             
-              className="flex-shrink-0"
-            >
+            <div className="flex-shrink-0">
               <h3 className="font-semibold mb-4 text-sm">
                 {isEnglish ? "Quick Links" : "Liens rapides"}
               </h3>
@@ -104,19 +98,22 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#"
-                    className=" hover:text-cyan-300 text-sm font-medium transition block"
+                  href="#getInTouch"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('getInTouch')?.scrollIntoView({
+                    behavior: 'smooth'
+                    });
+                  }}
+                  className="hover:text-cyan-400 text-sm transition block cursor-pointer"
                   >
-                    {isEnglish ? "Get in touch" : "Entrer en contact"}
+                  {isEnglish ? "Get in touch" : "Entrer en contact"}
                   </a>
                 </li>
               </ul>
             </div>
             {/* Right Section - Contact Us */}
-            <div
-              
-              className="flex-shrink-0 text-[#198AE6]"
-            >
+            <div className="flex-shrink-0 text-[#198AE6]">
               <h3 className="font-semibold mb-4 text-sm">
                 {isEnglish ? "Contact Us" : "Contactez-nous"}
               </h3>
