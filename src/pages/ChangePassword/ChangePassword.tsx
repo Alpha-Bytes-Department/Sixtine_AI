@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router";
 import { RxCross2 } from "react-icons/rx";
+// import { tr } from "motion/react-client";
 
 const ChangePassword = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const ChangePassword = () => {
               className="bg-[#EAEAEA] px-2 rounded-sm py-2"
               placeholder="Old password"
               name="update"
+              required={true}
               id="update"
             />
             <input
@@ -28,6 +30,7 @@ const ChangePassword = () => {
               className="bg-[#EAEAEA] px-2 rounded-sm py-2"
               placeholder="New password"
               name="update"
+              required={true}
               id="update"
             />
             <input
@@ -35,6 +38,7 @@ const ChangePassword = () => {
               className="bg-[#EAEAEA] px-2 rounded-sm py-2"
               placeholder="Confirm password"
               name="update"
+              required={true}
               id="update"
             />
           </div>

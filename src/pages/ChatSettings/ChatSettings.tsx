@@ -1,6 +1,8 @@
 // import { details } from "motion/react-client";
 import { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 // Define the possible tool keys as a type
 type Tools = {
@@ -17,6 +19,7 @@ type Tools = {
 };
 
 const ChatSettings = ({setSetting}:{setSetting:React.Dispatch<React.SetStateAction<boolean>>}) => {
+  const navigate = useNavigate();
   // Explicitly define the type for the 'tools' state
   // const [model, setModel] = useState("Openai-gpt-5");
   const [audioSource, setAudioSource] = useState("Unknown device");
@@ -125,7 +128,22 @@ const ChatSettings = ({setSetting}:{setSetting:React.Dispatch<React.SetStateActi
         <div>
           <button
             className="mt-4 px-2 lg:px-4 py-1 lg:py-2 bg-[#4e7ba0] text-white rounded-lg"
-            onClick={() => alert("Settings saved")}
+            onClick={() => {
+              Swal.fire({
+                icon: "question",
+                title: "Do you want to save the settings?",
+                showConfirmButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire("Saved!", "", "success");
+                  navigate("/dashboard/chat");
+                  setSetting(false);
+                }
+              });
+            }}
           >
             Save Settings
           </button>

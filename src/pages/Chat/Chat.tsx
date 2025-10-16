@@ -68,10 +68,10 @@ if(setting){
 }
 
 
-//start recording
-  // if(isRecording){
-  //   return <AudioRecord setRecording={setRecording}/>
-  // }
+// start recording
+  if(isRecording){
+    return <AudioRecord setRecording={setRecording}/>
+  }
 
 
 
