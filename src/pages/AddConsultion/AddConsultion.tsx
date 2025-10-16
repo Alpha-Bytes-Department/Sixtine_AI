@@ -124,7 +124,7 @@ export default function AddConsultion({
 
         {/* Audio record button  */}
 
-      {files.length < 0 && <div className=" gap-5 mt-16 cursor-pointer relative">
+      {!files.length && <div className=" gap-5 mt-16 cursor-pointer relative">
         {/* <motion.div
           initial={{ opacity: 0, scale: 1 }}
           animate={{
