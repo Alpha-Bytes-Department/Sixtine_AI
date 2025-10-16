@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
-import { motion } from "motion/react";
+// import { motion } from "motion/react";
 import { useStatus } from "../../../providers/StatusProvider";
 
 export default function Footer() {
@@ -18,10 +18,8 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-8 py-10">
           <div className="flex flex-col md:flex-row justify-between items-start gap-8">
             {/* Left Section - Brand */}
-            <motion.div
-              initial={{ opacity: 0, x: -100, scale: 0.9 }} // start smaller and shifted left
-              whileInView={{ opacity: 1, x: 0, scale: 1 }} // move to normal position
-              transition={{ duration: 0.6, ease: "easeOut" }}
+            <div
+              
               className="space-y-4 "
             >
               <div className="flex items-center gap-2">
@@ -62,12 +60,10 @@ export default function Footer() {
                   <FaInstagram />
                 </a>
               </div>
-            </motion.div>
+            </div>
             {/* Middle Section - Quick Links */}
-            <motion.div
-              initial={{ opacity: 0, x: 100, scale: 0.9 }} // start smaller and shifted left
-              whileInView={{ opacity: 1, x: 0, scale: 1 }} // move to normal position
-              transition={{ duration: 0.6, ease: "easeOut" }}
+            <div
+             
               className="flex-shrink-0"
             >
               <h3 className="font-semibold mb-4 text-sm">
@@ -115,12 +111,10 @@ export default function Footer() {
                   </a>
                 </li>
               </ul>
-            </motion.div>
+            </div>
             {/* Right Section - Contact Us */}
-            <motion.div
-              initial={{ opacity: 0, x: 100, scale: 0.9 }} // start smaller and shifted left
-              whileInView={{ opacity: 1, x: 0, scale: 1 }} // move to normal position
-              transition={{ duration: 0.6, ease: "easeOut" }}
+            <div
+              
               className="flex-shrink-0 text-[#198AE6]"
             >
               <h3 className="font-semibold mb-4 text-sm">
@@ -140,7 +134,7 @@ export default function Footer() {
                   <span className="">Switzerland</span>
                 </li>
               </ul>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
