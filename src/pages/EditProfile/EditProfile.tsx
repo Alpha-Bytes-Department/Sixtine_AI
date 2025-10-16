@@ -9,7 +9,7 @@ const EditProfile = () => {
         <Link to={"/dashboard/profile"}>
           <RxCross2 className="absolute top-5 right-5 text-xl text-[#4E7BA0]" />
         </Link>
-        <div className="flex flex-col gap-5 text-[#4A4A4A]">
+        <div className="flex flex-col gap-5 text-[#4A4A4A] ">
           <h1 className="text-2xl sm:text-3xl font-semibold">Edit Profile</h1>
           <div className="relative self-center">
             <img

@@ -29,10 +29,10 @@ const PassUSuccessFull = () => {
               Your password has been reset successfully.
             </p>
             <Link
-              to={"/dashboard/chat"}
+              to={"/dashboard/login"}
               className="bg-[#048eff] py-2 rounded-lg cursor-pointer text-center "
             >
-              Goto Chat
+              Goto Login
             </Link>
           </div>
         </div>

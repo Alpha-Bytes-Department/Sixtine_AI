@@ -7,7 +7,7 @@ import Footer from "../../components/shared/Footer/Footer";
 
 const Landing = () => {
     return (
-        <div>
+        <div className="custom-scroll">
             <Banner/>
             <WhatSixtien/>
             <KeyUses/>

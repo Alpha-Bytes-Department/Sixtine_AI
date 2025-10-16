@@ -9,11 +9,11 @@ const Profile = () => {
   };
   return (
     <div className="flex-1 flex justify-center items-center">
-      <div className="shadow-[0_0_4px_0_#00000040] px-10  lg:px-36 py-12 relative">
+      <div className="shadow-[0_0_4px_0_#00000040] px-10 xl:px-16 2xl:px-36 py-8 xl:pt-3 xl:pb-5 2xl:py-12  relative">
         <button onClick={handleGoBack}>
           <RxCross2 className="absolute top-5 right-5 text-xl text-[#4e7ba0] cursor-pointer" />
         </button>
-        <div className="flex  flex-col gap-5 text-[#4A4A4A] ">
+        <div className="flex  flex-col gap-3 2xl:gap-5 text-[#4A4A4A] ">
           <h1 className="text-3xl font-semibold">Profile</h1>
           <img
             src="/Images/Others/demoProfile.jpg"

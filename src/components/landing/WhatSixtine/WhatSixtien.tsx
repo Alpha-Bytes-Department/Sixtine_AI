@@ -34,7 +34,7 @@ const WhatSixtien = () => {
       </motion.div>
       {/* card item  */}
 
-      <div className="flex gap-7 justify-center items-center flex-wrap">
+      <div className="flex gap-5 2xl:gap-7 justify-center items-center flex-wrap">
         {/* card - 1  */}
         <motion.div
           initial={{ opacity: 0, scaleX: 0.5 }}

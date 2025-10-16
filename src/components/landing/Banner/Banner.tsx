@@ -1,11 +1,41 @@
+import { useNavigate } from "react-router";
 import { useStatus } from "../../../providers/StatusProvider";
 import Navbar from "../../shared/Navbar/Navbar";
 import { motion } from "motion/react";
 
 const Banner = () => {
   const { languageStat } = useStatus();
+  const navigate = useNavigate();
 
   const french = languageStat === "french";
+
+  const handleHashLink = (hash: string) => {
+    const id = hash.replace("#", "");
+    // If we're not on the landing page, navigate there first, then scroll after a short delay
+    if (location.pathname !== "/") {
+      navigate("/", { replace: false });
+      // Wait for navigation + render; use requestAnimationFrame twice for reliability
+      const tryScroll = () => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          // try again next frame, up to a few times
+          setTimeout(() => {
+            const elAgain = document.getElementById(id);
+            if (elAgain) elAgain.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 150);
+        }
+      };
+      requestAnimationFrame(() => requestAnimationFrame(tryScroll));
+    } else {
+      // Same page: scroll immediately
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  };
 
   return (
     <div id="mission" className="bg-[conic-gradient(from_180deg_at_50%_80.45%,#0D63AA_0deg,#C4EEC8_360deg)] h-screen w-full relative overflow-x-hidden overflow-y-hidden scrollbar-none">
@@ -55,7 +85,7 @@ const Banner = () => {
             ? "S'appuyant sur une IA de pointe, SixtineAI rationalise la documentation clinique, la facturation, les références et les flux de travail administratifs, avec une intégration OCR transparente."
             : "Backed by cutting-edge AI, SixtineAI streamlines clinical documentation, billing, referrals, and admin workflows—with seamless OCR integration."}
         </p>
-        <button className="text-white bg-[#0d63aa] rounded-full py-3 px-5 cursor-pointer">
+        <button onClick={()=>handleHashLink("#getInTouch")} className="text-white bg-[#0d63aa] rounded-full py-3 px-5 cursor-pointer">
           {french ? "Rejoignez l'accès anticipé" : "Join early access"}
         </button>
       </motion.div>

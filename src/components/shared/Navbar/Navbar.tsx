@@ -77,7 +77,7 @@ const Navbar = () => {
         </button>
         <button
           className="text-[#6B6B6B] text-[8px] lg:text-base cursor-pointer bg-transparent border-0 p-0"
-          onClick={() => navigate("#getInTouch")}
+          onClick={() => handleHashLink("#getInTouch")}
         >
           {isFrench ? "ENTRER EN CONTACT" : "GET IN TOUCH"}
         </button>

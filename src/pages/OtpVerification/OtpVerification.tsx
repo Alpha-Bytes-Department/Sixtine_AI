@@ -3,7 +3,7 @@ import { Form, useNavigate } from "react-router";
 
 const OtpVerification = () => {
     const navigate = useNavigate()
-    const [error, setError] = useState(true);
+    const [error, setError] = useState(false);
 
   const handleSubmit = (event:  React.MouseEvent<HTMLFormElement>)=>{
     setError(false)

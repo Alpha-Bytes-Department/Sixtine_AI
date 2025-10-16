@@ -1,4 +1,4 @@
-import { Form, Link } from "react-router";
+import { Form, Link, useNavigate } from "react-router";
 import { MdOutlineMail } from "react-icons/md";
 import { FiLock } from "react-icons/fi";
 import {HiOutlineEye , HiOutlineEyeOff } from "react-icons/hi";
@@ -6,10 +6,12 @@ import { useState } from "react";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = ()=>{
-    console.log("button clicked");
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>)=>{
+    event.preventDefault();
+    navigate("/dashboard/chat");
     setError(false)
   }
 
