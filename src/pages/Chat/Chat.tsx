@@ -3,6 +3,7 @@ import { IoArrowUpSharp } from "react-icons/io5";
 import { IoOptionsOutline } from "react-icons/io5";
 import { HiOutlineMicrophone } from "react-icons/hi2";
 import ChatSettings from "../ChatSettings/ChatSettings";
+import AudioRecord from "../../components/Consultion/AudioRecord/AudioRecord";
 
 type Message = {
   id: number;
@@ -14,7 +15,8 @@ type Message = {
 const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>("");
-  const [setting, setSetting] = useState(false)
+  const [setting, setSetting] = useState(false);
+  const [isRecording, setRecording] = useState(false);
 
   const handleSendMessage = () => {
     if (input.trim()) {
@@ -52,6 +54,10 @@ if(setting){
 }
 
 
+//start recording
+  if(isRecording){
+    return <AudioRecord setRecording={setRecording}/>
+  }
 
 
 
@@ -100,7 +106,7 @@ if(setting){
           />
 
           <button
-            onClick={handleSendMessage}
+            onClick={()=>setRecording(true)}
             className="ml-2 p-2 text-[#4e7ba0]  rounded-xl bg-gray-200 cursor-pointer"
           >
             <HiOutlineMicrophone className="text-lg " />
