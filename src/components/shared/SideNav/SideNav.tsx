@@ -19,6 +19,64 @@ const SideNav = () => {
   // navigate to chat
   const handleNavigateChat = () => navigate("/dashboard/chat");
 
+  const messages = [
+    {
+      id: 1,
+      title: "ACT (Acceptance and Commitment Therapy)",
+      description: "is a form of cognitive-behavioral therapy that...........",
+      time: "Today, 09:52 pm",
+    },
+    {
+      id: 2,
+      title: "ACT (Acceptance and Commitment Therapy)",
+      description: "is a form of cognitive-behavioral therapy that...........",
+      time: "Today, 09:52 pm",
+    },
+    {
+      id: 3,
+      title: "ACT (Acceptance and Commitment Therapy)",
+      description: "is a form of cognitive-behavioral therapy that...........",
+      time: "Yesterday, 09:52 pm",
+    },
+    {
+      id: 4,
+      title: "ACT (Acceptance and Commitment Therapy)",
+      description: "is a form of cognitive-behavioral therapy that...........",
+      time: "Yesterday, 09:52 pm",
+    },
+    {
+      id: 5,
+      title: "ACT (Acceptance and Commitment Therapy)",
+      description: "is a form of cognitive-behavioral therapy that...........",
+      time: "Yesterday, 09:52 pm",
+    },
+    {
+      id: 6,
+      title: "ACT (Acceptance and Commitment Therapy)",
+      description: "is a form of cognitive-behavioral therapy that...........",
+      time: "Today, 09:52 pm",
+    },
+    {
+      id: 7,
+      title: "ACT (Acceptance and Commitment Therapy)",
+      description: "is a form of cognitive-behavioral therapy that...........",
+      time: "Today, 09:52 pm",
+    },
+    {
+      id: 8,
+      title: "ACT (Acceptance and Commitment Therapy)",
+      description: "is a form of cognitive-behavioral therapy that...........",
+      time: "Today, 09:52 pm",
+    },
+    // add more items if needed
+  ];
+
+  // searching item
+  const filteredPatients = messages.filter(
+    (p) =>
+      p.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="">
       {/* ======= Mobile Navigation Bar ======= */}
@@ -49,9 +107,14 @@ const SideNav = () => {
         }`}
       >
         {/* ========== Close icone ========== */}
-        {<button onClick={()=>setIsOpen(false)} className={`${isOpen ? "block" : "hidden"}`}>
-          <RxCross2 className="absolute top-5 right-5 text-xl text-[#4e7ba0] cursor-pointer" />
-        </button>}
+        {
+          <button
+            onClick={() => setIsOpen(false)}
+            className={`${isOpen ? "block" : "hidden"}`}
+          >
+            <RxCross2 className="absolute top-5 right-5 text-xl text-[#4e7ba0] cursor-pointer" />
+          </button>
+        }
         {/* ========== Logo (Desktop only) ========== */}
         <div className="hidden lg:flex justify-between items-center w-full">
           <img
@@ -203,36 +266,64 @@ const SideNav = () => {
             />
           </div>
         </div>
-        <div className="w-full">
-          <div>
-            <div
-              onClick={() => setTodayCollapsed(!isTodayCollapsed)}
-              className="text-[#4E7BA0] flex justify-between items-center cursor-pointer w-full"
-            >
-              <span>Today</span>{" "}
-              {isTodayCollapsed ? <FaCaretRight /> : <TiArrowSortedDown />}
+        {searchTerm.length > 0 ? <div className="w-full overflow-y-auto h-36 flex flex-col gap-2 custom-scrollbar">
+          {filteredPatients.map((data,idx)=><div key={idx} className="cursor-pointer ">
+            <p>{data.title}</p>
+          </div>)}
+        </div>: <div className={"w-full"}>
+            <div>
+              <div
+                onClick={() => {
+                  setTodayCollapsed(!isTodayCollapsed);
+                }}
+                className="text-[#4E7BA0] flex justify-between items-center cursor-pointer w-full"
+              >
+                <span>Today</span>{" "}
+                {isTodayCollapsed ? <FaCaretRight /> : <TiArrowSortedDown />}
+              </div>
+              <div
+                className={`text-gray-500 ${
+                  isTodayCollapsed
+                    ? "hidden"
+                    : "overflow-y-auto h-32 flex flex-col gap-2  custom-scrollbar cursor-pointer"
+                }`}
+              >
+                {messages
+                  ?.filter((message) => message.time.startsWith("Today"))
+                  .map((message) => (
+                    <div key={message.id} className="flex flex-col  gap-2">
+                      <p className="text-black">{message.title}</p>
+                      <p>{message.time}</p>
+                    </div>
+                  ))}
+              </div>
             </div>
-            <div
-              className={`text-gray-500 ${isTodayCollapsed ? "hidden" : ""}`}
-            >
-              Today's record will show here
+            <div>
+              <div
+                onClick={() => setOthersCollapsed(!isOthersCollapsed)}
+                className="text-[#4E7BA0] flex justify-between items-center cursor-pointer w-full "
+              >
+                <span>Others</span>{" "}
+                {isOthersCollapsed ? <FaCaretRight /> : <TiArrowSortedDown />}
+              </div>
+              <div
+                className={`text-gray-500 ${
+                  isOthersCollapsed
+                    ? "hidden"
+                    : "overflow-y-auto h-32 flex flex-col gap-2 custom-scrollbar cursor-pointer"
+                }`}
+              >
+                {messages
+                  ?.filter((message) => !message.time.startsWith("Today"))
+                  .map((message) => (
+                    <div key={message.id}>
+                      <p className="text-black">{message.title}</p>
+                      <p>{message.time}</p>
+                    </div>
+                  ))}
+              </div>
             </div>
-          </div>
-          <div>
-            <div
-              onClick={() => setOthersCollapsed(!isOthersCollapsed)}
-              className="text-[#4E7BA0]  flex justify-between items-center cursor-pointer w-full"
-            >
-              <span>Others</span>{" "}
-              {isOthersCollapsed ? <FaCaretRight /> : <TiArrowSortedDown />}
-            </div>
-            <div
-              className={`text-gray-500 ${isOthersCollapsed ? "hidden" : ""}`}
-            >
-              Others record will show here
-            </div>
-          </div>
-        </div>
+          </div>}
       </div>
     </div>
   );
