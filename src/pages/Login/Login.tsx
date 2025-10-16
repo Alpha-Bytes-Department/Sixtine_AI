@@ -11,7 +11,7 @@ const Login = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
-    navigate("/dashboard/chat");
+    navigate("/dashboard/add-document");
     setError(false)
   }
 

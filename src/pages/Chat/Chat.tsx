@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { IoArrowUpSharp } from "react-icons/io5";
 import { IoOptionsOutline } from "react-icons/io5";
 import { HiOutlineMicrophone } from "react-icons/hi2";
@@ -17,6 +17,7 @@ const Chatbot = () => {
   const [input, setInput] = useState<string>("");
   const [setting, setSetting] = useState(false);
   const [isRecording, setRecording] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleSendMessage = () => {
     if (input.trim()) {
@@ -29,6 +30,11 @@ const Chatbot = () => {
 
       setMessages([...messages, newMessage]);
       setInput("");
+      // Reset textarea height
+      if (textareaRef.current) {
+        textareaRef.current.style.height = "auto";
+      }
+
       setTimeout(() => {
         const botReply: Message = {
           id: messages.length + 2,
@@ -41,13 +47,21 @@ const Chatbot = () => {
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && input.trim()) {
-      e.preventDefault(); // Prevent the default "Enter" key behavior (form submission)
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey && input.trim()) {
+      e.preventDefault(); // Prevent creating a new line
       handleSendMessage();
     }
   };
 
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      const scrollHeight = textareaRef.current.scrollHeight;
+      // The max-height is set to 200px in the className
+      textareaRef.current.style.height = `${scrollHeight}px`;
+    }
+  }, [input]);
 
 if(setting){
     return <ChatSettings setSetting={setSetting}/>
@@ -55,9 +69,9 @@ if(setting){
 
 
 //start recording
-  if(isRecording){
-    return <AudioRecord setRecording={setRecording}/>
-  }
+  // if(isRecording){
+  //   return <AudioRecord setRecording={setRecording}/>
+  // }
 
 
 
@@ -96,12 +110,13 @@ if(setting){
           >
             <IoOptionsOutline title="setting" className="text-lg cursor-pointer" />
           </button>
-          <input
-            type="text"
+          <textarea
+            ref={textareaRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="w-full p-3 rounded-lg focus:outline-0 "
+            rows={1}
+            className="w-full p-3 rounded-lg focus:outline-0 resize-none overflow-y-auto max-h-48 custom-scrollbar"
             placeholder="Start typing here..."
           />
 

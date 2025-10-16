@@ -8,6 +8,10 @@ const Settings = () => {
     navigate("/dashboard/profile");
   };
 
+  const handleSave=()=>{
+    navigate("/dashboard/profile");
+  }
+
   return (
     <div className=" flex-1">
       <div className="flex items-center justify-center h-full w-full">
@@ -104,7 +108,7 @@ const Settings = () => {
           </div>
           {/* Save Button */}
           <div className="">
-            <button className="py-1 bg-[#4e7ba0] text-white rounded-sm px-10 mt-2">
+            <button onClick={handleSave} className="py-1 bg-[#4e7ba0] text-white rounded-sm px-10 mt-2">
               Save
             </button>
           </div>

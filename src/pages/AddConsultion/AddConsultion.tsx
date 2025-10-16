@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "motion/react";
 import AudioRecorder from "../../components/Consultion/AudioRecord/AudioRecord";
+import DocumentSummery from "../../components/AddDocument/DocumentSummery/DocumentSummery";
 // const AudioRecorderTyped = AudioRecorder as React.ComponentType<{
 //   setRecording: React.Dispatch<React.SetStateAction<boolean>>;
 // }>;
@@ -82,18 +83,17 @@ export default function AddConsultion({
 
   return (
     <div className="h-full w-full bg-white flex justify-center items-center">
-      <div className={` mx-auto`}>
+      <div className={`mx-auto ${files.length > 0 ? "flex flex-col p-10 2xl:m-auto 2xl:flex-row xl:gap-5 h-full overflow-y-auto" : ""}`}>
         {/* file upload  */}
         <div
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
-          className={`relative flex flex-col items-center justify-center p-5 lg:p-20 xl:p-40 rounded-lg border-2 border-dashed transition-all duration-200
-          ${
+          className={`relative flex flex-col items-center justify-center rounded-lg border-2 border-dashed transition-all duration-200 ${
             isDragging
               ? "border-blue-500 bg-blue-50"
               : "border-gray-300 bg-white"
-          }`}
+          } ${files.length > 0 ? "px-5 py-40" : "p-12 lg:p-40"}`}
         >
           <input
             ref={inputRef}
@@ -147,7 +147,6 @@ export default function AddConsultion({
           ></motion.div>
           <motion.div className="w-[50px] h-[50px] rounded-full bg-[#FF4D4E] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30"></motion.div>
         </div>
-
         <p className="text-[#7E7E7E] absolute left-1/2 top-20 -translate-x-1/2 -translate-y-1/2">
           Tap here
         </p>
@@ -155,10 +154,10 @@ export default function AddConsultion({
 
         {/* Files list / preview */}
         {files.length > 0 && (
-          <div className="mt-4 space-y-2">
+          <div className="mt-4 space-y-2 min-w-64">
             <div className="flex items-center justify-between text-sm text-gray-700">
               <span className="font-medium">
-                Selected file{files.length > 1 ? "s" : ""}
+                Preview file{files.length > 1 ? "s" : ""}
               </span>
               <button
                 type="button"
@@ -211,6 +210,9 @@ export default function AddConsultion({
             </ul>
           </div>
         )}
+        {
+          files.length > 0 && (<DocumentSummery/>)
+        }
       </div>
     </div>
   );

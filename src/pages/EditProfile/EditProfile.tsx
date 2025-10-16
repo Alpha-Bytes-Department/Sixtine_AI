@@ -1,14 +1,20 @@
-import { useRef } from "react";
+import {  useRef } from "react";
 import { FaCamera } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const EditProfile = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
+
 
   const handleSelectImage = () => {
     inputRef.current?.click();
   };
+
+  const handleSave=()=>{
+    navigate("/dashboard/profile");
+  }
 
   return (
     <div className="flex-1 flex justify-center items-center overflow-y-auto pt-16 xl:py-20 2xl:py-0">
@@ -100,7 +106,7 @@ const EditProfile = () => {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-12  mt-4">
-            <button className="bg-[#4E7BA0] text-white rounded-sm px-14 py-2 cursor-pointer transition-transform duration-200 ease-in-out active:scale-95 w-full sm:w-auto">
+            <button onClick={handleSave} className="bg-[#4E7BA0] text-white rounded-sm px-14 py-2 cursor-pointer transition-transform duration-200 ease-in-out active:scale-95 w-full sm:w-auto">
               Save
             </button>
             <Link
