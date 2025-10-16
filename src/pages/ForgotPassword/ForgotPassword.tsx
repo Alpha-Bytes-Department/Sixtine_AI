@@ -39,6 +39,7 @@ const ForgotPassword = () => {
                 type="text"
                 name="email"
                 id="email"
+                required={true}
                 className="p-2 focus:outline-0 flex-1"
                 placeholder="Email Address"
               />

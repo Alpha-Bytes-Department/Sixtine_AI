@@ -47,7 +47,9 @@ const SetNewPassword = () => {
               <input
                 type={showNewPassword? "text" : "password"}
                 name="email"
-                id="email"
+                id="email" 
+                required={true}
+                
                 className="p-2 focus:outline-0"
                 placeholder="Enter new password"
               />
@@ -62,6 +64,7 @@ const SetNewPassword = () => {
                 type={showConfirmPassword? "text" : "password"}
                 name="email"
                 id="email"
+                required={true}
                 className="p-2 focus:outline-0"
                 placeholder="Confirm Password"
               />

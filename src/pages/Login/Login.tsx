@@ -48,6 +48,7 @@ const Login = () => {
               <input
                 type="text"
                 name="email"
+                required={true}
                 id="email"
                 className={`p-2 focus:outline-0 flex-1 `}
                 placeholder="Email Address"
@@ -61,6 +62,7 @@ const Login = () => {
               <input
                 type={showPassword? "text" : "password"}
                 name="email"
+                required={true}
                 id="email"
                 className={"p-2 focus:outline-0"}
                 placeholder="Password"
