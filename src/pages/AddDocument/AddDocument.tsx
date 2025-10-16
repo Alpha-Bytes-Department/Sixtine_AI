@@ -103,17 +103,23 @@ export default function AddDocument({
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
   };
-  if(loading){
-    return (
-      <div className="h-full w-full flex justify-center items-center">
-        <FadeLoader />
-      </div>
-    );
-  }
+  // if(loading){
+  //   return (
+  //     <div className="h-full w-full flex justify-center items-center">
+  //       <FadeLoader />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="h-full w-full bg-white flex justify-center items-center">
-      <div className={`mx-auto ${files.length > 0 ? "flex flex-col p-10 2xl:m-auto 2xl:flex-row xl:gap-5 h-full overflow-y-auto" : ""}`}>
+      <div
+        className={`mx-auto ${
+          files.length > 0
+            ? "flex flex-col p-10 gap-5 xl:justify-between w-full 2xl:m-auto 2xl:flex-row xl:gap-5 h-full overflow-y-auto"
+            : ""
+        }`}
+      >
         {/* file upload  */}
         <div
           onDragOver={handleDragOver}
@@ -123,7 +129,7 @@ export default function AddDocument({
             isDragging
               ? "border-blue-500 bg-blue-50"
               : "border-gray-300 bg-white"
-          } ${files.length > 0 ? "px-5 py-40" : "p-12 lg:p-40"}`}
+          } ${files.length > 0 ? "px-5 py-40 xl:min-w-96" : "p-12 lg:p-40"}`}
         >
           <input
             ref={inputRef}
@@ -140,7 +146,7 @@ export default function AddDocument({
               onClick={openFileDialog}
               className="px-4 py-2 rounded-md cursor-pointer bg-[#4E7BA0] text-white hover:bg-[#285070] transition"
             >
-              Browse files
+              {files.length > 0 ? "Upload files" : "Browse files"}
             </button>
             <p className="text-sm text-gray-600 mb-3">
               <p className="my-3">Or</p>
@@ -151,66 +157,79 @@ export default function AddDocument({
           </div>
         </div>
         {/* Files list / preview */}
-        {files.length > 0 && (
-          <div className="mt-4 space-y-2 min-w-64">
-            <div className="flex items-center justify-between text-sm text-gray-700">
-              <span className="font-medium">
-                Preview file{files.length > 1 ? "s" : ""}
-              </span>
-              <button
-                type="button"
-                onClick={() => {
-                  setFiles([]);
-                  if (onFiles) onFiles([]);
-                }}
-                className="text-xs text-red-500 hover:underline"
-              >
-                Clear
-              </button>
-            </div>
+        {loading ? (
+          <div className="size-80 mx-auto my-auto flex justify-center flex-col items-center gap-20 p-10 xl:p-20 border-gray-100 shadow-sm rounded-sm border">
+            {files.map((f, idx) => (
+              <p key={idx} className="text-sm">
+                {f.name}
+              </p>
+            ))}
+            <FadeLoader />
+          </div>
+        ) : (
+          <div className="flex flex-col lg:flex-row">
+            {files.length > 0 && (
+              <div className="mt-4 space-y-2 min-w-64">
+                <div className="flex items-center justify-between text-sm text-gray-700">
+                  <span className="font-medium">
+                    Preview file{files.length > 1 ? "s" : ""}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFiles([]);
+                      if (onFiles) onFiles([]);
+                    }}
+                    className="text-xs text-red-500 hover:underline"
+                  >
+                    Clear
+                  </button>
+                </div>
 
-            <ul className="divide-y rounded-md overflow-hidden border">
-              {files.map((f, idx) => (
-                <li
-                  key={`${f.name}-${f.size}-${idx}`}
-                  className="flex items-center justify-between px-3 py-2"
-                >
-                  <div className="flex items-center space-x-3">
-                    {/* simple icon placeholder for images */}
-                    {f.type.startsWith("image/") ? (
-                      <img
-                        src={URL.createObjectURL(f)}
-                        alt={f.name}
-                        className="w-10 h-10 object-cover rounded"
-                      />
-                    ) : (
-                      <div className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded text-xs">
-                        {f.name.split(".").pop()?.slice(0, 3) ?? "file"}
-                      </div>
-                    )}
-
-                    <div className="text-xs">
-                      <div className="font-medium">{f.name}</div>
-                      <div className="text-gray-500">{formatBytes(f.size)}</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-2">
-                    <button
-                      onClick={() => removeFileAt(idx)}
-                      className="text-xs text-red-500 hover:underline"
+                <ul className="divide-y rounded-md overflow-hidden border">
+                  {files.map((f, idx) => (
+                    <li
+                      key={`${f.name}-${f.size}-${idx}`}
+                      className="flex items-center justify-between px-3 py-2"
                     >
-                      Remove
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                      <div className="flex items-center space-x-3">
+                        {/* simple icon placeholder for images */}
+                        {f.type.startsWith("image/") ? (
+                          <img
+                            src={URL.createObjectURL(f)}
+                            alt={f.name}
+                            className="w-10 h-10 object-cover rounded"
+                          />
+                        ) : (
+                          <div className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded text-xs">
+                            {f.name.split(".").pop()?.slice(0, 3) ?? "file"}
+                          </div>
+                        )}
+
+                        <div className="text-xs">
+                          <div className="font-medium">{f.name}</div>
+                          <div className="text-gray-500">
+                            {formatBytes(f.size)}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => removeFileAt(idx)}
+                          className="text-xs text-red-500 hover:underline"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {files.length > 0 && <DocumentSummery />}
           </div>
         )}
-        {
-          files.length > 0 && (<DocumentSummery/>)
-        }
       </div>
     </div>
   );
