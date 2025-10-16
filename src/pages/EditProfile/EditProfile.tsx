@@ -11,7 +11,7 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="flex-1 flex justify-center items-center overflow-y-auto xl:py-20 2xl:py-0">
+    <div className="flex-1 flex justify-center items-center overflow-y-auto pt-16 xl:py-20 2xl:py-0">
       <div className="shadow-[0_0_4px_0_#00000040] p-4 sm:p-8 md:p-12 lg:p-16 xl:px-16 xl:py-3  2xl:p-20 relative w-full max-w-2xl mx-auto">
         <Link to={"/dashboard/profile"}>
           <RxCross2 className="absolute top-5 right-5 text-xl text-[#4E7BA0]" />
