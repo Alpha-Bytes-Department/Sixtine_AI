@@ -90,7 +90,7 @@ if(setting){
               }`}
             >
               <div
-                className={`p-3 rounded-lg max-w-[80%] ${
+                className={`p-3 rounded-lg max-w-[60%] h-full ${
                   msg.sender === "user"
                     ? "bg-[#4e7ba0] text-white rounded-br-none"
                     : "bg-[#1e3c56] text-white rounded-bl-none"
