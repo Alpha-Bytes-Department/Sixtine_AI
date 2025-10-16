@@ -44,23 +44,31 @@ const OtpVerification = () => {
                 type="text"
                 name="email"
                 id="email"
+                required={true}
+                maxLength={1}
                 className={`p-2 focus:outline-0 w-16 bg-white rounded-md text-center ${error? "border-1 border-[#FF0000]" : ""}`}
               />
               <input
                 type="text"
                 name="email"
                 id="email"
+                required={true}
+                maxLength={1}
                 className={`p-2 focus:outline-0 w-16 bg-white rounded-md text-center ${error? "border-1 border-[#FF0000]" : ""}`}
               />
               <input
                 type="text"
                 name="email"
                 id="email"
+                required={true}
+                maxLength={1}
                 className={`p-2 focus:outline-0 w-16 bg-white rounded-md text-center ${error? "border-1 border-[#FF0000]" : ""}`}
               />
               <input
                 type="text"
                 name="email"
+                required={true}
+                maxLength={1}
                 id="email"
                 className={`p-2 focus:outline-0 w-16 bg-white rounded-md text-center ${error? "border-1 border-[#FF0000]" : ""}`}
               />

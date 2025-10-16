@@ -209,10 +209,16 @@ const Users = () => {
                       </div>
                     </td>
                     <td className="py-2 px-2 sm:px-4 min-w-[100px]">
-                      <span className="text-[#4e7ba0] flex gap-2 text-lg  cursor-pointer hover:underline">
-                        <BsFileEarmarkPdfFill color="red" size={24} />{" "}
-                        {patient.certification}
-                      </span>
+                      <a
+                        href="/Certificate.pdf"
+                        target="_blank"
+                        
+                      >
+                        <span className="text-[#4e7ba0] flex gap-2 text-lg cursor-pointer curso">
+                          <BsFileEarmarkPdfFill color="red" size={24} />{" "}
+                          {patient.certification}
+                        </span>
+                      </a>
                     </td>
                   </tr>
                 ))}
@@ -333,10 +339,15 @@ const Users = () => {
                         <span className="font-semibold pr-3">
                           Certification:
                         </span>
+                         <a
+                        href="/Certificate.pdf"
+                        target="_blank"
+                        
+                      >
                         <span className="text-[#4e7ba0] flex gap-2 text-lg  cursor-pointer hover:underline">
                           <BsFileEarmarkPdfFill color="red" size={24} />{" "}
                           {patient.certification}
-                        </span>
+                        </span></a>
                       </div>
                     </div>
                   ))}
