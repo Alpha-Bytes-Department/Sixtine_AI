@@ -43,7 +43,7 @@ const GetInTouch = () => {
 
   const handleSubmit = (e: HandleSubmitEvent) => {
     e.preventDefault();
-    navigate("/dashboard/chat");
+    navigate("/dashboard/login");
   };
 
   return (
