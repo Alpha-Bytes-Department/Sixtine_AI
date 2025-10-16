@@ -1,14 +1,18 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { RxCross2 } from "react-icons/rx";
 
 const ChangePassword = () => {
+  const navigate = useNavigate();
+
+  const handleSave=()=>{
+    navigate("/dashboard/profile");
+  }
   return (
     <div className="flex-1 flex justify-center items-center">
       <div className="shadow-[0_0_4px_0_#00000040] p-20  lg:p-40 relative">
         <Link to={"/dashboard/profile"}>
           <RxCross2 className="absolute top-5 right-5 text-xl text-[#4E7BA0]" />
         </Link>
-        
         <div className="flex flex-col gap-5 text-[#4A4A4A] ">
           <div className="flex flex-col gap-5">
             <span className="text-3xl  text-center font-semibold">Change Password</span>
@@ -36,7 +40,7 @@ const ChangePassword = () => {
           </div>
             <div className="flex flex-col lg:flex-row lg:justify-between items-center lg:gap-12 gap-6">
             <div className="w-full lg:w-auto">
-              <button className="bg-[#4E7BA0] text-white rounded-sm px-12 py-2 w-full cursor-pointer transition-transform duration-200 ease-in-out">
+              <button onClick={handleSave} className="bg-[#4E7BA0] text-white rounded-sm px-12 py-2 w-full cursor-pointer transition-transform duration-200 ease-in-out">
               Save
               </button>
             </div>
