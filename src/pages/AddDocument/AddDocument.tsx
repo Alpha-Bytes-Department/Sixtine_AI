@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DocumentSummery from "../../components/AddDocument/DocumentSummery/DocumentSummery";
+import { FadeLoader } from "react-spinners";
 
 interface FileUploaderProps {
   multiple?: boolean;
@@ -16,6 +17,15 @@ export default function AddDocument({
   const [files, setFiles] = useState<File[]>([]);
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  useEffect(()=>{
+    if(files.length > 0){
+      setLoading(true);
+      setTimeout(()=>{
+        setLoading(false);
+      },1500)
+    }
+  },[files])
 
   const pushFiles = (newFiles: FileList | File[]) => {
     setError(null); // Clear previous error
@@ -93,6 +103,13 @@ export default function AddDocument({
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
   };
+  if(loading){
+    return (
+      <div className="h-full w-full flex justify-center items-center">
+        <FadeLoader />
+      </div>
+    );
+  }
 
   return (
     <div className="h-full w-full bg-white flex justify-center items-center">

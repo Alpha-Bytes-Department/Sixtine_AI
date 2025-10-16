@@ -5,10 +5,9 @@ import { useNavigate } from "react-router";
 const PatientsTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  
 
-
-
-  const handleNavigate = (id:number) => {  
+  const handleNavigate = (id:number) => {
     navigate(`/dashboard/patients/${id}`);
    }
 

@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import AudioRecorder from "../../components/Consultion/AudioRecord/AudioRecord";
 import DocumentSummery from "../../components/AddDocument/DocumentSummery/DocumentSummery";
+import { FadeLoader } from "react-spinners";
 // const AudioRecorderTyped = AudioRecorder as React.ComponentType<{
 //   setRecording: React.Dispatch<React.SetStateAction<boolean>>;
 // }>;
@@ -21,6 +22,15 @@ export default function AddConsultion({
   const [files, setFiles] = useState<File[]>([]);
   const [isDragging, setIsDragging] = useState(false);
   const [isRecording, setRecording] = useState(false);
+  const [loading, setLoading] = useState(false);
+  useEffect(()=>{
+    if(files.length > 0){
+      setLoading(true);
+      setTimeout(()=>{
+        setLoading(false);
+      },1500)
+    }
+  },[files])
 
   const pushFiles = (newFiles: FileList | File[]) => {
     const arr = Array.from(newFiles);
@@ -81,6 +91,13 @@ export default function AddConsultion({
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
   };
 
+  if(loading){
+    return (
+      <div className="h-full w-full flex justify-center items-center">
+        <FadeLoader />
+      </div>
+    );
+  }
   return (
     <div className="h-full w-full bg-white flex justify-center items-center">
       <div className={`mx-auto ${files.length > 0 ? "flex flex-col p-10 2xl:m-auto 2xl:flex-row xl:gap-5 h-full overflow-y-auto" : ""}`}>
