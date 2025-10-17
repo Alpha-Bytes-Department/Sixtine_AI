@@ -1,4 +1,4 @@
-// import React from "react";
+import React from "react";
 
 const DashHome = () => {
   const stats = [
@@ -100,16 +100,15 @@ const DashHome = () => {
           <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800">
             Welcome back, Sohan!
           </h1>
-          
         </div>
         <p className="text-sm sm:text-base text-gray-600">
           Here's your dashboard overview for today
         </p>
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-5 md:gap-6 items-stretch">
         {/* Left Section - Stats and Chart */}
-        <div className="xl:col-span-2 space-y-4  sm:space-y-5 md:space-y-6">
+        <div className="xl:col-span-2 space-y-4 sm:space-y-5 md:space-y-6 h-full flex flex-col">
           {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
             {stats.map((stat, index) => (
@@ -132,7 +131,7 @@ const DashHome = () => {
           </div>
 
           {/* Disease Chart */}
-          <div className="bg-gray-50 h-full rounded-lg shadow p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow">
+          <div className="bg-gray-50 rounded-lg shadow p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow flex-1 flex flex-col justify-center">
             <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-4 sm:mb-6">
               Total Disease
             </h3>
@@ -140,14 +139,14 @@ const DashHome = () => {
               {/* Donut Chart */}
               <div className="relative flex-shrink-0">
                 <svg
-                  width="200"
-                  height="200"
-                  className="transform -rotate-90 sm:w-[220px] sm:h-[220px] md:w-[240px] md:h-[240px]"
-                  viewBox="0 0 240 240"
+                  width="220"
+                  height="220"
+                  className="transform -rotate-90 sm:w-[240px] sm:h-[240px] md:w-[260px] md:h-[260px] lg:w-[300px] lg:h-[300px]"
+                  viewBox="0 0 300 300"
                 >
                   <circle
-                    cx="120"
-                    cy="120"
+                    cx="150"
+                    cy="150"
                     r={radius}
                     fill="none"
                     stroke="#e5e7eb"
@@ -156,8 +155,8 @@ const DashHome = () => {
                   {segments.map((segment, index) => (
                     <circle
                       key={index}
-                      cx="120"
-                      cy="120"
+                      cx="150"
+                      cy="150"
                       r={radius}
                       fill="none"
                       stroke={segment.color}
@@ -201,7 +200,7 @@ const DashHome = () => {
         </div>
 
         {/* Right Section - Recent Patients */}
-        <div className="bg-gray-50 rounded-lg shadow p-4 sm:p-5 md:p-6   hover:shadow-md transition-shadow">
+        <div className="bg-gray-50 rounded-lg shadow p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow h-full flex flex-col">
           <div className="flex items-center justify-between mb-4 sm:mb-6">
             <h3 className="text-base sm:text-lg font-semibold text-gray-800">
               Recent Added Patients
@@ -220,7 +219,7 @@ const DashHome = () => {
               />
             </svg>
           </div>
-          <div className="space-y-3 sm:space-y-4 max-h-[400px] sm:max-h-[500px] overflow-y-auto">
+          <div className="space-y-3 sm:space-y-4 max-h-[400px] sm:max-h-[500px] overflow-y-auto flex-1">
             {recentPatients.map((patient, index) => (
               <div
                 key={index}
