@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import AudioRecorder from "../../components/Consultion/AudioRecord/AudioRecord";
 import DocumentSummery from "../../components/AddDocument/DocumentSummery/DocumentSummery";
 import { FadeLoader } from "react-spinners";
+import { useStatus } from "../../providers/StatusProvider";
 // const AudioRecorderTyped = AudioRecorder as React.ComponentType<{
 //   setRecording: React.Dispatch<React.SetStateAction<boolean>>;
 // }>;
@@ -90,7 +91,8 @@ export default function AddConsultion({
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
   };
-
+const { setPageTitle } = useStatus();
+setPageTitle("Add Consultation");
   // if(loading){
   //   return (
   //     <div className="h-full w-full flex justify-center items-center">

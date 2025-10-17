@@ -1,6 +1,9 @@
-const Forms = () => {
-  const handlePrint = () => window.print();
+import { useStatus } from "../../providers/StatusProvider";
 
+const Forms = () => {
+    const handlePrint = () => window.print();
+  const { setPageTitle } = useStatus();
+setPageTitle("Forms");
   return (
     <div className="h-full mx-auto flex flex-col">
       <div className=" lg:p-6 print:p-0 flex-grow overflow-y-auto custom-scrollbar ">

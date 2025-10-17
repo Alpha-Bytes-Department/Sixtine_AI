@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import DocumentSummery from "../../components/AddDocument/DocumentSummery/DocumentSummery";
 import { FadeLoader } from "react-spinners";
+import { useStatus } from "../../providers/StatusProvider";
 
 interface FileUploaderProps {
   multiple?: boolean;
@@ -26,7 +27,8 @@ export default function AddDocument({
       },1500)
     }
   },[files])
-
+  const { setPageTitle } = useStatus();
+setPageTitle("Add Document");
   const pushFiles = (newFiles: FileList | File[]) => {
     setError(null); // Clear previous error
     const allowedExtensions = accept
@@ -86,7 +88,7 @@ export default function AddDocument({
       e.dataTransfer.clearData();
     }
   };
-
+  
   const openFileDialog = () => inputRef.current?.click();
 
   //   remove file

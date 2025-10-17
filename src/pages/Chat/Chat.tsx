@@ -4,6 +4,7 @@ import { IoOptionsOutline } from "react-icons/io5";
 import { HiOutlineMicrophone } from "react-icons/hi2";
 import ChatSettings from "../ChatSettings/ChatSettings";
 import AudioRecord from "../../components/Consultion/AudioRecord/AudioRecord";
+import { useStatus } from "../../providers/StatusProvider";
 
 type Message = {
   id: number;
@@ -67,7 +68,8 @@ if(setting){
     return <ChatSettings setSetting={setSetting}/>
 }
 
-
+const { setPageTitle } = useStatus();
+setPageTitle("Chat");
 // start recording
   if(isRecording){
     return <AudioRecord setRecording={setRecording}/>
