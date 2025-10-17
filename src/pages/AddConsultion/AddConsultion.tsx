@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import AudioRecorder from "../../components/Consultion/AudioRecord/AudioRecord";
 import DocumentSummery from "../../components/AddDocument/DocumentSummery/DocumentSummery";
@@ -32,6 +32,11 @@ export default function AddConsultion({
       },1500)
     }
   },[files])
+
+  const { setPageTitle, isEnglish } = useStatus();
+  useEffect(() => {
+    setPageTitle(isEnglish ? "Add Consultation" : "Ajouter une consultation");
+  }, [isEnglish]);
 
   const pushFiles = (newFiles: FileList | File[]) => {
     const arr = Array.from(newFiles);
@@ -91,8 +96,7 @@ export default function AddConsultion({
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
   };
-const { setPageTitle } = useStatus();
-setPageTitle("Add Consultation");
+
   // if(loading){
   //   return (
   //     <div className="h-full w-full flex justify-center items-center">

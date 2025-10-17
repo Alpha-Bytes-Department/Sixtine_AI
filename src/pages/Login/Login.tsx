@@ -13,7 +13,7 @@ const Login = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    navigate("/dashboard/add-document");
+    navigate("/dashboard");
     setError(false);
   };
 

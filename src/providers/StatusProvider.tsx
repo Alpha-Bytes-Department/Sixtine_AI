@@ -8,9 +8,15 @@ type StatusType = {
     setLanguageStat: React.Dispatch<React.SetStateAction<"english" | "french">>;
     isEnglish: boolean,
     pageTitle: string,
-    setPageTitle: React.Dispatch<React.SetStateAction<string>>
+    setPageTitle: React.Dispatch<React.SetStateAction<string>>,
+    breadCrumb: breadCrumbType[],
+    setBreadCrumb: React.Dispatch<React.SetStateAction<breadCrumbType[]>>
 }
 
+type breadCrumbType = {
+    title: string,
+    link: string
+}
 // create context 
 const StatusContext = createContext<StatusType | undefined>(undefined);
 
@@ -19,11 +25,12 @@ const StatusContext = createContext<StatusType | undefined>(undefined);
 export const StatusProvider = ( {children } : {children : ReactNode} )=>{
     const [languageStat, setLanguageStat] = useState<"english" | "french">("english");
     const [pageTitle, setPageTitle] = useState("");
+    const [breadCrumb,setBreadCrumb] = useState<breadCrumbType[]>([])
 
     const isEnglish = languageStat === "english"
 
     // memorizing to prevent re-rander
-    const statusObject = useMemo(()=>({languageStat, setLanguageStat,isEnglish,pageTitle,setPageTitle}),[languageStat, isEnglish,pageTitle])
+    const statusObject = useMemo(()=>({languageStat, setLanguageStat,isEnglish,pageTitle,setPageTitle,breadCrumb,setBreadCrumb}),[languageStat, isEnglish,pageTitle,breadCrumb])
 
 
 

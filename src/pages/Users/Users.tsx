@@ -1,5 +1,5 @@
 // import { div } from "motion/react-client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { FiEdit3, FiCheck, FiX } from "react-icons/fi";
 import { useNavigate } from "react-router";
@@ -8,8 +8,11 @@ import { FaRegEdit } from "react-icons/fa";
 import { useStatus } from "../../providers/StatusProvider";
 
 const Users = () => {
-  const { setPageTitle } = useStatus();
-  setPageTitle("Users");
+  const {isEnglish, setPageTitle } = useStatus();
+   useEffect(()=>{
+    setPageTitle(isEnglish ? "Users" : "Utilisateurs");
+      },[isEnglish])
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [editingUser, setEditingUser] = useState<number | null>(null);
   const [editedData, setEditedData] = useState({
@@ -30,7 +33,6 @@ const Users = () => {
       }))
   );
   const navigate = useNavigate();
-  const {isEnglish} = useStatus();
 
   const handleNavigate = (id: number) => {
     if (editingUser === null) {
@@ -77,9 +79,7 @@ const Users = () => {
 
   return (
     <div className="flex-1 p-6 bg-white text-[#4A4A4A] h-full flex flex-col gap-5 ">
-      <h2 className="text-3xl font-semibold mb-3">
-        {isEnglish ? "Users" : "Utilisateurs"}
-      </h2>
+      
       {/* Search Bar */}
       <div className="mb-4">
         <div className="flex items-center bg-[#DBDBDB] w-64 gap-2 p-2 rounded">

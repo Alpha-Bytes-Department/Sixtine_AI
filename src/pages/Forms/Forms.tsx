@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import { useStatus } from "../../providers/StatusProvider";
 
 const Forms = () => {
   const handlePrint = () => window.print();
-  const {isEnglish} = useStatus();
+  const {isEnglish,setPageTitle} = useStatus();
+  useEffect(()=>{
+    setPageTitle(isEnglish ? "Forms" : "Formulaires");
+  },[isEnglish]);
 
   return (
     <div className="h-full mx-auto flex flex-col">

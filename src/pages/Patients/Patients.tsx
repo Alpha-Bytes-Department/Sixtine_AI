@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { useNavigate } from "react-router";
 import { useStatus } from "../../providers/StatusProvider";
@@ -26,13 +26,13 @@ const PatientsTable = () => {
       p.lastName.toLowerCase().includes(searchTerm.toLowerCase())
   );
  const { setPageTitle } = useStatus();
- setPageTitle("Patients");
+  useEffect(()=>{  
+  setPageTitle(isEnglish?"Patients":"Patients");
+    },[isEnglish])
 
   return (
     <div className="flex-1 p-6 bg-white text-[#4A4A4A] h-full flex flex-col gap-5">
-      <h2 className="text-3xl font-semibold mb-3">
-        {isEnglish ? "Patients" : "Patients"}
-      </h2>
+    
       {/* Search Bar */}
       <div className="mb-4">
         <div className="flex items-center bg-[#DBDBDB] w-64 gap-2 p-2 rounded">

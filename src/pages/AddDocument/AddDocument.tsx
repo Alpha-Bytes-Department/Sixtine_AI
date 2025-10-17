@@ -27,8 +27,10 @@ export default function AddDocument({
       },1500)
     }
   },[files])
-  const { setPageTitle } = useStatus();
-setPageTitle("Add Document");
+  const { setPageTitle, isEnglish } = useStatus();
+  useEffect(() => {
+    setPageTitle(isEnglish ? "Add Document" : "Ajouter un document");
+  }, [isEnglish]);
   const pushFiles = (newFiles: FileList | File[]) => {
     setError(null); // Clear previous error
     const allowedExtensions = accept

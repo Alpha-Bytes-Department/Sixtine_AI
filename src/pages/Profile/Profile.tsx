@@ -1,10 +1,14 @@
 import { RxCross2 } from "react-icons/rx";
 import { Link, useNavigate } from "react-router";
 import { useStatus } from "../../providers/StatusProvider";
+import { useEffect } from "react";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const {isEnglish} = useStatus();
+  const {isEnglish, setPageTitle } = useStatus();
+  useEffect(() => {
+    setPageTitle(isEnglish ? "Profile" : "Profil");
+  }, [isEnglish]);
 
   const handleGoBack = () => {
     navigate("/dashboard/chat");
@@ -15,6 +19,7 @@ const Profile = () => {
         <button onClick={handleGoBack}>
           <RxCross2 className="absolute top-5 right-5 text-xl text-[#4e7ba0] cursor-pointer" />
         </button>
+        
         <div className="flex  flex-col gap-3 2xl:gap-5 text-[#4A4A4A] ">
           <h1 className="text-2xl 2xl:text-3xl font-semibold">
             {isEnglish ? "Profile" : "Profil"}

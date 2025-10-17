@@ -20,7 +20,9 @@ const Chatbot = () => {
   const [isRecording, setRecording] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const {setPageTitle, isEnglish} = useStatus();
-  setPageTitle("Chat");
+  useEffect(()=>{
+    setPageTitle(isEnglish ? "Chat" : "Discussion");
+      },[isEnglish])
 
   const handleSendMessage = () => {
     if (input.trim()) {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStatus } from "../../providers/StatusProvider";
 
 const DashHome = () => {
@@ -156,7 +156,9 @@ const DashHome = () => {
     return isHovered || isSelected ? "scale(1.05)" : "scale(1)";
   };
   const { setPageTitle } = useStatus();
-  setPageTitle("Dashboard");
+  useEffect(() => {
+    setPageTitle(isEnglish ? "Dashboard" : "Tableau de bord");
+  }, [isEnglish]);
 
   return (
     <div className="min-h-screen w-full bg-white p-3 sm:p-4 md:p-6 lg:p-8">
