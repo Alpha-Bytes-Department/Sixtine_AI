@@ -19,7 +19,8 @@ const Chatbot = () => {
   const [setting, setSetting] = useState(false);
   const [isRecording, setRecording] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const {isEnglish} = useStatus();
+  const {setPageTitle, isEnglish} = useStatus();
+  setPageTitle("Chat");
 
   const handleSendMessage = () => {
     if (input.trim()) {
@@ -69,8 +70,8 @@ if(setting){
     return <ChatSettings setSetting={setSetting}/>
 }
 
-const { setPageTitle } = useStatus();
-setPageTitle("Chat");
+
+
 // start recording
   if(isRecording){
     return <AudioRecord setRecording={setRecording}/>
