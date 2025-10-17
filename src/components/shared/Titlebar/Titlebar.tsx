@@ -1,5 +1,6 @@
 import React from "react";
 import { useStatus } from "../../../providers/StatusProvider";
+import { GrLanguage } from "react-icons/gr";
 
 
 
@@ -11,7 +12,8 @@ const Titlebar = () => {
       <div className="flex justify-between items-center">
         <p className="font-bold text-2xl">{pageTitle?pageTitle:"Dashboard"}</p>
         <div className="flex gap-2 lg:gap-5 items-center">
-          <div>
+          <div className="flex gap-1 items-center">
+            <GrLanguage  className="text-lg text-[#6B6B6B]"/>
             <select
               value={languageStat}
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
