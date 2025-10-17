@@ -23,7 +23,7 @@ const Dashboard = () => {
         ) : (
           <SideNav />
         )}
-        <div className="overflow-y-auto">
+        <div className="overflow-y-auto w-full">
           <Outlet />
         </div>
       </div>
