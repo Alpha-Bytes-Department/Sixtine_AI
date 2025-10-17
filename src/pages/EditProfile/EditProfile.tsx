@@ -2,10 +2,12 @@ import {  useRef } from "react";
 import { FaCamera } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import { Link, useNavigate } from "react-router";
+import { useStatus } from "../../providers/StatusProvider";
 
 const EditProfile = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+  const {isEnglish} = useStatus();
 
 
   const handleSelectImage = () => {
@@ -23,7 +25,9 @@ const EditProfile = () => {
           <RxCross2 className="absolute top-5 right-5 text-xl text-[#4E7BA0]" />
         </Link>
         <div className="flex flex-col gap-5 text-[#4A4A4A] ">
-          <h1 className="text-2xl 2xl:text-3xl font-semibold">Edit Profile</h1>
+          <h1 className="text-2xl 2xl:text-3xl font-semibold">
+            {isEnglish ? "Edit Profile" : "Modifier le profil"}
+          </h1>
           <div className="relative self-center">
             <img
               src="/Images/Others/demoProfile.jpg"
@@ -39,57 +43,69 @@ const EditProfile = () => {
           </div>
           <input type="file" ref={inputRef} className="hidden" />
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-12">
-            <span className="w-full sm:w-40 font-semibold">First name</span>
+            <span className="w-full sm:w-40 font-semibold">
+              {isEnglish ? "First name" : "Prénom"}
+            </span>
             <input
               type="text"
               className="bg-[#EAEAEA] px-2 rounded-sm py-2 w-full"
-              placeholder="First name"
+              placeholder={isEnglish ? "First name" : "Prénom"}
               name="firstName"
               id="firstName"
             />
           </div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-12">
-            <span className="w-full sm:w-40 font-semibold">Last Name</span>
+            <span className="w-full sm:w-40 font-semibold">
+              {isEnglish ? "Last Name" : "Nom de famille"}
+            </span>
             <input
               type="text"
               className="bg-[#EAEAEA] px-2 rounded-sm py-2 w-full"
-              placeholder="Last name"
+              placeholder={isEnglish ? "Last name" : "Nom de famille"}
               name="lastName"
               id="lastName"
             />
           </div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-12">
-            <span className="w-full sm:w-40 font-semibold">Department</span>
+            <span className="w-full sm:w-40 font-semibold">
+              {isEnglish ? "Department" : "Département"}
+            </span>
             <input
               type="text"
               className="bg-[#EAEAEA] px-2 rounded-sm py-2 w-full"
-              placeholder="department"
+              placeholder={isEnglish ? "Department" : "Département"}
               name="department"
               id="department"
             />
           </div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-12">
-            <span className="w-full sm:w-40 font-semibold">Location</span>
+            <span className="w-full sm:w-40 font-semibold">
+              {isEnglish ? "Location" : "Emplacement"}
+            </span>
             <input
               type="text"
               className="bg-[#EAEAEA] px-2 rounded-sm py-2 w-full"
-              placeholder="location"
+              placeholder={isEnglish ? "Location" : "Emplacement"}
               name="location"
               id="location"
             />
           </div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-12">
-            <span className="w-full sm:w-40 font-semibold">Organization</span>
+            <span className="w-full sm:w-40 font-semibold">
+              {isEnglish ? "Organization" : "Organisation"}
+            </span>
             <input
               type="text"
               className="bg-[#EAEAEA] px-2 rounded-sm py-2 w-full"
-              placeholder="Organization"
+              placeholder={isEnglish ? "Organization" : "Organisation"}
               name="organization"
               id="organization"
             />
           </div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-12">
-            <span className="w-full sm:w-40 font-semibold">Role</span>
+            <span className="w-full sm:w-40 font-semibold">
+              {isEnglish ? "Role" : "Rôle"}
+            </span>
             <div className="relative w-full">
               <select
                 name="role"
@@ -97,23 +113,25 @@ const EditProfile = () => {
                 className="w-full bg-[#EAEAEA] text-gray-700 px-3 py-2 rounded-sm outline-none cursor-pointer appearance-none border-none [&>option]:bg-[#EAEAEA] [&>option]:border-none [&>option]:rounded-sm [&>option]:text-gray-700 [&>option]:p-2"
               >
                 <option value="" disabled selected hidden>
-                  Select Role
+                  {isEnglish ? "Select Role" : "Sélectionner un rôle"}
                 </option>
-                <option value="doctor">Doctor</option>
-                <option value="nurse">Nurse</option>
-                <option value="medical assistant">Medical Assistant</option>
+                <option value="doctor">{isEnglish ? "Doctor" : "Docteur"}</option>
+                <option value="nurse">{isEnglish ? "Nurse" : "Infirmière"}</option>
+                <option value="medical assistant">
+                  {isEnglish ? "Medical Assistant" : "Assistant médical"}
+                </option>
               </select>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-12  mt-4">
             <button onClick={handleSave} className="bg-[#4E7BA0] text-white rounded-sm px-14 py-2 cursor-pointer transition-transform duration-200 ease-in-out active:scale-95 w-full sm:w-auto">
-              Save
+              {isEnglish ? "Save" : "Sauvegarder"}
             </button>
             <Link
               to={"/dashboard/profile"}
               className="border border-[#4E7BA0] text-[#4E7BA0] rounded-sm px-7 py-2 cursor-pointer w-full sm:w-auto text-center"
             >
-              Cancel
+              {isEnglish ? "Cancel" : "Annuler"}
             </Link>
           </div>
         </div>

@@ -1,13 +1,16 @@
 import { useState } from "react";
+import { useStatus } from "../../providers/StatusProvider";
 
 const DashHome = () => {
   const [selectedDisease, setSelectedDisease] = useState<string | null>(null);
   const [hoveredSegment, setHoveredSegment] = useState<number | null>(null);
+  const {isEnglish} = useStatus()
+
   const stats = [
     {
-      title: "Total Patients",
+      title: isEnglish ? "Total Patients" : "Patients totaux",
       value: "1000",
-      change: "+5% since yesterday",
+      change: isEnglish ? "+5% since yesterday" : "+5% depuis hier",
       icon: (
         <svg
           className="w-5 h-5 text-gray-400"
@@ -25,9 +28,9 @@ const DashHome = () => {
       ),
     },
     {
-      title: "Total Doctors",
+      title: isEnglish ? "Total Doctors" : "Médecins totaux",
       value: "50",
-      change: "+11 since today",
+      change: isEnglish ? "+11 since today" : "+11 depuis aujourd'hui",
       icon: (
         <svg
           className="w-5 h-5 text-gray-400"
@@ -45,9 +48,9 @@ const DashHome = () => {
       ),
     },
     {
-      title: "Total Users",
+      title: isEnglish ? "Total Users" : "Utilisateurs totaux",
       value: "450",
-      change: "+5% since yesterday",
+      change: isEnglish ? "+5% since yesterday" : "+5% depuis hier",
       icon: (
         <svg
           className="w-5 h-5 text-gray-400"
@@ -69,35 +72,43 @@ const DashHome = () => {
   const diseaseData = [
     {
       id: 1,
-      name: "Cardiovascular Disease",
+      name: isEnglish ? "Cardiovascular Disease" : "Maladie cardiovasculaire",
       percentage: 35,
       color: "#ef4444",
       patients: 350,
-      description: "Heart and blood vessel disorders",
+      description: isEnglish
+        ? "Heart and blood vessel disorders"
+        : "Troubles du cœur et des vaisseaux sanguins",
     },
     {
       id: 2,
-      name: "Diabetes",
+      name: isEnglish ? "Diabetes" : "Diabète",
       percentage: 28,
       color: "#3b82f6",
       patients: 280,
-      description: "Blood sugar regulation disorders",
+      description: isEnglish
+        ? "Blood sugar regulation disorders"
+        : "Troubles de la régulation de la glycémie",
     },
     {
       id: 3,
-      name: "Respiratory Disease",
+      name: isEnglish ? "Respiratory Disease" : "Maladie respiratoire",
       percentage: 22,
       color: "#10b981",
       patients: 220,
-      description: "Lung and breathing disorders",
+      description: isEnglish
+        ? "Lung and breathing disorders"
+        : "Troubles pulmonaires et respiratoires",
     },
     {
       id: 4,
-      name: "Cancer",
+      name: isEnglish ? "Cancer" : "Cancer",
       percentage: 15,
       color: "#f59e0b",
       patients: 150,
-      description: "Malignant cell growth disorders",
+      description: isEnglish
+        ? "Malignant cell growth disorders"
+        : "Troubles de la croissance cellulaire maligne",
     },
   ];
 
@@ -151,11 +162,11 @@ const DashHome = () => {
       <div className="mb-6 md:mb-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
           <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800">
-            Welcome back, Sohan!
+            {isEnglish ? "Welcome back, Sohan!" : "Bon retour, Sohan !"}
           </h1>
         </div>
         <p className="text-sm sm:text-base text-gray-600">
-          Here's your dashboard overview for today
+          {isEnglish ? "Here's your dashboard overview for today" : "Voici l'aperçu de votre tableau de bord pour aujourd'hui"}
         </p>
       </div>
 
@@ -187,10 +198,10 @@ const DashHome = () => {
           <div className="bg-gray-50 rounded-lg shadow p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow flex-1 flex flex-col justify-center">
             <div className="flex items-center justify-between mb-4 sm:mb-6">
               <h3 className="text-base sm:text-lg font-semibold text-gray-800">
-                Disease Distribution
+                {isEnglish ? "Disease Distribution" : "Répartition des maladies"}
               </h3>
               <div className="text-sm text-gray-500">
-                Total Patients:{" "}
+                {isEnglish ? "Total Patients" : "Patients totaux"}:{" "}
                 {diseaseData.reduce((sum, d) => sum + d.patients, 0)}
               </div>
             </div>
@@ -261,6 +272,7 @@ const DashHome = () => {
                           1000
                         </div>
                         <div className="text-xs text-gray-600">Total</div>
+                        <div className="text-xs text-gray-600">{isEnglish ? "Total" : "Total"}</div>
                       </>
                     )}
                   </div>
@@ -312,7 +324,7 @@ const DashHome = () => {
                       </div>
                       <div className="flex items-center justify-between mt-1">
                         <span className="text-xs text-gray-500">
-                          {disease.patients} patients
+                          {disease.patients} {isEnglish ? "patients" : "patients"}
                         </span>
                         <div className="w-16 bg-gray-200 rounded-full h-1.5">
                           <div
@@ -335,7 +347,7 @@ const DashHome = () => {
               <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
                 <div className="flex items-center justify-between">
                   <h4 className="font-semibold text-blue-800">
-                    {selectedDisease} Details
+                    {isEnglish ? `${selectedDisease} Details` : `Détails de ${selectedDisease}`}
                   </h4>
                   <button
                     onClick={() => setSelectedDisease(null)}
@@ -352,14 +364,14 @@ const DashHome = () => {
                 </p>
                 <div className="flex gap-4 mt-3 text-sm">
                   <span className="text-blue-600">
-                    Patients:{" "}
+                    {isEnglish ? "Patients" : "Patients"}:{" "}
                     {
                       diseaseData.find((d) => d.name === selectedDisease)
                         ?.patients
                     }
                   </span>
                   <span className="text-blue-600">
-                    Percentage:{" "}
+                    {isEnglish ? "Percentage" : "Pourcentage"}:{" "}
                     {
                       diseaseData.find((d) => d.name === selectedDisease)
                         ?.percentage
@@ -376,7 +388,7 @@ const DashHome = () => {
         <div className="bg-gray-50 rounded-lg shadow p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow h-full flex flex-col">
           <div className="flex items-center justify-between mb-4 sm:mb-6">
             <h3 className="text-base sm:text-lg font-semibold text-gray-800">
-              Recent Added Patients
+              {isEnglish ? "Recent Added Patients" : "Patients récemment ajoutés"}
             </h3>
             <svg
               className="w-5 h-5 text-gray-400"
@@ -406,7 +418,7 @@ const DashHome = () => {
             ))}
           </div>
           <button className="w-full mt-4 sm:mt-6 text-center text-sm text-gray-600 hover:text-gray-800 font-medium py-2 hover:bg-gray-50 rounded transition-colors">
-            View All Patients
+            {isEnglish ? "View All Patients" : "Voir tous les patients"}
           </button>
         </div>
       </div>

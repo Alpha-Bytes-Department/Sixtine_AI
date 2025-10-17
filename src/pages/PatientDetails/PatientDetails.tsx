@@ -2,10 +2,12 @@
 import {  useState } from "react";
 import { FaFilePdf } from "react-icons/fa";
 import { useNavigate } from "react-router";
+import { useStatus } from "../../providers/StatusProvider";
 
 const PatientDetails = () => {
   const [activeTab, setActiveTab] = useState("notes");
   const navigate = useNavigate();
+  const {isEnglish} = useStatus();
 
   const notes = [
     {
@@ -154,17 +156,20 @@ const PatientDetails = () => {
           </h2>
           <div className="space-y-2 ">
             <p>
-              <strong>Date of birth:</strong> 05.09.1960 (65 years old)
+              <strong>{isEnglish ? "Date of birth:" : "Date de naissance :"}</strong>{" "}
+              05.09.1960 (65 {isEnglish ? "years old" : "ans"})
             </p>
             <p>
-              <strong>Telephone:</strong> 0033 450.99.24.64 / 076 645 60 33
+              <strong>{isEnglish ? "Telephone:" : "Téléphone :"}</strong> 0033
+              450.99.24.64 / 076 645 60 33
             </p>
             <p>
-              <strong>Address:</strong> 39D, chemin du Jonc, 1218
+              <strong>{isEnglish ? "Address:" : "Adresse :"}</strong> 39D, chemin du
+              Jonc, 1218
               GRAND-SACONNEX, LE
             </p>
             <p>
-              <strong>Email:</strong>{" "}
+              <strong>{isEnglish ? "Email:" : "Email :"}</strong>{" "}
               <a href="mailto:a.gharselaoui@bluewin.ch" className="">
                 a.gharselaoui@bluewin.ch
               </a>
@@ -182,7 +187,7 @@ const PatientDetails = () => {
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >
-            Notes
+            {isEnglish ? "Notes" : "Notes"}
           </button>
           <button
             onClick={() => setActiveTab("documents")}
@@ -192,7 +197,7 @@ const PatientDetails = () => {
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >
-            Documents
+            {isEnglish ? "Documents" : "Documents"}
           </button>
         </div>
 
@@ -202,9 +207,15 @@ const PatientDetails = () => {
             <table className="min-w-full text-sm table-fixed">
               <thead className="sticky top-0 bg-white text-gray-600  border-gray-200">
                 <tr className="">
-                  <th className="text-left p-3 font-medium w-1/6">Date</th>
-                  <th className="text-left p-3 font-medium w-1/4">Type</th>
-                  <th className="text-left p-3 font-medium w-auto">Text</th>
+                  <th className="text-left p-3 font-medium w-1/6">
+                    {isEnglish ? "Date" : "Date"}
+                  </th>
+                  <th className="text-left p-3 font-medium w-1/4">
+                    {isEnglish ? "Type" : "Type"}
+                  </th>
+                  <th className="text-left p-3 font-medium w-auto">
+                    {isEnglish ? "Text" : "Texte"}
+                  </th>
                 </tr>
               </thead>
 
@@ -227,8 +238,12 @@ const PatientDetails = () => {
             <table className="min-w-full text-sm table-fixed">
               <thead className="sticky top-0 bg-white text-gray-600  border-gray-200">
                 <tr className="">
-                  <th className="text-left p-3 font-medium w-1/6">File</th>
-                  <th className="text-left p-3 font-medium w-auto">Title</th>
+                  <th className="text-left p-3 font-medium w-1/6">
+                    {isEnglish ? "File" : "Fichier"}
+                  </th>
+                  <th className="text-left p-3 font-medium w-auto">
+                    {isEnglish ? "Title" : "Titre"}
+                  </th>
                 </tr>
               </thead>
 

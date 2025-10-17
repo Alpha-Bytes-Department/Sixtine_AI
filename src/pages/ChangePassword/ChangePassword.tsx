@@ -1,9 +1,11 @@
 import { Link, useNavigate } from "react-router";
 import { RxCross2 } from "react-icons/rx";
+import { useStatus } from "../../providers/StatusProvider";
 // import { tr } from "motion/react-client";
 
 const ChangePassword = () => {
   const navigate = useNavigate();
+  const {isEnglish} = useStatus();
 
   const handleSave=()=>{
     navigate("/dashboard/profile");
@@ -16,11 +18,13 @@ const ChangePassword = () => {
         </Link>
         <div className="flex flex-col gap-5 text-[#4A4A4A] ">
           <div className="flex flex-col gap-5">
-            <span className="text-3xl  text-center font-semibold">Change Password</span>
+            <span className="text-3xl  text-center font-semibold">
+              {isEnglish ? "Change Password" : "Changer le mot de passe"}
+            </span>
             <input
               type="text"
               className="bg-[#EAEAEA] px-2 rounded-sm py-2"
-              placeholder="Old password"
+              placeholder={isEnglish ? "Old password" : "Ancien mot de passe"}
               name="update"
               required={true}
               id="update"
@@ -28,7 +32,7 @@ const ChangePassword = () => {
             <input
               type="text"
               className="bg-[#EAEAEA] px-2 rounded-sm py-2"
-              placeholder="New password"
+              placeholder={isEnglish ? "New password" : "Nouveau mot de passe"}
               name="update"
               required={true}
               id="update"
@@ -36,7 +40,9 @@ const ChangePassword = () => {
             <input
               type="text"
               className="bg-[#EAEAEA] px-2 rounded-sm py-2"
-              placeholder="Confirm password"
+              placeholder={
+                isEnglish ? "Confirm password" : "Confirmer le mot de passe"
+              }
               name="update"
               required={true}
               id="update"
@@ -45,7 +51,7 @@ const ChangePassword = () => {
             <div className="flex flex-col lg:flex-row lg:justify-between items-center lg:gap-12 gap-6">
             <div className="w-full lg:w-auto">
               <button onClick={handleSave} className="bg-[#4E7BA0] text-white rounded-sm px-12 py-2 w-full cursor-pointer transition-transform duration-200 ease-in-out">
-              Save
+              {isEnglish ? "Save" : "Sauvegarder"}
               </button>
             </div>
             <div className="w-full lg:w-auto">
@@ -53,7 +59,7 @@ const ChangePassword = () => {
               to={"/dashboard/profile"}
               className="border border-[#4E7BA0] text-[#4E7BA0] w-full rounded-sm px-8 py-2 cursor-pointer block text-center"
               >
-              Cancel
+              {isEnglish ? "Cancel" : "Annuler"}
               </Link>
             </div>
             </div>

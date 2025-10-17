@@ -1,6 +1,8 @@
 import { FaFilePdf } from "react-icons/fa";
+import { useStatus } from "../../providers/StatusProvider";
 
 export default function PatientDocDetails() {
+  const {isEnglish} = useStatus();
   const patient = {
     name: "Abdessattar GHARSELAOUI",
     dob: "05.09.1960",
@@ -24,15 +26,25 @@ export default function PatientDocDetails() {
       {/* Document Information */}
       <div className="bg-white shadow-sm rounded-lg p-5 border border-gray-200">
         <h2 className="text-lg font-semibold text-gray-800 mb-3">
-          Document Information
+          {isEnglish ? "Document Information" : "Informations sur le document"}
         </h2>
         <div className="space-y-1 text-gray-700">
-          <p><strong>Type:</strong> {document.type}</p>
-          <p><strong>Category:</strong> {document.category}</p>
-          <p><strong>Creation Date:</strong> {document.creationDate}</p>
-          <p><strong>Number of Pages:</strong> {document.pages}</p>
+          <p>
+            <strong>{isEnglish ? "Type:" : "Type :"}</strong> {document.type}
+          </p>
+          <p>
+            <strong>{isEnglish ? "Category:" : "Catégorie :"}</strong>{" "}
+            {document.category}
+          </p>
+          <p>
+            <strong>{isEnglish ? "Creation Date:" : "Date de création :"}</strong>{" "}
+            {document.creationDate}
+          </p>
+          <p>
+            <strong>{isEnglish ? "Number of Pages:" : "Nombre de pages :"}</strong> {document.pages}
+          </p>
           <p className="flex items-center gap-1">
-            <strong>File Type:</strong>
+            <strong>{isEnglish ? "File Type:" : "Type de fichier :"}</strong>
             <FaFilePdf className="text-red-600 text-lg" />
             <span>({document.fileType})</span>
           </p>
@@ -42,21 +54,26 @@ export default function PatientDocDetails() {
       {/* Patient Information */}
       <div className="bg-white shadow-sm rounded-lg p-5 border border-gray-200">
         <h2 className="text-lg font-semibold text-gray-800 mb-3">
-          Patient Information
+          {isEnglish ? "Patient Information" : "Informations sur le patient"}
         </h2>
         <div className="space-y-1 text-gray-700">
-          <p><strong>Name:</strong> {patient.name}</p>
           <p>
-            <strong>Date of Birth:</strong> {patient.dob} ({patient.age} years old)
+            <strong>{isEnglish ? "Name:" : "Nom :"}</strong> {patient.name}
           </p>
-          <p><strong>Address:</strong> {patient.address}</p>
+          <p>
+            <strong>{isEnglish ? "Date of Birth:" : "Date de naissance :"}</strong>{" "}
+            {patient.dob} ({patient.age} {isEnglish ? "years old" : "ans"})
+          </p>
+          <p>
+            <strong>{isEnglish ? "Address:" : "Adresse :"}</strong> {patient.address}
+          </p>
         </div>
       </div>
 
       {/* Summary */}
       <div className="bg-white  shadow-sm rounded-lg p-5 border border-gray-200 h-80 overflow-y-auto">
         <h2 className="text-lg font-semibold text-gray-800 mb-3">
-          Summary
+          {isEnglish ? "Summary" : "Résumé"}
         </h2>
         <p className="text-gray-700 leading-relaxed">{summary}</p>
       </div>

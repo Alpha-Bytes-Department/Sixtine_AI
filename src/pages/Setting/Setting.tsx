@@ -1,8 +1,10 @@
 import { RxCross2 } from "react-icons/rx";
 import { useNavigate } from "react-router";
+import { useStatus } from "../../providers/StatusProvider";
 
 const Settings = () => {
   const navigate = useNavigate();
+  const {isEnglish} = useStatus();
 
   const handleGoBack = () => {
     navigate("/dashboard/profile");
@@ -20,10 +22,10 @@ const Settings = () => {
             <RxCross2 className="absolute top-5 right-5 text-xl text-[#4e7ba0] cursor-pointer" />
           </button>
           {/* Title */}
-          <h2 className="text-2xl font-semibold mb-4">Settings</h2>
+          <h2 className="text-2xl font-semibold mb-4">{isEnglish ? "Settings" : "Paramètres"}</h2>
           {/* Scrollable Box */}
           <div className=" p-3 h-60 overflow-y-auto  bg-[#f1f1f1] mb-4">
-            <h3 className="font-semibold text-2xl mb-2 ">General Context</h3>
+            <h3 className="font-semibold text-2xl mb-2 ">{isEnglish ? "General Context" : "Contexte Général"}</h3>
             <p className="">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Repellendus, debitis illo? Repudiandae quisquam, eveniet ipsam
@@ -92,24 +94,26 @@ const Settings = () => {
           {/* Attributes Section */}
           <div className="bg-[#f1f1f1] h-52 p-3 space-y-1">
             <p>
-              <span className="font-semibold">Speed:</span> Normal
+              <span className="font-semibold">{isEnglish ? "Speed:" : "Vitesse :"}</span> {isEnglish ? "Normal" : "Normale"}
             </p>
             <p>
-              <span className="font-semibold">Tone:</span> Very friendly, as
-              with an excellent physician colleague
+              <span className="font-semibold">{isEnglish ? "Tone:" : "Ton :"}</span>{" "}
+              {isEnglish
+                ? "Very friendly, as with an excellent physician colleague"
+                : "Très amical, comme avec un excellent collègue médecin"}
             </p>
             <p>
-              <span className="font-semibold">Voice effect:</span> Clear, calm,
-              direct
+              <span className="font-semibold">{isEnglish ? "Voice effect:" : "Effet de voix :"}</span>{" "}
+              {isEnglish ? "Clear, calm, direct" : "Clair, calme, direct"}
             </p>
             <p>
-              <span className="font-semibold">Rhythm:</span> Fluid
+              <span className="font-semibold">{isEnglish ? "Rhythm:" : "Rythme :"}</span> {isEnglish ? "Fluid" : "Fluide"}
             </p>
           </div>
           {/* Save Button */}
           <div className="">
             <button onClick={handleSave} className="py-1 bg-[#4e7ba0] text-white rounded-sm px-10 mt-2">
-              Save
+              {isEnglish ? "Save" : "Sauvegarder"}
             </button>
           </div>
         </div>

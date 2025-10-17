@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { useNavigate } from "react-router";
+import { useStatus } from "../../providers/StatusProvider";
 
 const PatientsTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  const {isEnglish} = useStatus();
   
 
   const handleNavigate = (id:number) => {
@@ -26,14 +28,16 @@ const PatientsTable = () => {
 
   return (
     <div className="flex-1 p-6 bg-white text-[#4A4A4A] h-full flex flex-col gap-5">
-      <h2 className="text-3xl font-semibold mb-3">Patients</h2>
+      <h2 className="text-3xl font-semibold mb-3">
+        {isEnglish ? "Patients" : "Patients"}
+      </h2>
       {/* Search Bar */}
       <div className="mb-4">
         <div className="flex items-center bg-[#DBDBDB] w-64 gap-2 p-2 rounded">
           <IoSearch className="text-lg" />
           <input
             type="text"
-            placeholder="Search"
+            placeholder={isEnglish ? "Search" : "Rechercher"}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className=" text-sm border-0 rounded-md focus:outline-none "
@@ -47,10 +51,18 @@ const PatientsTable = () => {
           <table className="w-full hidden md:table text-left">
             <thead className="sticky top-0 bg-white border-b">
               <tr>
-                <th className=" py-2 font-semibold">First Name</th>
-                <th className=" py-2 font-semibold">Last Name</th>
-                <th className=" py-2 font-semibold">Date of Birth</th>
-                <th className=" py-2 font-semibold">Date Created</th>
+                <th className=" py-2 font-semibold">
+                  {isEnglish ? "First Name" : "Prénom"}
+                </th>
+                <th className=" py-2 font-semibold">
+                  {isEnglish ? "Last Name" : "Nom de famille"}
+                </th>
+                <th className=" py-2 font-semibold">
+                  {isEnglish ? "Date of Birth" : "Date de naissance"}
+                </th>
+                <th className=" py-2 font-semibold">
+                  {isEnglish ? "Date Created" : "Date de création"}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -71,7 +83,7 @@ const PatientsTable = () => {
           <div className="md:hidden">
             {filteredPatients.length === 0 ? (
               <div className="text-center text-gray-500 mt-10">
-                No patients found.
+                {isEnglish ? "No patients found." : "Aucun patient trouvé."}
               </div>
             ) : (
               <div>
@@ -82,19 +94,27 @@ const PatientsTable = () => {
                     className="border-b hover:bg-gray-50 transition-colors"
                   >
                     <div className="py-2 cursor-pointer px-2 sm:px-4 text-start truncate min-w-[100px]">
-                      <span className="font-semibold pr-3">First Name:</span>{" "}
+                      <span className="font-semibold pr-3">
+                        {isEnglish ? "First Name:" : "Prénom :"}
+                      </span>{" "}
                       {patient.firstName}
                     </div>
                     <div className="py-2 cursor-pointer px-2 sm:px-4 truncate min-w-[100px]">
-                      <span className="font-semibold pr-3">Last Name:</span>{" "}
+                      <span className="font-semibold pr-3">
+                        {isEnglish ? "Last Name:" : "Nom de famille :"}
+                      </span>{" "}
                       {patient.lastName}
                     </div>
                     <div className="py-2 px-2 sm:px-4 min-w-[120px]">
-                      <span className="font-semibold pr-3">Date of Birth:</span>{" "}
+                      <span className="font-semibold pr-3">
+                        {isEnglish ? "Date of Birth:" : "Date de naissance :"}
+                      </span>{" "}
                       {patient.dob}
                     </div>
                     <div className="py-2 px-2 sm:px-4 min-w-[120px]">
-                      <span className="font-semibold pr-3">Date Created:</span>{" "}
+                      <span className="font-semibold pr-3">
+                        {isEnglish ? "Date Created:" : "Date de création :"}
+                      </span>{" "}
                       {patient.created}
                     </div>
                   </div>

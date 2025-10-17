@@ -4,6 +4,7 @@ import { IoOptionsOutline } from "react-icons/io5";
 import { HiOutlineMicrophone } from "react-icons/hi2";
 import ChatSettings from "../ChatSettings/ChatSettings";
 import AudioRecord from "../../components/Consultion/AudioRecord/AudioRecord";
+import { useStatus } from "../../providers/StatusProvider";
 
 type Message = {
   id: number;
@@ -18,6 +19,7 @@ const Chatbot = () => {
   const [setting, setSetting] = useState(false);
   const [isRecording, setRecording] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const {isEnglish} = useStatus();
 
   const handleSendMessage = () => {
     if (input.trim()) {
@@ -108,7 +110,10 @@ if(setting){
             onClick={()=>setSetting(true)}
             className=" p-2 text-[#4e7ba0] rounded-lg"
           >
-            <IoOptionsOutline title="setting" className="text-lg cursor-pointer" />
+            <IoOptionsOutline
+              title={isEnglish ? "setting" : "paramètre"}
+              className="text-lg cursor-pointer"
+            />
           </button>
           <textarea
             ref={textareaRef}
@@ -117,7 +122,9 @@ if(setting){
             onKeyDown={handleKeyDown}
             rows={1}
             className="w-full p-3 rounded-lg focus:outline-0 resize-none overflow-y-auto max-h-48 custom-scrollbar"
-            placeholder="Start typing here..."
+            placeholder={
+              isEnglish ? "Start typing here..." : "Commencez à taper ici..."
+            }
           />
 
           <button

@@ -1,8 +1,10 @@
 import { RxCross2 } from "react-icons/rx";
 import { Link, useNavigate } from "react-router";
+import { useStatus } from "../../providers/StatusProvider";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const {isEnglish} = useStatus();
 
   const handleGoBack = () => {
     navigate("/dashboard/chat");
@@ -14,7 +16,9 @@ const Profile = () => {
           <RxCross2 className="absolute top-5 right-5 text-xl text-[#4e7ba0] cursor-pointer" />
         </button>
         <div className="flex  flex-col gap-3 2xl:gap-5 text-[#4A4A4A] ">
-          <h1 className="text-2xl 2xl:text-3xl font-semibold">Profile</h1>
+          <h1 className="text-2xl 2xl:text-3xl font-semibold">
+            {isEnglish ? "Profile" : "Profil"}
+          </h1>
           <img
             src="/Images/Others/demoProfile.jpg"
             alt="profile"
@@ -25,43 +29,59 @@ const Profile = () => {
               to={"/dashboard/edit-profile"}
               className="border border-[#4E7BA0] text-[#4E7BA0] rounded-sm px-5 py-2 cursor-pointer transition-transform duration-200 ease-in-out  active:scale-95"
             >
-              Edit profile
+              {isEnglish ? "Edit profile" : "Modifier le profil"}
             </Link>
           </div>
           <div className="flex gap-12">
-            <span className="w-40 font-semibold">First name</span>
+            <span className="w-40 font-semibold">
+              {isEnglish ? "First name" : "Prénom"}
+            </span>
             <span>Martine</span>
           </div>
           <div className="flex gap-12">
-            <span className="w-40 font-semibold">Last Name</span>
+            <span className="w-40 font-semibold">
+              {isEnglish ? "Last Name" : "Nom de famille"}
+            </span>
             <span>Ndengera</span>
           </div>
           <div className="flex gap-12">
-            <span className="w-40 font-semibold">Email</span>
+            <span className="w-40 font-semibold">
+              {isEnglish ? "Email" : "Email"}
+            </span>
             <span>abc@gmail.com</span>
           </div>
           <div className="flex gap-12">
-            <span className="w-40 font-semibold">Role</span>
-            <span>Doctor</span>
+            <span className="w-40 font-semibold">{isEnglish ? "Role" : "Rôle"}</span>
+            <span>{isEnglish ? "Doctor" : "Docteur"}</span>
           </div>
           <div className="flex gap-12">
-            <span className="w-40 font-semibold">Department</span>
-            <span>Psycology</span>
+            <span className="w-40 font-semibold">
+              {isEnglish ? "Department" : "Département"}
+            </span>
+            <span>{isEnglish ? "Psycology" : "Psychologie"}</span>
           </div>
           <div className="flex gap-12">
-            <span className="w-40 font-semibold">Organization</span>
+            <span className="w-40 font-semibold">
+              {isEnglish ? "Organization" : "Organisation"}
+            </span>
             <span>xyz health care</span>
           </div>
           <div className="flex gap-12">
-            <span className="w-40 font-semibold">Location</span>
+            <span className="w-40 font-semibold">
+              {isEnglish ? "Location" : "Emplacement"}
+            </span>
             <span>1820, Navada, America</span>
           </div>
           <div className="flex gap-12">
-            <span className="w-40 font-semibold">Registration Date</span>
+            <span className="w-40 font-semibold">
+              {isEnglish ? "Registration Date" : "Date d'inscription"}
+            </span>
             <span>29-10-2002</span>
           </div>
           <div className="flex gap-12">
-            <span className="w-40 font-semibold">Last Update</span>
+            <span className="w-40 font-semibold">
+              {isEnglish ? "Last Update" : "Dernière mise à jour"}
+            </span>
             <span>15-12-2025</span>
           </div>
           <div className="flex gap-12">
@@ -70,7 +90,7 @@ const Profile = () => {
                 to={"/dashboard/change-password"}
                 className="bg-[#4E7BA0] text-white rounded-sm px-2 lg:px-8 py-2 cursor-pointer transition-transform duration-200 ease-in-out "
               >
-                Change Password
+                {isEnglish ? "Change Password" : "Changer le mot de passe"}
               </Link>
             </div>
             <div className="">
@@ -78,7 +98,7 @@ const Profile = () => {
                 to={"/dashboard/settings"}
                 className="border border-[#4E7BA0] text-[#4E7BA0] rounded-sm px-5 py-2 cursor-pointer transition-transform duration-200 ease-in-out  active:scale-95"
               >
-                Settings
+                {isEnglish ? "Settings" : "Paramètres"}
               </Link>
             </div>
           </div>

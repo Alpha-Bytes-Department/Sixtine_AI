@@ -5,6 +5,7 @@ import { FiEdit3, FiCheck, FiX } from "react-icons/fi";
 import { useNavigate } from "react-router";
 import { BsFileEarmarkPdfFill } from "react-icons/bs";
 import { FaRegEdit } from "react-icons/fa";
+import { useStatus } from "../../providers/StatusProvider";
 
 const Users = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,6 +28,7 @@ const Users = () => {
       }))
   );
   const navigate = useNavigate();
+  const {isEnglish} = useStatus();
 
   const handleNavigate = (id: number) => {
     if (editingUser === null) {
@@ -73,14 +75,16 @@ const Users = () => {
 
   return (
     <div className="flex-1 p-6 bg-white text-[#4A4A4A] h-full flex flex-col gap-5 ">
-      <h2 className="text-3xl font-semibold mb-3">Users</h2>
+      <h2 className="text-3xl font-semibold mb-3">
+        {isEnglish ? "Users" : "Utilisateurs"}
+      </h2>
       {/* Search Bar */}
       <div className="mb-4">
         <div className="flex items-center bg-[#DBDBDB] w-64 gap-2 p-2 rounded">
           <IoSearch className="text-lg" />
           <input
             type="text"
-            placeholder="Search"
+            placeholder={isEnglish ? "Search" : "Rechercher"}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className=" text-sm border-0 rounded-md focus:outline-none "
@@ -96,15 +100,19 @@ const Users = () => {
               <thead className="sticky top-0 bg-white hidden md:table-header-group border-b">
                 <tr>
                   <th className="py-2 font-semibold px-2 sm:px-4">
-                    First Name
+                    {isEnglish ? "First Name" : "Prénom"}
                   </th>
-                  <th className="py-2 font-semibold px-2 sm:px-4">Last Name</th>
                   <th className="py-2 font-semibold px-2 sm:px-4">
-                    Date Created
+                    {isEnglish ? "Last Name" : "Nom de famille"}
                   </th>
-                  <th className="py-2 font-semibold px-2 sm:px-4">Role</th>
                   <th className="py-2 font-semibold px-2 sm:px-4">
-                    Certification
+                    {isEnglish ? "Date Created" : "Date de création"}
+                  </th>
+                  <th className="py-2 font-semibold px-2 sm:px-4">
+                    {isEnglish ? "Role" : "Rôle"}
+                  </th>
+                  <th className="py-2 font-semibold px-2 sm:px-4">
+                    {isEnglish ? "Certification" : "Certification"}
                   </th>
                 </tr>
               </thead>
@@ -174,10 +182,18 @@ const Users = () => {
                             }
                             className="border border-gray-300 rounded px-2 py-1 text-sm"
                           >
-                            <option value="doctor">Doctor</option>
-                            <option value="nurse">Nurse</option>
-                            <option value="admin">Admin</option>
-                            <option value="patient">Patient</option>
+                            <option value="doctor">
+                              {isEnglish ? "Doctor" : "Docteur"}
+                            </option>
+                            <option value="nurse">
+                              {isEnglish ? "Nurse" : "Infirmière"}
+                            </option>
+                            <option value="admin">
+                              {isEnglish ? "Admin" : "Admin"}
+                            </option>
+                            <option value="patient">
+                              {isEnglish ? "Patient" : "Patient"}
+                            </option>
                           </select>
                         ) : (
                           <span>{patient.role}</span>
@@ -203,7 +219,7 @@ const Users = () => {
                             onClick={() => handleEdit(idx, patient)}
                             className="text-blue-600 flex font-light gap-4 hover:text-blue-800 transition-colors ml-2"
                           >
-                            <FaRegEdit size={16} /> Edit
+                            <FaRegEdit size={16} /> {isEnglish ? "Edit" : "Modifier"}
                           </button>
                         )}
                       </div>
@@ -223,7 +239,7 @@ const Users = () => {
             <div className="md:hidden">
               {filteredPatients.length === 0 ? (
                 <div className="text-center text-gray-500 mt-10">
-                  No users found.
+                  {isEnglish ? "No users found." : "Aucun utilisateur trouvé."}
                 </div>
               ) : (
                 <div>
@@ -233,7 +249,9 @@ const Users = () => {
                       className="border-b hover:bg-gray-50 transition-colors p-3"
                     >
                       <div className="py-2 px-2 sm:px-4 text-start truncate min-w-[100px]">
-                        <span className="font-semibold pr-3">First Name:</span>
+                        <span className="font-semibold pr-3">
+                          {isEnglish ? "First Name:" : "Prénom :"}
+                        </span>
                         {editingUser === idx ? (
                           <input
                             type="text"
@@ -256,7 +274,9 @@ const Users = () => {
                         )}
                       </div>
                       <div className="py-2 px-2 sm:px-4 truncate min-w-[100px]">
-                        <span className="font-semibold pr-3">Last Name:</span>
+                        <span className="font-semibold pr-3">
+                          {isEnglish ? "Last Name:" : "Nom de famille :"}
+                        </span>
                         {editingUser === idx ? (
                           <input
                             type="text"
@@ -280,13 +300,15 @@ const Users = () => {
                       </div>
                       <div className="py-2 px-2 sm:px-4 min-w-[120px]">
                         <span className="font-semibold pr-3">
-                          Date Created:
+                          {isEnglish ? "Date Created:" : "Date de création :"}
                         </span>{" "}
                         {patient.doc}
                       </div>
                       <div className="py-2 px-2 sm:px-4 min-w-[80px] flex items-center justify-between">
                         <div>
-                          <span className="font-semibold pr-3">Role:</span>
+                          <span className="font-semibold pr-3">
+                            {isEnglish ? "Role:" : "Rôle :"}
+                          </span>
                           {editingUser === idx ? (
                             <select
                               value={editedData.role}
@@ -298,10 +320,18 @@ const Users = () => {
                               }
                               className="border border-gray-300 rounded px-2 py-1 text-sm ml-2"
                             >
-                              <option value="doctor">Doctor</option>
-                              <option value="nurse">Nurse</option>
-                              <option value="admin">Admin</option>
-                              <option value="patient">Patient</option>
+                              <option value="doctor">
+                                {isEnglish ? "Doctor" : "Docteur"}
+                              </option>
+                              <option value="nurse">
+                                {isEnglish ? "Nurse" : "Infirmière"}
+                              </option>
+                              <option value="admin">
+                                {isEnglish ? "Admin" : "Admin"}
+                              </option>
+                              <option value="patient">
+                                {isEnglish ? "Patient" : "Patient"}
+                              </option>
                             </select>
                           ) : (
                             patient.role
@@ -313,13 +343,13 @@ const Users = () => {
                               onClick={() => handleSave(idx)}
                               className="text-green-600 hover:text-green-800 transition-colors flex items-center gap-1"
                             >
-                              <FiCheck size={16} /> Save
+                              <FiCheck size={16} /> {isEnglish ? "Save" : "Sauvegarder"}
                             </button>
                             <button
                               onClick={handleCancel}
                               className="text-red-600 hover:text-red-800 transition-colors flex items-center gap-1"
                             >
-                              <FiX size={16} /> Cancel
+                              <FiX size={16} /> {isEnglish ? "Cancel" : "Annuler"}
                             </button>
                           </div>
                         ) : (
@@ -327,13 +357,13 @@ const Users = () => {
                             onClick={() => handleEdit(idx, patient)}
                             className="text-blue-600 hover:text-blue-800 transition-colors flex items-center gap-1"
                           >
-                            <FiEdit3 size={16} /> Edit
+                            <FiEdit3 size={16} /> {isEnglish ? "Edit" : "Modifier"}
                           </button>
                         )}
                       </div>
                       <div className="py-2 flex items-center gap-4 px-2 sm:px-4 min-w-[100px]">
                         <span className="font-semibold pr-3">
-                          Certification:
+                          {isEnglish ? "Certification:" : "Certification :"}
                         </span>
                         <a href="/Certificate.pdf" target="_blank">
                           <span className="text-[#4e7ba0] flex gap-2 text-lg  cursor-pointer hover:underline">
