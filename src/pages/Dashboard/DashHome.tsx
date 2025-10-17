@@ -1,6 +1,8 @@
-import React from "react";
+import { useState } from "react";
 
 const DashHome = () => {
+  const [selectedDisease, setSelectedDisease] = useState<string | null>(null);
+  const [hoveredSegment, setHoveredSegment] = useState<number | null>(null);
   const stats = [
     {
       title: "Total Patients",
@@ -65,10 +67,38 @@ const DashHome = () => {
   ];
 
   const diseaseData = [
-    { name: "Breast Cancer", percentage: 35, color: "#1e3a8a" },
-    { name: "Leukemia", percentage: 14, color: "#3b82f6" },
-    { name: "Brain Cancer", percentage: 7, color: "#60a5fa" },
-    { name: "Calf Scours", percentage: 46, color: "#93c5fd" },
+    {
+      id: 1,
+      name: "Cardiovascular Disease",
+      percentage: 35,
+      color: "#ef4444",
+      patients: 350,
+      description: "Heart and blood vessel disorders",
+    },
+    {
+      id: 2,
+      name: "Diabetes",
+      percentage: 28,
+      color: "#3b82f6",
+      patients: 280,
+      description: "Blood sugar regulation disorders",
+    },
+    {
+      id: 3,
+      name: "Respiratory Disease",
+      percentage: 22,
+      color: "#10b981",
+      patients: 220,
+      description: "Lung and breathing disorders",
+    },
+    {
+      id: 4,
+      name: "Cancer",
+      percentage: 15,
+      color: "#f59e0b",
+      patients: 150,
+      description: "Malignant cell growth disorders",
+    },
   ];
 
   const recentPatients = [
@@ -85,12 +115,35 @@ const DashHome = () => {
   const circumference = 2 * Math.PI * radius;
 
   let currentOffset = 0;
-  const segments = diseaseData.map((disease) => {
+  const segments = diseaseData.map((disease, index) => {
     const segmentLength = (disease.percentage / total) * circumference;
     const offset = currentOffset;
+    const angle = (disease.percentage / total) * 360;
+    const midAngle = (currentOffset / circumference) * 360 + angle / 2;
     currentOffset += segmentLength;
-    return { ...disease, segmentLength, offset };
+    return {
+      ...disease,
+      segmentLength,
+      offset,
+      angle,
+      midAngle,
+      index,
+    };
   });
+
+  const handleSegmentHover = (index: number | null) => {
+    setHoveredSegment(index);
+  };
+
+  const handleSegmentClick = (diseaseName: string) => {
+    setSelectedDisease(selectedDisease === diseaseName ? null : diseaseName);
+  };
+
+  const getSegmentTransform = (index: number) => {
+    const isHovered = hoveredSegment === index;
+    const isSelected = selectedDisease === segments[index]?.name;
+    return isHovered || isSelected ? "scale(1.05)" : "scale(1)";
+  };
 
   return (
     <div className="min-h-screen w-full bg-white p-3 sm:p-4 md:p-6 lg:p-8">
@@ -132,70 +185,190 @@ const DashHome = () => {
 
           {/* Disease Chart */}
           <div className="bg-gray-50 rounded-lg shadow p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow flex-1 flex flex-col justify-center">
-            <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-4 sm:mb-6">
-              Total Disease
-            </h3>
+            <div className="flex items-center justify-between mb-4 sm:mb-6">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800">
+                Disease Distribution
+              </h3>
+              <div className="text-sm text-gray-500">
+                Total Patients:{" "}
+                {diseaseData.reduce((sum, d) => sum + d.patients, 0)}
+              </div>
+            </div>
+
             <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
-              {/* Donut Chart */}
+              {/* Interactive Donut Chart */}
               <div className="relative flex-shrink-0">
                 <svg
-                  width="220"
-                  height="220"
-                  className="transform -rotate-90 sm:w-[240px] sm:h-[240px] md:w-[260px] md:h-[260px] lg:w-[300px] lg:h-[300px]"
+                  width="280"
+                  height="280"
+                  className="transform -rotate-90"
                   viewBox="0 0 300 300"
                 >
+                  {/* Background circle */}
                   <circle
                     cx="150"
                     cy="150"
                     r={radius}
                     fill="none"
-                    stroke="#e5e7eb"
+                    stroke="#f3f4f6"
                     strokeWidth="40"
                   />
+
+                  {/* Disease segments */}
                   {segments.map((segment, index) => (
-                    <circle
-                      key={index}
-                      cx="150"
-                      cy="150"
-                      r={radius}
-                      fill="none"
-                      stroke={segment.color}
-                      strokeWidth="40"
-                      strokeDasharray={`${segment.segmentLength} ${circumference}`}
-                      strokeDashoffset={-segment.offset}
-                    />
+                    <g key={segment.id}>
+                      <circle
+                        cx="150"
+                        cy="150"
+                        r={radius}
+                        fill="none"
+                        stroke={segment.color}
+                        strokeWidth={hoveredSegment === index ? "45" : "40"}
+                        strokeDasharray={`${segment.segmentLength} ${circumference}`}
+                        strokeDashoffset={-segment.offset}
+                        className="transition-all duration-300 cursor-pointer"
+                        style={{
+                          filter:
+                            hoveredSegment === index
+                              ? "brightness(1.1)"
+                              : "brightness(1)",
+                          transformOrigin: "150px 150px",
+                          transform: getSegmentTransform(index),
+                        }}
+                        onMouseEnter={() => handleSegmentHover(index)}
+                        onMouseLeave={() => handleSegmentHover(null)}
+                        onClick={() => handleSegmentClick(segment.name)}
+                      />
+                    </g>
                   ))}
                 </svg>
-                {/* Percentage Labels */}
-                <div className="absolute top-6 left-8 sm:top-8 sm:left-10 md:top-8 md:left-12 bg-blue-500 text-white text-xs font-semibold px-2 py-1 rounded shadow-sm">
-                  7%
+
+                {/* Center info */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center bg-white rounded-full w-24 h-24 flex flex-col items-center justify-center shadow-sm">
+                    {hoveredSegment !== null ? (
+                      <>
+                        <div className="text-lg font-bold text-gray-800">
+                          {segments[hoveredSegment].percentage}%
+                        </div>
+                        <div className="text-xs text-gray-600">
+                          {segments[hoveredSegment].patients}
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="text-lg font-bold text-gray-800">
+                          1000
+                        </div>
+                        <div className="text-xs text-gray-600">Total</div>
+                      </>
+                    )}
+                  </div>
                 </div>
-                <div className="absolute top-12 right-2 sm:top-14 sm:right-3 md:top-16 md:right-4 bg-blue-500 text-white text-xs font-semibold px-2 py-1 rounded shadow-sm">
-                  14%
-                </div>
-                <div className="absolute bottom-6 right-0 sm:bottom-7 sm:right-1 md:bottom-8 md:right-2 bg-gray-700 text-white text-xs font-semibold px-2 py-1 rounded shadow-sm">
-                  35%
-                </div>
-                <div className="absolute bottom-12 -left-1 sm:bottom-14 sm:-left-1 md:bottom-16 md:left-0 bg-blue-400 text-white text-xs font-semibold px-2 py-1 rounded shadow-sm">
-                  46%
-                </div>
+
+                {/* Tooltip */}
+                {hoveredSegment !== null && (
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap z-10">
+                    <div className="font-semibold">
+                      {segments[hoveredSegment].name}
+                    </div>
+                    <div className="text-xs opacity-90">
+                      {segments[hoveredSegment].description}
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-800"></div>
+                  </div>
+                )}
               </div>
 
-              {/* Legend */}
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4 w-full lg:w-auto">
+              {/* Interactive Legend */}
+              <div className="grid grid-cols-1 gap-3 sm:gap-4 w-full lg:w-auto">
                 {diseaseData.map((disease, index) => (
-                  <div key={index} className="flex items-center gap-2 sm:gap-3">
+                  <div
+                    key={disease.id}
+                    className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                      hoveredSegment === index ||
+                      selectedDisease === disease.name
+                        ? "bg-white shadow-md scale-105"
+                        : "hover:bg-white hover:shadow-sm"
+                    }`}
+                    onMouseEnter={() => handleSegmentHover(index)}
+                    onMouseLeave={() => handleSegmentHover(null)}
+                    onClick={() => handleSegmentClick(disease.name)}
+                  >
                     <div
-                      className="w-3 h-3 rounded-full flex-shrink-0"
+                      className={`w-4 h-4 rounded-full flex-shrink-0 transition-all duration-200 ${
+                        hoveredSegment === index ? "scale-125" : ""
+                      }`}
                       style={{ backgroundColor: disease.color }}
                     ></div>
-                    <span className="text-xs sm:text-sm text-gray-700">
-                      {disease.name}
-                    </span>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-gray-700">
+                          {disease.name}
+                        </span>
+                        <span className="text-sm font-bold text-gray-800">
+                          {disease.percentage}%
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between mt-1">
+                        <span className="text-xs text-gray-500">
+                          {disease.patients} patients
+                        </span>
+                        <div className="w-16 bg-gray-200 rounded-full h-1.5">
+                          <div
+                            className="h-1.5 rounded-full transition-all duration-500"
+                            style={{
+                              width: `${disease.percentage}%`,
+                              backgroundColor: disease.color,
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
+
+            {/* Selected Disease Details */}
+            {selectedDisease && (
+              <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-semibold text-blue-800">
+                    {selectedDisease} Details
+                  </h4>
+                  <button
+                    onClick={() => setSelectedDisease(null)}
+                    className="text-blue-600 hover:text-blue-800"
+                  >
+                    ✕
+                  </button>
+                </div>
+                <p className="text-sm text-blue-700 mt-2">
+                  {
+                    diseaseData.find((d) => d.name === selectedDisease)
+                      ?.description
+                  }
+                </p>
+                <div className="flex gap-4 mt-3 text-sm">
+                  <span className="text-blue-600">
+                    Patients:{" "}
+                    {
+                      diseaseData.find((d) => d.name === selectedDisease)
+                        ?.patients
+                    }
+                  </span>
+                  <span className="text-blue-600">
+                    Percentage:{" "}
+                    {
+                      diseaseData.find((d) => d.name === selectedDisease)
+                        ?.percentage
+                    }
+                    %
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
