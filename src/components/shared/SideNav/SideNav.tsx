@@ -8,6 +8,8 @@ import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { TiArrowSortedDown } from "react-icons/ti";
 import Swal from "sweetalert2";
+import { useStatus } from "../../../providers/StatusProvider";
+import { MdOutlineDashboard } from "react-icons/md";
 
 const SideNav = () => {
   const navigate = useNavigate();
@@ -16,20 +18,27 @@ const SideNav = () => {
   const [isTodayCollapsed, setTodayCollapsed] = useState(true);
   const [isOthersCollapsed, setOthersCollapsed] = useState(true);
   const [isUsersCollapsed, setUsersCollapsed] = useState(true);
+  const {isEnglish} = useStatus();
 
   // navigate to chat
   const handleNavigateChat = () => navigate("/dashboard/chat");
   const handleLogout = () => {
    Swal.fire({
-     title: "Are you sure?",
-     text: "You will be logged out of your account.",
+     title: isEnglish ? "Are you sure?" : "Êtes-vous sûr ?",
+     text: isEnglish
+       ? "You will be logged out of your account."
+       : "Vous serez déconnecté de votre compte.",
      icon: "warning",
      showCancelButton: true,
-     confirmButtonText: "Yes, log out",
-     cancelButtonText: "No, cancel"
+     confirmButtonText: isEnglish ? "Yes, log out" : "Oui, se déconnecter",
+     cancelButtonText: isEnglish ? "No, cancel" : "Non, annuler",
    }).then((result) => {
      if (result.isConfirmed) {
-      Swal.fire("Logged Out!", "You have been logged out.", "success");      
+      Swal.fire(
+        isEnglish ? "Logged Out!" : "Déconnecté !",
+        isEnglish ? "You have been logged out." : "Vous avez été déconnecté.",
+        "success"
+      );
       navigate("/dashboard/login");
 
      }
@@ -164,7 +173,9 @@ const SideNav = () => {
               onClick={() => setUsersCollapsed(!isUsersCollapsed)}
               className="text-[#4E7BA0]  flex justify-between items-center cursor-pointer w-full"
             >
-              <span>Synthetic Medical Practice</span>{" "}
+              <span>
+                {isEnglish ? "Synthetic Medical Practice" : "Pratique Médicale Synthétique"}
+              </span>{" "}
               {isUsersCollapsed ? <FaCaretRight /> : <TiArrowSortedDown />}
             </div>
             <div
@@ -174,27 +185,40 @@ const SideNav = () => {
                   : "h-20 overflow-y-auto custom-scrollbar"
               }`}
             >
-              <p>Synthetic Medical Practice</p>
-              <p>Synthetic Medical Practice</p>
-              <p>Synthetic Medical Practice</p>
-              <p>Synthetic Medical Practice</p>
-              <p>Synthetic Medical Practice</p>
+              <p>{isEnglish ? "Synthetic Medical Practice" : "Pratique Médicale Synthétique"}</p>
+              <p>{isEnglish ? "Synthetic Medical Practice" : "Pratique Médicale Synthétique"}</p>
+              <p>{isEnglish ? "Synthetic Medical Practice" : "Pratique Médicale Synthétique"}</p>
+              <p>{isEnglish ? "Synthetic Medical Practice" : "Pratique Médicale Synthétique"}</p>
+              <p>{isEnglish ? "Synthetic Medical Practice" : "Pratique Médicale Synthétique"}</p>
             </div>
           </div>
           <button
             onClick={handleNavigateChat}
             className="bg-[#4E7BA0] text-white rounded-sm w-full py-1 cursor-pointer transition-transform duration-200 ease-in-out active:scale-95"
           >
-            New Chat
+            {isEnglish ? "New Chat" : "Nouveau Chat"}
           </button>
         </div>
 
         {/* ========== Assistant Section ========== */}
         <div className="w-full">
-          <h1 className="text-xl text-[#4E7BA0] mb-2">Assistant</h1>
+          <h1 className="text-xl text-[#4E7BA0] mb-2">{isEnglish ? "Assistant" : "Assistant"}</h1>
           <div className="flex flex-col gap-2">
             <NavLink
+              to={"/dashboard"}
+              end
+              className={({ isActive }) =>
+                `flex gap-2 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
+                  isActive ? "bg-[#C0E0FA]" : ""
+                }`
+              }
+            >
+              <MdOutlineDashboard className="text-2xl" />
+              <p>{isEnglish ? "Dashboard" : "Tableau de bord"}</p>
+            </NavLink>
+            <NavLink
               to={"/dashboard/add-document"}
+              end
               className={({ isActive }) =>
                 `flex gap-2 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
                   isActive ? "bg-[#C0E0FA]" : ""
@@ -202,10 +226,11 @@ const SideNav = () => {
               }
             >
               <HiOutlineDocumentPlus className="text-2xl" />
-              <p>Add Document</p>
+              <p>{isEnglish ? "Add Document" : "Ajouter un document"}</p>
             </NavLink>
             <NavLink
               to={"/dashboard/add-consultion"}
+              end
               className={({ isActive }) =>
                 `flex gap-2 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
                   isActive ? "bg-[#C0E0FA]" : ""
@@ -213,10 +238,11 @@ const SideNav = () => {
               }
             >
               <HiOutlineMicrophone className="text-2xl" />
-              <p>Add Consultation</p>
+              <p>{isEnglish ? "Add Consultation" : "Ajouter une consultation"}</p>
             </NavLink>
             <NavLink
               to={"/dashboard/chat"}
+              end
               className={({ isActive }) =>
                 `flex gap-2 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
                   isActive ? "bg-[#C0E0FA]" : ""
@@ -224,44 +250,47 @@ const SideNav = () => {
               }
             >
               <LuMessageCircleMore className="text-2xl" />
-              <p>Chats</p>
+              <p>{isEnglish ? "Chats" : "Discussions"}</p>
             </NavLink>
           </div>
         </div>
         <hr className="border-[#D9D9D9]  w-full" />
         {/* ========== Admin Section ========== */}
         <div className="w-full">
-          <h1 className="text-xl text-[#4E7BA0] mb-2">Admin</h1>
+          <h1 className="text-xl text-[#4E7BA0] mb-2">{isEnglish ? "Admin" : "Admin"}</h1>
           <div className="flex flex-col gap-2">
             <NavLink
               to={"/dashboard/users"}
+              end
               className={({ isActive }) =>
                 `flex gap-3 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
                   isActive ? "bg-[#C0E0FA]" : ""
                 }`
               }
             >
-              <p>User</p>
+              <p>{isEnglish ? "User" : "Utilisateur"}</p>
             </NavLink>
             <NavLink
               to={"/dashboard/patients"}
+              end
               className={({ isActive }) =>
                 `flex gap-3 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
                   isActive ? "bg-[#C0E0FA]" : ""
                 }`
               }
             >
-              <p>Patients</p>
+              <p>{isEnglish ? "Patients" : "Patients"}</p>
             </NavLink>
             <NavLink
               to={"/dashboard/forms"}
+              end
               className={({ isActive }) =>
                 `flex gap-3 items-center rounded-sm text-[#4E7BA0] px-2 py-1 ${
                   isActive ? "bg-[#C0E0FA]" : ""
                 }`
               }
             >
-              <p>Forms</p>
+              <p>{isEnglish ? "Forms" : "Formulaires"}</p>
             </NavLink>
           </div>
         </div>
@@ -271,7 +300,7 @@ const SideNav = () => {
           to={"/dashboard/chats-history"}
           className="bg-[#4E7BA0] text-white rounded-sm w-full px-2 py-1 text-left cursor-pointer"
         >
-          Chats History
+          {isEnglish ? "Chats History" : "Historique des discussions"}
         </Link>
         {/*=================== Search Bar =================== */}
         <div className="w-full">
@@ -279,7 +308,7 @@ const SideNav = () => {
             <IoSearch className="text-lg" />
             <input
               type="text"
-              placeholder="Search"
+              placeholder={isEnglish ? "Search" : "Rechercher"}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="text-sm border-0 text-white bg-transparent w-full focus:outline-none"
@@ -298,7 +327,7 @@ const SideNav = () => {
                 }}
                 className="text-[#4E7BA0] flex justify-between items-center cursor-pointer w-full"
               >
-                <span>Today</span>{" "}
+                <span>{isEnglish ? "Today" : "Aujourd'hui"}</span>{" "}
                 {isTodayCollapsed ? <FaCaretRight /> : <TiArrowSortedDown />}
               </div>
               <div
@@ -323,7 +352,7 @@ const SideNav = () => {
                 onClick={() => setOthersCollapsed(!isOthersCollapsed)}
                 className="text-[#4E7BA0] flex justify-between items-center cursor-pointer w-full "
               >
-                <span>Others</span>{" "}
+                <span>{isEnglish ? "Others" : "Autres"}</span>{" "}
                 {isOthersCollapsed ? <FaCaretRight /> : <TiArrowSortedDown />}
               </div>
               <div
