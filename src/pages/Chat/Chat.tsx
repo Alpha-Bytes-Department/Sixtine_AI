@@ -69,7 +69,8 @@ if(setting){
     return <ChatSettings setSetting={setSetting}/>
 }
 
-
+const { setPageTitle } = useStatus();
+setPageTitle("Chat");
 // start recording
   if(isRecording){
     return <AudioRecord setRecording={setRecording}/>

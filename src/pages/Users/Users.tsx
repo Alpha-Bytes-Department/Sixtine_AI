@@ -8,6 +8,8 @@ import { FaRegEdit } from "react-icons/fa";
 import { useStatus } from "../../providers/StatusProvider";
 
 const Users = () => {
+  const { setPageTitle } = useStatus();
+  setPageTitle("Users");
   const [searchTerm, setSearchTerm] = useState("");
   const [editingUser, setEditingUser] = useState<number | null>(null);
   const [editedData, setEditedData] = useState({

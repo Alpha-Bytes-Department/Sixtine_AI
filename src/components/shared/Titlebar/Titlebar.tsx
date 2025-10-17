@@ -10,10 +10,12 @@ const Titlebar = () => {
   return (
     <div className="w-full px-6 py-3 border-b mb-4 border-gray-300">
       <div className="flex justify-between items-center">
-        <p className="font-bold text-2xl">{pageTitle?pageTitle:"Dashboard"}</p>
+        <p className="font-bold text-2xl text-[#4E7BA0]">
+          {pageTitle ? pageTitle : "Dashboard"}
+        </p>
         <div className="flex gap-2 lg:gap-5 items-center">
           <div className="flex gap-1 items-center">
-            <GrLanguage  className="text-lg text-[#6B6B6B]"/>
+            <GrLanguage className="text-lg text-[#6B6B6B]" />
             <select
               value={languageStat}
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>

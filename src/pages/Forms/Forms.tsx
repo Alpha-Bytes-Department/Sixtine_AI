@@ -207,7 +207,8 @@ const Forms = () => {
               {/* Section 2.2 */}
               <section>
                 <label className="flex items-start gap-2 mt-2">
-                  2.2<input type="checkbox" className="mt-1" />
+                  2.2
+                  <input type="checkbox" className="mt-1" />
                   <span>
                     {isEnglish
                       ? "Equivocal result Final evaluation must be carried out by a physician recognized at level 3 or 4."
@@ -328,4 +329,3 @@ const Forms = () => {
 };
 
 export default Forms;
-/* Add this to your global index.css */
