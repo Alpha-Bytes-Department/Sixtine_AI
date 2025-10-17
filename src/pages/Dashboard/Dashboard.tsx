@@ -24,7 +24,7 @@ const Dashboard = () => {
         ) : (
           <SideNav />
         )}
-        <div className="overflow-y-auto w-full flex flex-col">
+        <div className="overflow-y-auto w-full flex flex-col custom-scrollbar">
           <Titlebar/>
           <Outlet />
         </div>

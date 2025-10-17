@@ -7,7 +7,7 @@ const Titlebar = () => {
   const { languageStat, setLanguageStat } = useStatus();
   const {pageTitle} = useStatus();
   return (
-    <div className="w-full">
+    <div className="w-full px-6 py-3 border-b mb-4 border-gray-300">
       <div className="flex justify-between items-center">
         <p className="font-bold text-2xl">{pageTitle?pageTitle:"Dashboard"}</p>
         <div className="flex gap-2 lg:gap-5 items-center">

@@ -72,7 +72,7 @@ const Users = () => {
   );
 
   return (
-    <div className="flex-1 p-6 bg-white text-[#4A4A4A] h-full flex flex-col gap-5">
+    <div className="flex-1 p-6 bg-white text-[#4A4A4A] h-full flex flex-col gap-5 ">
       <h2 className="text-3xl font-semibold mb-3">Users</h2>
       {/* Search Bar */}
       <div className="mb-4">
@@ -89,7 +89,7 @@ const Users = () => {
       </div>
 
       {/* Table */}
-      <div className="flex-grow overflow-y-auto">
+      <div className="flex-grow custom-scrollbar overflow-y-auto">
         <div className="relative">
           <div className="overflow-x-auto">
             <table className="w-full text-left min-w-full">
@@ -209,11 +209,7 @@ const Users = () => {
                       </div>
                     </td>
                     <td className="py-2 px-2 sm:px-4 min-w-[100px]">
-                      <a
-                        href="/Certificate.pdf"
-                        target="_blank"
-                        
-                      >
+                      <a href="/Certificate.pdf" target="_blank">
                         <span className="text-[#4e7ba0] flex gap-2 text-lg cursor-pointer curso">
                           <BsFileEarmarkPdfFill color="red" size={24} />{" "}
                           {patient.certification}
@@ -339,15 +335,12 @@ const Users = () => {
                         <span className="font-semibold pr-3">
                           Certification:
                         </span>
-                         <a
-                        href="/Certificate.pdf"
-                        target="_blank"
-                        
-                      >
-                        <span className="text-[#4e7ba0] flex gap-2 text-lg  cursor-pointer hover:underline">
-                          <BsFileEarmarkPdfFill color="red" size={24} />{" "}
-                          {patient.certification}
-                        </span></a>
+                        <a href="/Certificate.pdf" target="_blank">
+                          <span className="text-[#4e7ba0] flex gap-2 text-lg  cursor-pointer hover:underline">
+                            <BsFileEarmarkPdfFill color="red" size={24} />{" "}
+                            {patient.certification}
+                          </span>
+                        </a>
                       </div>
                     </div>
                   ))}
