@@ -6,7 +6,9 @@ import { createContext, useContext, useMemo, useState, type ReactNode } from "re
 type StatusType = {
     languageStat: "english" | "french";
     setLanguageStat: React.Dispatch<React.SetStateAction<"english" | "french">>;
-    isEnglish: boolean
+    isEnglish: boolean,
+    pageTitle: string,
+    setPageTitle: React.Dispatch<React.SetStateAction<string>>
 }
 
 // create context 
@@ -16,11 +18,12 @@ const StatusContext = createContext<StatusType | undefined>(undefined);
 // create and export provider 
 export const StatusProvider = ( {children } : {children : ReactNode} )=>{
     const [languageStat, setLanguageStat] = useState<"english" | "french">("english");
+    const [pageTitle, setPageTitle] = useState("");
 
     const isEnglish = languageStat === "english"
 
     // memorizing to prevent re-rander
-    const statusObject = useMemo(()=>({languageStat, setLanguageStat,isEnglish}),[languageStat, isEnglish])
+    const statusObject = useMemo(()=>({languageStat, setLanguageStat,isEnglish,pageTitle,setPageTitle}),[languageStat, isEnglish,pageTitle])
 
 
 

@@ -1,6 +1,7 @@
 import { Outlet, useMatch } from "react-router";
 import SideNav from "../../components/shared/SideNav/SideNav";
 import Footer from "../../components/shared/Footer/Footer";
+import Titlebar from "../../components/shared/Titlebar/Titlebar";
 
 const Dashboard = () => {
   const isLogIn = useMatch("/dashboard/login");
@@ -23,7 +24,8 @@ const Dashboard = () => {
         ) : (
           <SideNav />
         )}
-        <div className="overflow-y-auto w-full">
+        <div className="overflow-y-auto w-full flex flex-col">
+          <Titlebar/>
           <Outlet />
         </div>
       </div>
