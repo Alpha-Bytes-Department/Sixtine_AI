@@ -1,8 +1,10 @@
 import { MdOutlineMail } from "react-icons/md";
 import { Form, Link, useNavigate } from "react-router";
+import { useStatus } from "../../providers/StatusProvider";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
+  const { isEnglish } = useStatus();
 
   const handleContinue = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -24,10 +26,13 @@ const ForgotPassword = () => {
       </div>
       <div className="w-full lg:w-1/2 h-full bg-[#4e7ba0] flex justify-center items-center">
         <div className="text-white max-w-[280px] space-y-4">
-          <h1 className=" text-3xl">Forgot password</h1>
+          <h1 className=" text-3xl">
+            {isEnglish ? "Forgot password" : "Mot de passe oublié"}
+          </h1>
           <p className="text-sm text-[#EEEEEE]">
-            Enter your email for the verification proccess, we will send 4
-            digits code to your email.
+            {isEnglish
+              ? "Enter your email for the verification process, we will send a 4-digit code to your email."
+              : "Entrez votre e-mail pour le processus de vérification, nous enverrons un code à 4 chiffres à votre e-mail."}
           </p>
           <Form className="flex flex-col gap-3">
             <label
@@ -41,22 +46,24 @@ const ForgotPassword = () => {
                 id="email"
                 required={true}
                 className="p-2 focus:outline-0 flex-1"
-                placeholder="Email Address"
+                placeholder={isEnglish ? "Email Address" : "Adresse e-mail"}
               />
             </label>
             <button
               onClick={handleContinue}
               className="bg-[#048eff] py-2 rounded-lg cursor-pointer transform active:translate-0.9"
             >
-              Continue
+              {isEnglish ? "Continue" : "Continuer"}
             </button>
             <p className="text-sm">
-              Remember your password ?{" "}
+              {isEnglish
+                ? "Remember your password? "
+                : "Vous vous souvenez de votre mot de passe ? "}
               <Link
                 to={"/dashboard/login"}
                 className=" text-[#EEEEEE] underline font-semibold"
               >
-                login
+                {isEnglish ? "Login" : "Connexion"}
               </Link>
             </p>
           </Form>

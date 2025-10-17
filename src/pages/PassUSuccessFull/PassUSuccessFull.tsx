@@ -1,8 +1,9 @@
-import {  Link } from "react-router";
-
+import { Link } from "react-router";
+import { useStatus } from "../../providers/StatusProvider";
 
 const PassUSuccessFull = () => {
-  
+  const { isEnglish } = useStatus();
+
   return (
     <div className="flex flex-col md:flex-row w-full h-full bg-white overflow-hidden">
       <div className="w-full lg:w-1/2 h-full flex justify-center items-center relative">
@@ -24,15 +25,17 @@ const PassUSuccessFull = () => {
             alt="success"
           />
           <div className="text-white flex flex-col gap-5 max-w-[300px]">
-            <h1 className=" text-3xl">Successful</h1>
+            <h1 className=" text-3xl">{isEnglish ? "Successful" : "Réussi"}</h1>
             <p className="text-sm text-[#EEEEEE]">
-              Your password has been reset successfully.
+              {isEnglish
+                ? "Your password has been reset successfully."
+                : "Votre mot de passe a été réinitialisé avec succès."}
             </p>
             <Link
               to={"/dashboard/login"}
               className="bg-[#048eff] py-2 rounded-lg cursor-pointer text-center "
             >
-              Goto Login
+              {isEnglish ? "Go to Login" : "Aller à la connexion"}
             </Link>
           </div>
         </div>
