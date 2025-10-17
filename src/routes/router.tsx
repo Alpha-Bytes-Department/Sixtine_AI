@@ -21,6 +21,7 @@ import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
 import OtpVerification from "../pages/OtpVerification/OtpVerification";
 import SetNewPassword from "../pages/SetNewPassword/SetNewPassword";
 import PassUSuccessFull from "../pages/PassUSuccessFull/PassUSuccessFull";
+import DashHome from "../pages/Dashboard/DashHome";
 
 
 export const router = createBrowserRouter([
@@ -31,7 +32,13 @@ export const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <Dashboard />,
+    errorElement: <div>There was an error loading the dashboard.</div>,
     children: [
+      {
+        // path: "/",
+        index: true,
+        element: <DashHome />,
+      },
       {
         path: "login",
         element: <Login />,

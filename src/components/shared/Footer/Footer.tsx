@@ -9,22 +9,25 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 // import { motion } from "motion/react";
 import { useStatus } from "../../../providers/StatusProvider";
+import { Link } from "react-router";
 
 export default function Footer() {
   const { isEnglish } = useStatus();
   return (
-    <footer className="bg-[#05121C] text-[#198AE6] py-5">
+    <footer className="bg-[#05121C] text-[#198AE6] py-16 lg:py-6">
       <div className="border-b border-[#198AE6]">
         <div className="max-w-7xl mx-auto px-8 py-10">
           <div className="flex flex-col md:flex-row justify-between items-start gap-8">
             {/* Left Section - Brand */}
             <div className="space-y-4 ">
               <div className="flex items-center gap-2">
+                <Link to="/">
                 <img
                   src="/Images/logo/image3.png"
                   alt="logo"
                   className="w-44 h-auto"
                 />
+                </Link>
               </div>
               <p className="text-sm leading-relaxed max-w-sm text-[#408BC8CC]">
                 {isEnglish
