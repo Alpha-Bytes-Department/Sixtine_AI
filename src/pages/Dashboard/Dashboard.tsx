@@ -23,7 +23,9 @@ const Dashboard = () => {
         ) : (
           <SideNav />
         )}
-        <Outlet />
+        <div className="overflow-y-auto">
+          <Outlet />
+        </div>
       </div>
       <Footer />
     </div>
