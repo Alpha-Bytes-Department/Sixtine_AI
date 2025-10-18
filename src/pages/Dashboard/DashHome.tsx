@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useStatus } from "../../providers/StatusProvider";
+import { Link } from "react-router";
 
 const DashHome = () => {
   const [selectedDisease, setSelectedDisease] = useState<string | null>(null);
@@ -161,7 +162,7 @@ const DashHome = () => {
   }, [isEnglish]);
 
   return (
-    <div className="min-h-screen w-full bg-white p-3 sm:p-4 md:p-6 lg:p-8">
+    <div className=" w-full bg-white p-3 sm:p-4 md:p-6 lg:p-8">
       {/* Header */}
       <div className="mb-6 md:mb-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
@@ -419,7 +420,7 @@ const DashHome = () => {
               />
             </svg>
           </div>
-          <div className="space-y-3 sm:space-y-4 max-h-[400px] sm:max-h-[500px] overflow-y-auto flex-1">
+          <div className="space-y-3 sm:space-y-4 max-h-[400px] sm:max-h-[500px]  ">
             {recentPatients.map((patient, index) => (
               <div
                 key={index}
@@ -432,9 +433,9 @@ const DashHome = () => {
               </div>
             ))}
           </div>
-          <button className="w-full mt-4 sm:mt-6 text-center text-sm text-gray-600 hover:text-gray-800 font-medium py-2 hover:bg-gray-50 rounded transition-colors">
+          <Link to="/dashboard/patients" className="w-full cursor-pointer mt-4 sm:mt-6 text-center text-sm text-gray-600 hover:text-gray-800 font-medium py-2 hover:bg-gray-50 rounded transition-colors">
             {isEnglish ? "View All Patients" : "Voir tous les patients"}
-          </button>
+          </Link>
         </div>
       </div>
     </div>
