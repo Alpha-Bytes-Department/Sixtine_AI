@@ -91,7 +91,7 @@ const AudioRecord: React.FC<AudioRecorderProps> = ({ setRecording }) => {
   };
 
   return (
-    <div className="w-full h-screen bg-[#4a7a9c] flex justify-center items-center relative">
+    <div className="w-full h-full bg-white flex justify-center items-center relative">
       {/* Back Button */}
       <button
         onClick={goBack}
