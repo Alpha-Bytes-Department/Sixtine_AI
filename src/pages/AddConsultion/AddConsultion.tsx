@@ -1,8 +1,8 @@
-import React, {  useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import AudioRecorder from "../../components/Consultion/AudioRecord/AudioRecord";
-import DocumentSummery from "../../components/AddDocument/DocumentSummery/DocumentSummery";
+import React, { useEffect, useRef, useState } from "react";
 import { FadeLoader } from "react-spinners";
+import DocumentSummery from "../../components/AddDocument/DocumentSummery/DocumentSummery";
+import AudioRecorder from "../../components/Consultion/AudioRecord/AudioRecord";
 import { useStatus } from "../../providers/StatusProvider";
 // const AudioRecorderTyped = AudioRecorder as React.ComponentType<{
 //   setRecording: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,14 +24,14 @@ export default function AddConsultion({
   const [isDragging, setIsDragging] = useState(false);
   const [isRecording, setRecording] = useState(false);
   const [loading, setLoading] = useState(false);
-  useEffect(()=>{
-    if(files.length > 0){
+  useEffect(() => {
+    if (files.length > 0) {
       setLoading(true);
-      setTimeout(()=>{
+      setTimeout(() => {
         setLoading(false);
-      },1500)
+      }, 1500);
     }
-  },[files])
+  }, [files]);
 
   const { setPageTitle, isEnglish } = useStatus();
   useEffect(() => {
@@ -82,11 +82,11 @@ export default function AddConsultion({
   const removeFileAt = (index: number) => {
     const next = files.filter((_, i) => i !== index);
     setFiles(next);
-  }
+  };
 
   //start recording
-  if(isRecording){
-    return <AudioRecorder setRecording={setRecording}/>
+  if (isRecording) {
+    return <AudioRecorder setRecording={setRecording} />;
   }
 
   const formatBytes = (bytes: number) => {
@@ -139,14 +139,24 @@ export default function AddConsultion({
               onClick={openFileDialog}
               className="px-4 py-2 rounded-md cursor-pointer bg-[#4E7BA0] text-white hover:bg-[#285070] transition"
             >
-              {files.length > 0 ? "Upload files" : "Browse files"}
+              {files.length > 0
+                ? isEnglish
+                  ? "Upload files"
+                  : "Télécharger des fichiers"
+                : isEnglish
+                ? "Browse files"
+                : "Parcourir les fichiers"}
             </button>
             <p className="text-sm text-gray-600 mb-3">
-              <p className="my-3">Or</p>
-              drop documents here (text, audio, pdf, doc...)
+              <p className="my-3">{isEnglish ? "Or" : "Ou"}</p>
+              {isEnglish
+                ? "drop documents here (text, audio, pdf, doc...)"
+                : "déposez des documents ici (texte, audio, pdf, doc...)"}
             </p>
             {accept && (
-              <p className="mt-2 text-xs text-gray-500">Accepted: {accept}</p>
+              <p className="mt-2 text-xs text-gray-500">
+                {isEnglish ? "Accepted:" : "Accepté :"} {accept}
+              </p>
             )}
           </div>
         </div>
@@ -154,7 +164,7 @@ export default function AddConsultion({
         {/* Audio record button  */}
 
         {!files.length && (
-          <div className=" gap-5 mt-16 cursor-pointer relative">
+          <div className=" gap-5 mt-16 cursor-pointer relative ">
             {/* <motion.div
           initial={{ opacity: 0, scale: 1 }}
           animate={{
@@ -177,15 +187,19 @@ export default function AddConsultion({
               ></motion.div>
               <motion.div className="w-[50px] h-[50px] rounded-full bg-[#FF4D4E] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30"></motion.div>
             </div>
-            <p className="text-[#7E7E7E] absolute left-1/2 top-20 -translate-x-1/2 -translate-y-1/2">
-              Tap here
+            <p className="text-[#7E7E7E] absolute left-1/2 top-20 pb-5 -translate-x-1/2 -translate-y-1/2">
+              {isEnglish ? "Tap here" : "Appuyez ici"}
             </p>
           </div>
         )}
 
         {loading ? (
           <div className="size-80 mx-auto my-auto flex justify-center flex-col items-center gap-20 p-10 xl:p-20 border-gray-100 shadow-sm rounded-sm border">
-           {files.map((f, idx) => <p key={idx} className="text-sm">{f.name}</p>)}
+            {files.map((f, idx) => (
+              <p key={idx} className="text-sm">
+                {f.name}
+              </p>
+            ))}
             <FadeLoader />
           </div>
         ) : (
@@ -194,7 +208,9 @@ export default function AddConsultion({
               <div className="mt-4 space-y-2 min-w-64">
                 <div className="flex items-center justify-between text-sm text-gray-700">
                   <span className="font-medium">
-                    Preview file{files.length > 1 ? "s" : ""}
+                    {isEnglish
+                      ? `Preview file${files.length > 1 ? "s" : ""}`
+                      : `Aperçu du/des fichier${files.length > 1 ? "s" : ""}`}
                   </span>
                   <button
                     type="button"
@@ -204,7 +220,7 @@ export default function AddConsultion({
                     }}
                     className="text-xs text-red-500 hover:underline"
                   >
-                    Clear
+                    {isEnglish ? "Clear" : "Effacer"}
                   </button>
                 </div>
 
@@ -241,7 +257,7 @@ export default function AddConsultion({
                           onClick={() => removeFileAt(idx)}
                           className="text-xs text-red-500 hover:underline"
                         >
-                          Remove
+                          {isEnglish ? "Remove" : "Supprimer"}
                         </button>
                       </div>
                     </li>

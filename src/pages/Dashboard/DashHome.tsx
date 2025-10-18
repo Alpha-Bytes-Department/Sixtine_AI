@@ -4,7 +4,7 @@ import { useStatus } from "../../providers/StatusProvider";
 const DashHome = () => {
   const [selectedDisease, setSelectedDisease] = useState<string | null>(null);
   const [hoveredSegment, setHoveredSegment] = useState<number | null>(null);
-  const {isEnglish} = useStatus()
+  const { isEnglish } = useStatus();
 
   const stats = [
     {
@@ -170,7 +170,9 @@ const DashHome = () => {
           </h1>
         </div>
         <p className="text-sm sm:text-base text-gray-600">
-          {isEnglish ? "Here's your dashboard overview for today" : "Voici l'aperçu de votre tableau de bord pour aujourd'hui"}
+          {isEnglish
+            ? "Here's your dashboard overview for today"
+            : "Voici l'aperçu de votre tableau de bord pour aujourd'hui"}
         </p>
       </div>
 
@@ -202,7 +204,9 @@ const DashHome = () => {
           <div className="bg-gray-50 rounded-lg shadow p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow flex-1 flex flex-col justify-center">
             <div className="flex items-center justify-between mb-4 sm:mb-6">
               <h3 className="text-base sm:text-lg font-semibold text-gray-800">
-                {isEnglish ? "Disease Distribution" : "Répartition des maladies"}
+                {isEnglish
+                  ? "Disease Distribution"
+                  : "Répartition des maladies"}
               </h3>
               <div className="text-sm text-gray-500">
                 {isEnglish ? "Total Patients" : "Patients totaux"}:{" "}
@@ -262,21 +266,23 @@ const DashHome = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center bg-white rounded-full w-24 h-24 flex flex-col items-center justify-center shadow-sm">
                     {hoveredSegment !== null ? (
-                      <>
+                      <div className="text-center">
                         <div className="text-lg font-bold text-gray-800">
                           {segments[hoveredSegment].percentage}%
                         </div>
                         <div className="text-xs text-gray-600">
                           {segments[hoveredSegment].patients}
                         </div>
-                      </>
+                      </div>
                     ) : (
                       <>
                         <div className="text-lg font-bold text-gray-800">
                           1000
                         </div>
                         <div className="text-xs text-gray-600">Total</div>
-                        <div className="text-xs text-gray-600">{isEnglish ? "Total" : "Total"}</div>
+                        <div className="text-xs text-gray-600">
+                          {isEnglish ? "Total" : "Total"}
+                        </div>
                       </>
                     )}
                   </div>
@@ -328,7 +334,8 @@ const DashHome = () => {
                       </div>
                       <div className="flex items-center justify-between mt-1">
                         <span className="text-xs text-gray-500">
-                          {disease.patients} {isEnglish ? "patients" : "patients"}
+                          {disease.patients}{" "}
+                          {isEnglish ? "patients" : "patients"}
                         </span>
                         <div className="w-16 bg-gray-200 rounded-full h-1.5">
                           <div
@@ -350,8 +357,10 @@ const DashHome = () => {
             {selectedDisease && (
               <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
                 <div className="flex items-center justify-between">
-                  <h4 className="font-semibold text-blue-800">
-                    {isEnglish ? `${selectedDisease} Details` : `Détails de ${selectedDisease}`}
+                  <h4 className="font-semibold text-blue-800 text-sm">
+                    {isEnglish
+                      ? `${selectedDisease} Details`
+                      : `Détails de ${selectedDisease}`}
                   </h4>
                   <button
                     onClick={() => setSelectedDisease(null)}
@@ -392,7 +401,9 @@ const DashHome = () => {
         <div className="bg-gray-50 rounded-lg shadow p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow h-full flex flex-col">
           <div className="flex items-center justify-between mb-4 sm:mb-6">
             <h3 className="text-base sm:text-lg font-semibold text-gray-800">
-              {isEnglish ? "Recent Added Patients" : "Patients récemment ajoutés"}
+              {isEnglish
+                ? "Recent Added Patients"
+                : "Patients récemment ajoutés"}
             </h3>
             <svg
               className="w-5 h-5 text-gray-400"

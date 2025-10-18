@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import { FaPlay } from "react-icons/fa";
 import { FaPause, FaPlay } from "react-icons/fa6";
 import { IoMdSend } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
 import { useNavigate } from "react-router";
+import { useStatus } from "../../../providers/StatusProvider";
 
 type AudioRecorderProps = {
   setRecording: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,7 +18,7 @@ const AudioRecord: React.FC<AudioRecorderProps> = ({ setRecording }) => {
   const audioUrl = useRef<string | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const navigate = useNavigate();
-
+  const { isEnglish } = useStatus();
 
   // Start recording automatically when the component mounts
   useEffect(() => {
@@ -119,10 +120,14 @@ const AudioRecord: React.FC<AudioRecorderProps> = ({ setRecording }) => {
           </div>
         </div>
 
-        <p className="text-sm mb-4">Recording Process...</p>
+        <p className="text-sm mb-4">
+          {isEnglish ? "Recording Process..." : "Processus d'enregistrement..."}
+        </p>
 
         {!isRecording ? (
-          <p className="text-white text-sm">Recording stopped</p>
+          <p className="text-white text-sm">
+            {isEnglish ? "Recording stopped" : "Enregistrement arrêté"}
+          </p>
         ) : (
           <div className="flex justify-center space-x-4">
             <button
@@ -135,7 +140,7 @@ const AudioRecord: React.FC<AudioRecorderProps> = ({ setRecording }) => {
             <button
               onClick={sendAudio}
               className="bg-white/20 hover:bg-white/30 text-white w-10 h-10 rounded-full flex items-center justify-center text-xl cursor-pointer"
-              title="send"
+              title={isEnglish ? "send" : "envoyer"}
             >
               <IoMdSend />
             </button>

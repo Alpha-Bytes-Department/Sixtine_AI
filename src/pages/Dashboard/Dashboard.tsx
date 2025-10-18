@@ -14,7 +14,7 @@ const Dashboard = () => {
   return (
     <div>
       {" "}
-      <div className="flex lg:flex-row flex-col w-full h-screen bg-white">
+      <div className="flex lg:flex-row flex-col w-full  bg-white">
         {isLogIn ||
         forgotPassword ||
         OtpVerification ||

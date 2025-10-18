@@ -69,7 +69,13 @@ export default function Footer() {
               <ul className="space-y-2">
                 <li>
                   <a
-                    href="#"
+                    href="#mission"
+                    onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('mission')?.scrollIntoView({
+                    behavior: 'smooth'
+                    });
+                  }}
                     className=" hover:text-cyan-400 text-sm transition block"
                   >
                     {isEnglish ? "Mission" : "Mission"}
@@ -77,7 +83,13 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="#whatSixtine"
+                    onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('whatSixtine')?.scrollIntoView({
+                    behavior: 'smooth'
+                    });
+                  }}
                     className=" hover:text-cyan-400 text-sm transition block"
                   >
                     {isEnglish ? "What we do" : "Ce que nous faisons"}
@@ -85,7 +97,13 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="#key-use"
+                    onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('key-use')?.scrollIntoView({
+                    behavior: 'smooth'
+                    });
+                  }}
                     className=" hover:text-cyan-400 text-sm transition block"
                   >
                     {isEnglish ? "Use cases" : "Cas d'utilisation"}
@@ -93,7 +111,13 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="#vision"
+                    onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('vision')?.scrollIntoView({
+                    behavior: 'smooth'
+                    });
+                  }}
                     className=" hover:text-cyan-400 text-sm transition block"
                   >
                     {isEnglish ? "Our vision" : "Notre vision"}

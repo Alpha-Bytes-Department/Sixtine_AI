@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import DocumentSummery from "../../components/AddDocument/DocumentSummery/DocumentSummery";
 import { FadeLoader } from "react-spinners";
+import DocumentSummery from "../../components/AddDocument/DocumentSummery/DocumentSummery";
 import { useStatus } from "../../providers/StatusProvider";
 
 interface FileUploaderProps {
@@ -19,15 +19,16 @@ export default function AddDocument({
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  useEffect(()=>{
-    if(files.length > 0){
+  useEffect(() => {
+    if (files.length > 0) {
       setLoading(true);
-      setTimeout(()=>{
+      setTimeout(() => {
         setLoading(false);
-      },1500)
+      }, 1500);
     }
-  },[files])
+  }, [files]);
   const { setPageTitle, isEnglish } = useStatus();
+
   useEffect(() => {
     setPageTitle(isEnglish ? "Add Document" : "Ajouter un document");
   }, [isEnglish]);
@@ -38,15 +39,18 @@ export default function AddDocument({
       .map((ext) => ext.trim().toLowerCase());
     const arr = Array.from(newFiles);
 
-
-    // checking file type supported or not 
+    // checking file type supported or not
     const invalidFiles = arr.filter((file) => {
       const fileExtension = `.${file.name.split(".").pop()?.toLowerCase()}`;
       return !allowedExtensions.includes(fileExtension);
     });
 
     if (invalidFiles.length > 0) {
-      setError("File type is not supported");
+      setError(
+        isEnglish
+          ? "File type is not supported"
+          : "Type de fichier non pris en charge"
+      );
       // Optionally, you could filter out invalid files and only add valid ones
       // const validFiles = arr.filter(file => !invalidFiles.includes(file));
       // if (validFiles.length === 0) return;
@@ -90,7 +94,7 @@ export default function AddDocument({
       e.dataTransfer.clearData();
     }
   };
-  
+
   const openFileDialog = () => inputRef.current?.click();
 
   //   remove file
@@ -150,11 +154,19 @@ export default function AddDocument({
               onClick={openFileDialog}
               className="px-4 py-2 rounded-md cursor-pointer bg-[#4E7BA0] text-white hover:bg-[#285070] transition"
             >
-              {files.length > 0 ? "Upload files" : "Browse files"}
+              {files.length > 0
+                ? isEnglish
+                  ? "Upload files"
+                  : "Télécharger des fichiers"
+                : isEnglish
+                ? "Browse files"
+                : "Parcourir les fichiers"}
             </button>
             <p className="text-sm text-gray-600 mb-3">
-              <p className="my-3">Or</p>
-              drop documents here (jpg, png, docs)
+              <p className="my-3">{isEnglish ? "Or" : "Ou"}</p>
+              {isEnglish
+                ? "drop documents here (jpg, png, docs)"
+                : "déposez des documents ici (jpg, png, docs)"}
             </p>
             {/* error message for other type files  */}
             {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
@@ -176,7 +188,9 @@ export default function AddDocument({
               <div className="mt-4 space-y-2 min-w-64">
                 <div className="flex items-center justify-between text-sm text-gray-700">
                   <span className="font-medium">
-                    Preview file{files.length > 1 ? "s" : ""}
+                    {isEnglish
+                      ? `Preview file${files.length > 1 ? "s" : ""}`
+                      : `Aperçu du/des fichier${files.length > 1 ? "s" : ""}`}
                   </span>
                   <button
                     type="button"
@@ -186,7 +200,7 @@ export default function AddDocument({
                     }}
                     className="text-xs text-red-500 hover:underline"
                   >
-                    Clear
+                    {isEnglish ? "Clear" : "Effacer"}
                   </button>
                 </div>
 
@@ -223,7 +237,7 @@ export default function AddDocument({
                           onClick={() => removeFileAt(idx)}
                           className="text-xs text-red-500 hover:underline"
                         >
-                          Remove
+                          {isEnglish ? "Remove" : "Supprimer"}
                         </button>
                       </div>
                     </li>
