@@ -84,8 +84,8 @@ if(setting){
 //   chat component 
 
   return (
-    <div className="w-full h-full flex-1 ">
-      <div className="w-full lg:max-w-xl xl:max-w-4xl flex flex-col  p-4 bg-white  fixed bottom-5 left-0 lg:bottom-10 xl:bottom-12  lg:left-3/12 2xl:left-4/12  max-h-[95%] ">
+    <div className="w-full h-full flex-1 relative">
+      <div className="w-full lg:max-w-xl xl:max-w-4xl flex flex-col  p-4 bg-white  absolute bottom-0 left-0 lg:bottom-10 xl:bottom-20  lg:left-2/12 2xl:left-3/12  max-h-[95%]">
         {/* message section  */}
         <div className="flex flex-col space-y-4 overflow-y-auto overflow-hidden custom-scrollbar">
           {messages.map((msg) => (
@@ -109,7 +109,7 @@ if(setting){
           ))}
         </div>
         {/* bottom input section  */}
-        <div className="flex items-center mt-5 border border-[#4e7ba0] rounded-xl p-3 ">
+        <div className="flex items-center  border border-[#4e7ba0] rounded-xl p-3 ">
           <button
             onClick={()=>setSetting(true)}
             className=" p-2 text-[#4e7ba0] rounded-lg"

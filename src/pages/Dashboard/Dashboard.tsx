@@ -12,7 +12,7 @@ const Dashboard = () => {
     "/dashboard/password-update/successful"
   );
   return (
-    <div>
+    <div className="">
       {" "}
       <div className="flex lg:flex-row flex-col w-full  bg-white">
         {isLogIn ||
@@ -24,7 +24,7 @@ const Dashboard = () => {
         ) : (
           <SideNav />
         )}
-        <div className="overflow-y-auto w-full flex flex-col custom-scrollbar">
+        <div className="overflow-y-auto w-full flex flex-col h-screen custom-scrollbar">
           {isLogIn ||
           forgotPassword ||
           OtpVerification ||

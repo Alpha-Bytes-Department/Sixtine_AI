@@ -1,6 +1,15 @@
+import { useEffect } from "react";
+import { useStatus } from "../../providers/StatusProvider";
 
 
 const ChatHistory = () => {
+
+  const {setPageTitle, isEnglish} = useStatus();
+  
+  useEffect(()=>{
+    setPageTitle(isEnglish ? "Chat History" : "Historique de discussion");
+      },[isEnglish]);
+
   const messages = [
     {
       id: 1,
