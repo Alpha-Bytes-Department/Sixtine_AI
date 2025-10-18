@@ -22,17 +22,19 @@ import OtpVerification from "../pages/OtpVerification/OtpVerification";
 import SetNewPassword from "../pages/SetNewPassword/SetNewPassword";
 import PassUSuccessFull from "../pages/PassUSuccessFull/PassUSuccessFull";
 import DashHome from "../pages/Dashboard/DashHome";
+import ErrorPage from "../components/shared/ErrorPage/ErrorPage";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Landing />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "dashboard",
     element: <Dashboard />,
-    errorElement: <div>There was an error loading the dashboard.</div>,
+    errorElement: <ErrorPage />,
     children: [
       {
         // path: "/",
