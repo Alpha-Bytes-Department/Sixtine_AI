@@ -101,19 +101,19 @@ const Users = () => {
             <table className="w-full text-left min-w-full">
               <thead className="sticky top-0 bg-white hidden md:table-header-group border-b">
                 <tr>
-                  <th className="py-2 font-semibold px-2 sm:px-4">
+                  <th className="py-2 font-semibold ">
                     {isEnglish ? "First Name" : "Prénom"}
                   </th>
-                  <th className="py-2 font-semibold px-2 sm:px-4">
+                  <th className="py-2 font-semibold ">
                     {isEnglish ? "Last Name" : "Nom de famille"}
                   </th>
-                  <th className="py-2 font-semibold px-2 sm:px-4">
+                  <th className="py-2 font-semibold ">
                     {isEnglish ? "Date Created" : "Date de création"}
                   </th>
-                  <th className="py-2 font-semibold px-2 sm:px-4">
+                  <th className="py-2 font-semibold ">
                     {isEnglish ? "Role" : "Rôle"}
                   </th>
-                  <th className="py-2 font-semibold px-2 sm:px-4">
+                  <th className="py-2 font-semibold ">
                     {isEnglish ? "Certification" : "Certification"}
                   </th>
                 </tr>
@@ -124,7 +124,7 @@ const Users = () => {
                     key={idx}
                     className="border-b hover:bg-gray-50 transition-colors"
                   >
-                    <td className="py-2 px-2 sm:px-4 truncate min-w-[100px]">
+                    <td className="py-2  truncate min-w-[100px]">
                       {editingUser === idx ? (
                         <input
                           type="text"
