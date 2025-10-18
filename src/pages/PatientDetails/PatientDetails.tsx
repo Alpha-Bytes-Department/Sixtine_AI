@@ -15,7 +15,7 @@ const PatientDetails = () => {
    { title: isEnglish ? "Patients" : "Patients", link: "/dashboard/patients" },
    { title: isEnglish ? "Patient Details" : "Détails du patient", link: "/dashboard/patients/0" },
  ]);
-   },[isEnglish])
+   },[isEnglish, setBreadCrumb, setPageTitle])
 
  
   
@@ -160,7 +160,7 @@ const PatientDetails = () => {
 
   return (
     <div className="flex-1 h-full w-full">
-      <div className="bg-white p-6 text-[#4A4A4A] h-full flex flex-col">
+      <div className="bg-white p-6 pt-0 text-[#4A4A4A] h-full flex flex-col">
         {/* Header */}
         <div className="py-5">
           {breadCrumb.map((bc, index) => (

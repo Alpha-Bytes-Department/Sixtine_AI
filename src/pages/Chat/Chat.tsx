@@ -35,6 +35,8 @@ const Chatbot = () => {
   const [isThinking, setIsThinking] = useState(false);
   const { setPageTitle, isEnglish } = useStatus();
 
+  console.log(isRecording);
+
   useEffect(() => {
     setPageTitle(isEnglish ? "Chat" : "Discussion");
   }, [isEnglish, setPageTitle]);

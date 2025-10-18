@@ -1,8 +1,22 @@
 import { FaFilePdf } from "react-icons/fa";
 import { useStatus } from "../../providers/StatusProvider";
+import { useEffect } from "react";
+import { Link } from "react-router";
 
 export default function PatientDocDetails() {
-  const {isEnglish} = useStatus();
+  const {setPageTitle, breadCrumb, setBreadCrumb,isEnglish} = useStatus();
+
+
+   useEffect(()=>{
+    setPageTitle(isEnglish ? "Patient Details" : "Détails du patient");
+    setBreadCrumb([
+      { title: isEnglish ? "Patient" : "Patients", link: "/dashboard/patients" },
+      { title: isEnglish ? "Patient Details" : "Détails du patient", link: "/dashboard/patients/0" },
+      { title: isEnglish ? "Patient document Details" : "Détails du document patient", link: "/dashboard/patients/0/document/0" },
+    ]);
+      },[isEnglish, setBreadCrumb, setPageTitle])
+
+
   const patient = {
     name: "Abdessattar GHARSELAOUI",
     dob: "05.09.1960",
@@ -22,6 +36,14 @@ export default function PatientDocDetails() {
 
   return (
     <div className=" mx-auto p-6 space-y-6 bg-gray-50 min-h-screen">
+      {/* Header */}
+        <div className="py-5">
+          {breadCrumb.map((bc, index) => (
+            <Link to={bc.link}  key={index} className="text-lg text-gray-500 hover:underline mx-2 ">
+              {bc.title} {" > "}
+            </Link>
+          ))} 
+        </div>
       
       {/* Document Information */}
       <div className="bg-white shadow-sm rounded-lg p-5 border border-gray-200">
