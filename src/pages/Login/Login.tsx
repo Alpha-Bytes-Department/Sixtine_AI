@@ -50,7 +50,7 @@ const Login = () => {
             >
               <MdOutlineMail className="text-lg" />
               <input
-                type="text"
+                type="email"
                 name="email"
                 required={true}
                 id="email"
